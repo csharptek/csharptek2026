@@ -2,7 +2,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useEffect } from 'react'
 import Layout from '../../components/Layout'
-import ScrollToTop from '../../components/ScrollToTop'
+import dynamic from 'next/dynamic'
+const ScrollToTop = dynamic(() => import('../../components/ScrollToTop'), { ssr: false })
 import { SERVICES_LIST } from '../../data/services'
 
 const STYLES = `

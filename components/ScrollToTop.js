@@ -6,6 +6,7 @@ export default function ScrollToTop() {
   useEffect(() => {
     const onScroll = () => setShow(window.scrollY > 400)
     window.addEventListener('scroll', onScroll)
+    onScroll()
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
@@ -18,16 +19,23 @@ export default function ScrollToTop() {
       style={{
         position: 'fixed', bottom: 90, right: 26, zIndex: 998,
         width: 44, height: 44, borderRadius: '50%',
-        background: 'rgba(21,101,168,.9)',
+        background: 'rgba(21,101,168,.92)',
         border: '1px solid rgba(46,158,214,.4)',
         backdropFilter: 'blur(12px)',
-        color: '#fff', fontSize: 18, cursor: 'pointer',
+        color: '#fff', fontSize: 20, fontWeight: 700,
+        cursor: 'pointer',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         boxShadow: '0 4px 20px rgba(21,101,168,.4)',
-        transition: 'all .2s',
+        transition: 'all .2s', lineHeight: 1,
       }}
-      onMouseEnter={e => { e.currentTarget.style.background = '#1565A8'; e.currentTarget.style.transform = 'translateY(-3px)' }}
-      onMouseLeave={e => { e.currentTarget.style.background = 'rgba(21,101,168,.9)'; e.currentTarget.style.transform = 'none' }}
+      onMouseEnter={e => {
+        e.currentTarget.style.background = '#1565A8'
+        e.currentTarget.style.transform = 'translateY(-3px)'
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.background = 'rgba(21,101,168,.92)'
+        e.currentTarget.style.transform = 'none'
+      }}
     >
       ↑
     </button>

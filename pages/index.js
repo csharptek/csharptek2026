@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import { useEffect, useRef, useState } from 'react'
 import NavComponent from '../components/Nav'
+import dynamic from 'next/dynamic'
+const ScrollToTop = dynamic(() => import('../components/ScrollToTop'), { ssr: false })
 
 /* ============================================================
    SINGLE-FILE HOMEPAGE — all sections, no external deps

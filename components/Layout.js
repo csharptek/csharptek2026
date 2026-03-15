@@ -1,5 +1,6 @@
 import Nav from './Nav'
-import ScrollToTop from './ScrollToTop'
+import dynamic from 'next/dynamic'
+const ScrollToTop = dynamic(() => import('./ScrollToTop'), { ssr: false })
 import Link from 'next/link'
 
 export default function Layout({ children }) {

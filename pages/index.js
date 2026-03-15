@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react'
    ============================================================ */
 
 const GLOBAL_STYLES = `
-  @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+  
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{font-family:'Mulish',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#0A1628;overflow-x:hidden;background:#0A1628;}
@@ -16,8 +16,8 @@ const GLOBAL_STYLES = `
   button{cursor:pointer;font-family:'Mulish',sans-serif;}
 
   /* reveal on scroll */
-  .rv{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
-  .rv.on{opacity:1;transform:translateY(0);}
+  .rv{opacity:1;transform:translateY(18px);transition:transform .55s ease;}
+  .rv.on{transform:translateY(0);}
   .d1{transition-delay:.07s;}.d2{transition-delay:.14s;}.d3{transition-delay:.21s;}
   .d4{transition-delay:.28s;}.d5{transition-delay:.35s;}.d6{transition-delay:.42s;}
 

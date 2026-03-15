@@ -5,13 +5,12 @@ import Layout from '../../components/Layout'
 import { SERVICES_LIST } from '../../data/services'
 
 const STYLES = `
-  @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{font-family:'Mulish',-apple-system,sans-serif;color:#0A1628;background:#0A1628;overflow-x:hidden;}
   a{text-decoration:none;}
-  .rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease;}
-  .rv.on{opacity:1;transform:translateY(0);}
+  .rv{opacity:1;transform:translateY(18px);transition:transform .55s ease;}
+  .rv.on{transform:translateY(0);}
   .d1{transition-delay:.06s;}.d2{transition-delay:.12s;}.d3{transition-delay:.18s;}
   .d4{transition-delay:.24s;}.d5{transition-delay:.30s;}.d6{transition-delay:.36s;}
   .d7{transition-delay:.42s;}.d8{transition-delay:.48s;}.d9{transition-delay:.54s;}
@@ -25,7 +24,7 @@ const STYLES = `
   .hero-inner{max-width:760px;margin:0 auto;position:relative;z-index:1;}
   .eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(46,158,214,.07);border:1px solid rgba(46,158,214,.2);border-radius:100px;padding:7px 18px;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#7EC8E3;margin-bottom:24px;}
   .hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(36px,5.5vw,64px);font-weight:800;line-height:1.08;letter-spacing:-.025em;color:#fff;margin-bottom:18px;}
-  .grad{color:#2E9ED6;background:linear-gradient(90deg,#2E9ED6,#7EC8E3,#2E9ED6);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3.5s linear infinite;}
+  .grad{color:#2E9ED6;background:linear-gradient(90deg,#2E9ED6,#7EC8E3,#2E9ED6);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3.5s linear infinite;}
   .hero-sub{font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,.6);line-height:1.75;max-width:600px;margin:0 auto 36px;}
   .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;}
   .btn-p{background:#FF6B2B;color:#fff;padding:15px 34px;border-radius:10px;font-weight:700;font-size:15px;display:inline-block;transition:all .2s;}
@@ -116,10 +115,7 @@ export default function ServicesPage() {
       <Head>
         <title>Services — CSharpTek AI-First Software Development</title>
         <meta name="description" content="9 AI-first services from CSharpTek — AI Integration, Voice Agents, Web & Mobile, Cloud DevOps, MVP Vibe Coding, Marketplace Publishing, Prompt Engineering, CRM Tools and 24/7 Support." />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
-      </Head>
+</Head>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
 
       {/* ── HERO ── */}

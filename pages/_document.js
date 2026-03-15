@@ -5,16 +5,16 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <meta charSet="UTF-8" />
-        <meta name="description" content="CSharpTek — AI-First Software Development for Healthcare, Education, Wellness and more. We build intelligent software powered by Azure, AWS, OpenAI and Claude." />
-        <meta name="keywords" content="AI software development, Azure, AWS, healthcare AI, HIPAA, Next.js, React, vibe coding, MVP" />
-        <meta property="og:title" content="CSharpTek — AI-First Software Development" />
-        <meta property="og:description" content="We design, build and deploy intelligent software across healthcare, education, wellness and beyond." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.csharptek.com" />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="description" content="CSharpTek — AI-First Software Development for Healthcare, Education, Wellness and more." />
+        {/* Preconnect for faster font loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Font with display=swap ensures text is visible immediately */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+          rel="stylesheet"
+        />
         <link rel="icon" href="/favicon.ico" />
-        {/* Replace with your real logo path */}
-        {/* <link rel="icon" href="/logo.png" /> */}
       </Head>
       <body>
         <Main />

@@ -60,28 +60,35 @@ export default function Hero() {
   const [animate, setAnimate] = useState(false)
   const word = useTypewriter(WORDS)
 
-  // Particle canvas
+  /* Particle canvas */
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d')
-    let animId, W, H
-    const setSize = () => { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight }
+    let animId
+    const setSize = () => {
+      canvas.width  = canvas.offsetWidth
+      canvas.height = canvas.offsetHeight
+    }
     setSize()
+    const W = () => canvas.width
+    const H = () => canvas.height
     const pts = Array.from({length:60}, () => ({
-      x: Math.random()*W, y: Math.random()*H,
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height,
       r: Math.random()*1.5+.4,
-      dx: (Math.random()-.5)*.38, dy: (Math.random()-.5)*.38,
+      dx: (Math.random()-.5)*.38,
+      dy: (Math.random()-.5)*.38,
       a: Math.random()*.4+.1,
     }))
     const draw = () => {
-      ctx.clearRect(0,0,W,H)
+      ctx.clearRect(0,0,W(),H())
       pts.forEach(p => {
         ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2)
         ctx.fillStyle = `rgba(46,158,214,${p.a})`; ctx.fill()
         p.x+=p.dx; p.y+=p.dy
-        if (p.x<0||p.x>W) p.dx*=-1
-        if (p.y<0||p.y>H) p.dy*=-1
+        if (p.x<0||p.x>W()) p.dx*=-1
+        if (p.y<0||p.y>H()) p.dy*=-1
       })
       for (let i=0;i<pts.length;i++) for (let j=i+1;j<pts.length;j++) {
         const d = Math.hypot(pts[i].x-pts[j].x, pts[i].y-pts[j].y)
@@ -97,7 +104,7 @@ export default function Hero() {
     return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', setSize) }
   }, [])
 
-  // Stats counter trigger
+  /* Stats trigger */
   useEffect(() => {
     const el = statsRef.current
     if (!el) return
@@ -114,35 +121,45 @@ export default function Hero() {
       <div className={`${styles.orb} ${styles.orb3}`} />
 
       <div className={styles.content}>
+        {/* Eyebrow */}
         <div className={styles.eyebrow}>
-          <span className="dot" />
+          <span style={{width:6,height:6,borderRadius:'50%',background:'#FF6B2B',flexShrink:0,display:'inline-block'}} />
           AI-First Software Development
         </div>
 
+        {/* Headline — plain white + gradient span */}
         <h1 className={styles.headline}>
           We Build AI-Powered Software
           <br />
           <span className={styles.grad}>Your Industry Needs</span>
         </h1>
 
+        {/* Typewriter */}
         <div className={styles.typeRow}>
           <span className={styles.muted}>Transforming</span>
-          <span className={styles.twWord}>{word}</span>
+          <span className={styles.twWord}>{word || '\u00a0'}</span>
           <span className={styles.cursor}>|</span>
           <span className={styles.muted}>with AI</span>
         </div>
 
+        {/* Subline */}
         <p className={styles.sub}>
           From Azure cloud infrastructure to cutting-edge AI integrations — we design,
           build and deploy intelligent software that drives real business outcomes across
           healthcare, education, wellness and beyond.
         </p>
 
+        {/* CTAs */}
         <div className={styles.ctaRow}>
-          <a href="#portfolio" className="btn-primary">Explore Our Work →</a>
-          <a href="#contact"   className="btn-secondary">Start a Project</a>
+          <a href="#portfolio" style={{background:'#FF6B2B',color:'#fff',padding:'15px 34px',borderRadius:10,textDecoration:'none',fontWeight:700,fontSize:15,fontFamily:"'Mulish',sans-serif",letterSpacing:'.02em',display:'inline-block'}}>
+            Explore Our Work →
+          </a>
+          <a href="#contact" style={{background:'transparent',color:'#7EC8E3',padding:'15px 34px',borderRadius:10,textDecoration:'none',fontWeight:600,fontSize:15,fontFamily:"'Mulish',sans-serif",letterSpacing:'.02em',border:'1.5px solid rgba(46,158,214,.4)',display:'inline-block'}}>
+            Start a Project
+          </a>
         </div>
 
+        {/* Partner badges */}
         <div className={styles.badges}>
           {['Microsoft Azure','AWS','Google Cloud','OpenAI Partner','Anthropic Claude'].map(b => (
             <span key={b} className={styles.badge}>{b}</span>
@@ -150,6 +167,7 @@ export default function Hero() {
         </div>
       </div>
 
+      {/* Stats bar */}
       <div ref={statsRef} className={styles.statsBar}>
         {STATS.map(s => <StatItem key={s.id} {...s} animate={animate} />)}
       </div>

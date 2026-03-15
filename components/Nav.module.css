@@ -174,3 +174,9 @@
 @media (max-width: 400px) {
   .inner { padding: 0 16px; }
 }
+
+/* Narrower font for more nav items */
+@media (min-width: 981px) {
+  .link { font-size: 12.5px; padding: 6px 8px; }
+  .cta  { padding: 9px 16px; font-size: 13px; }
+}

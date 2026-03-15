@@ -380,12 +380,12 @@ const WORDS = ['Healthcare','Education','Wellness','Automation','Marketplaces','
 const LOGOS = ['☁️ Microsoft Azure','🟠 AWS','🔵 Google Cloud','🤖 OpenAI','⚡ Claude','🐙 GitHub Copilot','📞 Twilio','🎙️ ElevenLabs','📊 HubSpot','⚛️ React / Next.js','🔷 .NET Core','🐳 Docker / K8s','🗄️ Supabase','🎨 Figma']
 
 const SERVICES = [
-  {i:'🧠',t:'AI Integration & Automation',d:'Embed AI into your workflows — intelligent document processing, medical scribes and full business automation.',tags:['OpenAI','Claude','Azure AI','LangChain']},
-  {i:'🎙️',t:'AI Voice Agents',d:'Inbound & outbound voice AI, SMS, appointment setters and lead qualifiers — powered by ElevenLabs, VAPI & Twilio.',tags:['ElevenLabs','VAPI','Twilio']},
-  {i:'📱',t:'Web & Mobile Development',d:'Full-stack apps using React, Next.js, React Native, .NET Core and Blazor — built for performance.',tags:['React','Next.js','React Native','.NET']},
-  {i:'☁️',t:'Cloud Infrastructure & DevOps',d:'Azure, AWS & GCP architecture, Docker, Kubernetes, CI/CD pipelines and multi-cloud deployments.',tags:['Azure','AWS','Kubernetes','DevOps']},
-  {i:'🚀',t:'MVP & Vibe Coding',d:'Launch your idea in 4–8 weeks using AI-assisted vibe coding with Cursor, Lovable and Base44.',tags:['Cursor','Lovable','Replit','Vercel']},
-  {i:'🛒',t:'Marketplace Publishing',d:'We publish production-ready software on Azure, AWS and Google Marketplaces — enterprise-ready.',tags:['Azure Marketplace','AWS','GCP']},
+  {i:'🧠',t:'AI Integration & Automation',d:'Embed AI into your workflows — intelligent document processing, medical scribes and full business automation.',tags:['OpenAI','Claude','Azure AI'],href:'/services/ai-integration'},
+  {i:'🎙️',t:'AI Voice Agents',d:'Inbound & outbound voice AI, SMS, appointment setters and lead qualifiers — powered by ElevenLabs, VAPI & Twilio.',tags:['ElevenLabs','VAPI','Twilio'],href:'/services/ai-voice'},
+  {i:'📱',t:'Web & Mobile Development',d:'Full-stack apps using React, Next.js, React Native, .NET Core and Blazor — built for performance.',tags:['React','Next.js','.NET'],href:'/services/web-mobile'},
+  {i:'☁️',t:'Cloud Infrastructure & DevOps',d:'Azure, AWS & GCP architecture, Docker, Kubernetes, CI/CD pipelines and multi-cloud deployments.',tags:['Azure','AWS','Kubernetes'],href:'/services/cloud-devops'},
+  {i:'🚀',t:'MVP & Vibe Coding',d:'Launch your idea in 4–8 weeks using AI-assisted vibe coding with Cursor, Lovable and Base44.',tags:['Cursor','Lovable','Vercel'],href:'/services/mvp-vibe'},
+  {i:'🛒',t:'Marketplace Publishing',d:'We publish production-ready software on Azure, AWS and Google Marketplaces — enterprise-ready.',tags:['Azure MP','AWS','GCP'],href:'/services/marketplace'},
 ]
 
 const INDUSTRIES = [
@@ -591,12 +591,13 @@ function Services(){
         </div>
         <div className="srv-grid">
           {SERVICES.map((s,i)=>(
-            <div key={s.t} className={`scard rv d${(i%6)+1}`}>
+            <a key={s.t} href={s.href} className={`scard rv d${(i%6)+1}`} style={{textDecoration:'none',display:'block'}}>
               <div className="sc-ico">{s.i}</div>
               <h3 className="sc-ttl">{s.t}</h3>
               <p className="sc-dsc">{s.d}</p>
               <div className="sc-tags">{s.tags.map(t=><span key={t} className="sc-tag">{t}</span>)}</div>
-            </div>
+              <div style={{display:'inline-flex',alignItems:'center',gap:5,marginTop:14,fontSize:13,fontWeight:700,color:'#FF6B2B'}}>Learn more →</div>
+            </a>
           ))}
         </div>
         <div style={{textAlign:'center',marginTop:48}} className="rv"><a href="#" className="btn-ol">View All 9 Services →</a></div>

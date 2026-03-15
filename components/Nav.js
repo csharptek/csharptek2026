@@ -15,34 +15,68 @@ const SERVICES_DROPDOWN = [
   { icon:'🛠️', label:'24/7 Support & Maintenance',   href:'/services/support' },
 ]
 
+const INDUSTRIES_DROPDOWN = [
+  { icon:'🏥', label:'Healthcare',             href:'/industries/healthcare' },
+  { icon:'🌸', label:'Wellness & Fertility',   href:'/industries/wellness' },
+  { icon:'🎓', label:'Education & EdTech',     href:'/industries/education' },
+  { icon:'🤖', label:'Marketing & Automation', href:'/industries/automation' },
+  { icon:'🛒', label:'Service Marketplaces',   href:'/industries/marketplace' },
+  { icon:'🐾', label:'Pet Care & Wellness',    href:'/industries/petcare' },
+  { icon:'⚙️', label:'CRM & Productivity',     href:'/industries/crm' },
+]
+
+function NavDropdown({ label, items, viewAllHref, viewAllLabel }) {
+  const [open, setOpen] = useState(false)
+  const closeTimer = useRef(null)
+
+  const show = () => { clearTimeout(closeTimer.current); setOpen(true) }
+  const hide = () => { closeTimer.current = setTimeout(() => setOpen(false), 180) }
+  const stay = () => clearTimeout(closeTimer.current)
+
+  return (
+    <div className={styles.dropWrap} onMouseEnter={show} onMouseLeave={hide}>
+      <button className={`${styles.link} ${styles.linkBtn} ${open ? styles.linkActive : ''}`}>
+        {label} <span className={styles.chevron}>{open ? '▲' : '▾'}</span>
+      </button>
+      {open && (
+        <div className={styles.dropdown} onMouseEnter={stay} onMouseLeave={hide}>
+          <div className={styles.dropHeader}>{label}</div>
+          {items.map(s => (
+            <Link key={s.href} href={s.href} className={styles.dropItem} onClick={() => setOpen(false)}>
+              <span className={styles.dropIcon}>{s.icon}</span>
+              <span className={styles.dropLabel}>{s.label}</span>
+            </Link>
+          ))}
+          <div className={styles.dropFooter}>
+            <Link href={viewAllHref} className={styles.dropAll} onClick={() => setOpen(false)}>
+              ⊞ {viewAllLabel} →
+            </Link>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const [dropdown, setDropdown] = useState(false)
-  const [mobileServices, setMobileServices] = useState(false)
-  const dropRef   = useRef(null)
-  const closeTimer = useRef(null)
-  const router = useRouter()
-  const isHome = router.pathname === '/'
+  const [mobSvc,   setMobSvc]   = useState(false)
+  const [mobInd,   setMobInd]   = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
+    const h = () => setScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', h)
+    return () => window.removeEventListener('scroll', h)
   }, [])
 
-  // Delayed close — gives user time to move mouse into dropdown
-  const openDropdown  = () => { clearTimeout(closeTimer.current); setDropdown(true) }
-  const startClose    = () => { closeTimer.current = setTimeout(() => setDropdown(false), 180) }
-  const cancelClose   = () => { clearTimeout(closeTimer.current) }
-
-  const closeAll = () => { setDropdown(false); setMenuOpen(false); setMobileServices(false) }
+  const closeAll = () => { setMenuOpen(false); setMobSvc(false); setMobInd(false) }
 
   return (
     <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.inner}>
 
-        {/* HOME LOGO */}
+        {/* LOGO */}
         <Link href="/" className={styles.logo} onClick={closeAll}>
           <span className={styles.logoCs}>C#</span>
           <span className={styles.logoRest}>harpTek</span>
@@ -50,49 +84,26 @@ export default function Nav() {
 
         {/* Desktop links */}
         <div className={styles.links}>
-
-          {/* HOME */}
           <Link href="/" className={styles.link}>Home</Link>
 
-          {/* SERVICES — dropdown only, no click-through */}
-          <div
-            className={styles.dropWrap}
-            ref={dropRef}
-            onMouseEnter={openDropdown}
-            onMouseLeave={startClose}
-          >
-            <button className={`${styles.link} ${styles.linkBtn} ${dropdown ? styles.linkActive : ''}`}>
-              Services <span className={styles.chevron}>{dropdown ? '▲' : '▾'}</span>
-            </button>
+          <NavDropdown
+            label="Services"
+            items={SERVICES_DROPDOWN}
+            viewAllHref="/services"
+            viewAllLabel="View All 9 Services"
+          />
 
-            {dropdown && (
-              <div
-                className={styles.dropdown}
-                onMouseEnter={cancelClose}
-                onMouseLeave={startClose}
-              >
-                <div className={styles.dropHeader}>Our Services</div>
-                {SERVICES_DROPDOWN.map(s => (
-                  <Link key={s.href} href={s.href} className={styles.dropItem} onClick={closeAll}>
-                    <span className={styles.dropIcon}>{s.icon}</span>
-                    <span className={styles.dropLabel}>{s.label}</span>
-                  </Link>
-                ))}
-                <div className={styles.dropFooter}>
-                  <Link href="/services" className={styles.dropAll} onClick={closeAll}>
-                    ⊞ View All 9 Services →
-                  </Link>
-                </div>
-              </div>
-            )}
-          </div>
+          <NavDropdown
+            label="Industries"
+            items={INDUSTRIES_DROPDOWN}
+            viewAllHref="/industries"
+            viewAllLabel="View All 7 Industries"
+          />
 
-          {/* Other links */}
-          <Link href="/industries"  className={styles.link}>Industries</Link>
-          <Link href="/#tech"       className={styles.link}>Technologies</Link>
-          <Link href="/portfolio"   className={styles.link}>Portfolio</Link>
-          <Link href="/blog"        className={styles.link}>Blog</Link>
-          <Link href="/about"       className={styles.link}>About</Link>
+          <Link href="/#tech"      className={styles.link}>Technologies</Link>
+          <Link href="/portfolio"  className={styles.link}>Portfolio</Link>
+          <Link href="/blog"       className={styles.link}>Blog</Link>
+          <Link href="/about"      className={styles.link}>About</Link>
         </div>
 
         {/* CTA */}
@@ -101,11 +112,7 @@ export default function Nav() {
         </div>
 
         {/* Hamburger */}
-        <button
-          className={styles.hamburger}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-        >
+        <button className={styles.hamburger} onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
           <span className={`${styles.bar} ${menuOpen ? styles.barTop : ''}`} />
           <span className={`${styles.bar} ${menuOpen ? styles.barMid : ''}`} />
           <span className={`${styles.bar} ${menuOpen ? styles.barBot : ''}`} />
@@ -117,34 +124,45 @@ export default function Nav() {
         <div className={styles.mobileMenu}>
           <Link href="/" className={styles.mobileLink} onClick={closeAll}>🏠 Home</Link>
 
-          {/* Mobile Services accordion */}
+          {/* Services accordion */}
           <div>
-            <button
-              className={styles.mobileSvcBtn}
-              onClick={() => setMobileServices(!mobileServices)}
-            >
-              Services <span>{mobileServices ? '▲' : '▾'}</span>
+            <button className={styles.mobileSvcBtn} onClick={() => setMobSvc(!mobSvc)}>
+              Services <span>{mobSvc ? '▲' : '▾'}</span>
             </button>
-            {mobileServices && (
+            {mobSvc && (
               <div className={styles.mobileSvcList}>
                 {SERVICES_DROPDOWN.map(s => (
                   <Link key={s.href} href={s.href} className={styles.mobileSubLink} onClick={closeAll}>
                     <span>{s.icon}</span>{s.label}
                   </Link>
                 ))}
-                <Link href="/services" className={styles.mobileSubAll} onClick={closeAll}>
-                  ⊞ View All Services
-                </Link>
+                <Link href="/services" className={styles.mobileSubAll} onClick={closeAll}>⊞ All Services</Link>
               </div>
             )}
           </div>
 
-          <Link href="/industries" className={styles.mobileLink} onClick={closeAll}>Industries</Link>
-          <Link href="/#tech"      className={styles.mobileLink} onClick={closeAll}>Technologies</Link>
-          <Link href="/portfolio"  className={styles.mobileLink} onClick={closeAll}>Portfolio</Link>
-          <Link href="/blog"       className={styles.mobileLink} onClick={closeAll}>Blog</Link>
-          <Link href="/about"      className={styles.mobileLink} onClick={closeAll}>About</Link>
-          <Link href="/contact"    className={styles.mobileCta}  onClick={closeAll}>Free Consultation</Link>
+          {/* Industries accordion */}
+          <div>
+            <button className={styles.mobileSvcBtn} onClick={() => setMobInd(!mobInd)}>
+              Industries <span>{mobInd ? '▲' : '▾'}</span>
+            </button>
+            {mobInd && (
+              <div className={styles.mobileSvcList}>
+                {INDUSTRIES_DROPDOWN.map(i => (
+                  <Link key={i.href} href={i.href} className={styles.mobileSubLink} onClick={closeAll}>
+                    <span>{i.icon}</span>{i.label}
+                  </Link>
+                ))}
+                <Link href="/industries" className={styles.mobileSubAll} onClick={closeAll}>⊞ All Industries</Link>
+              </div>
+            )}
+          </div>
+
+          <Link href="/#tech"     className={styles.mobileLink} onClick={closeAll}>Technologies</Link>
+          <Link href="/portfolio" className={styles.mobileLink} onClick={closeAll}>Portfolio</Link>
+          <Link href="/blog"      className={styles.mobileLink} onClick={closeAll}>Blog</Link>
+          <Link href="/about"     className={styles.mobileLink} onClick={closeAll}>About</Link>
+          <Link href="/contact"   className={styles.mobileCta}  onClick={closeAll}>Free Consultation</Link>
         </div>
       )}
     </nav>

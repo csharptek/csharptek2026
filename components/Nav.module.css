@@ -1,10 +1,11 @@
+/* ── BASE NAV ── */
 .nav {
   position: sticky; top: 0; z-index: 100;
   height: 70px; border-bottom: 1px solid transparent;
   transition: background .3s, border-color .3s, box-shadow .3s;
 }
 .scrolled {
-  background: rgba(10,22,40,.95);
+  background: rgba(10,22,40,.96);
   backdrop-filter: blur(20px);
   box-shadow: 0 2px 32px rgba(0,0,0,.4);
   border-color: rgba(46,158,214,.12);
@@ -12,88 +13,107 @@
 .inner {
   max-width: 1200px; margin: 0 auto;
   height: 70px; padding: 0 28px;
-  display: flex; align-items: center; gap: 20px;
+  display: flex; align-items: center; gap: 6px;
 }
 
-/* LOGO */
-.logo { display: flex; align-items: center; gap: 2px; flex-shrink: 0; }
+/* ── LOGO ── */
+.logo { display: flex; align-items: center; gap: 2px; flex-shrink: 0; margin-right: 8px; }
 .logoCs {
   font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 22px;
   background: linear-gradient(135deg,#2E9ED6,#7EC8E3);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .logoRest {
-  font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800;
-  font-size: 22px; color: #fff;
+  font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 22px; color: #fff;
 }
 
-/* DESKTOP LINKS */
-.links { display: flex; gap: 4px; flex: 1; justify-content: center; align-items: center; }
+/* ── DESKTOP LINKS ── */
+.links { display: flex; gap: 2px; flex: 1; justify-content: center; align-items: center; }
 
 .link {
-  color: rgba(255,255,255,.78); font-size: 13.5px; font-weight: 600;
-  letter-spacing: .03em; position: relative; padding: 6px 10px;
-  border-radius: 7px; transition: color .2s, background .2s;
-  display: flex; align-items: center; gap: 4px;
+  color: rgba(255,255,255,.75); font-size: 13px; font-weight: 600;
+  letter-spacing: .02em; padding: 6px 10px; border-radius: 7px;
+  transition: color .15s, background .15s; display: flex; align-items: center; gap: 4px;
 }
-.link:hover, .linkActive {
-  color: #fff; background: rgba(255,255,255,.07);
-}
-.chevron { font-size: 9px; opacity: .7; }
+.link:hover, .linkActive { color: #fff; background: rgba(255,255,255,.08); }
 
-/* DROPDOWN */
-.dropWrap { position: relative; }
-.dropdown {
-  position: absolute; top: calc(100% + 8px); left: 50%;
-  transform: translateX(-50%);
-  width: 260px;
-  background: rgba(10,22,40,.98);
-  border: 1px solid rgba(46,158,214,.2);
-  border-radius: 14px;
-  box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(46,158,214,.08);
-  overflow: hidden;
-  backdrop-filter: blur(20px);
-  animation: dropIn .18s ease;
+/* button reset for Services trigger */
+.linkBtn {
+  background: none; border: none; cursor: pointer;
+  font-family: 'Mulish', sans-serif;
 }
-@keyframes dropIn { from { opacity:0; transform:translateX(-50%) translateY(-8px) } to { opacity:1; transform:translateX(-50%) translateY(0) } }
+
+.chevron { font-size: 9px; opacity: .6; }
+
+/* ── DROPDOWN ── */
+.dropWrap { position: relative; }
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%; transform: translateX(-50%);
+  width: 272px;
+  background: rgba(8,18,34,.98);
+  border: 1px solid rgba(46,158,214,.22);
+  border-radius: 14px;
+  box-shadow: 0 24px 64px rgba(0,0,0,.55), 0 0 0 1px rgba(46,158,214,.06);
+  overflow: hidden;
+  backdrop-filter: blur(24px);
+  animation: dropIn .16s ease;
+  /* Invisible bridge — prevents gap between trigger and dropdown */
+  padding-top: 2px;
+}
+/* Invisible hover bridge so mouse can travel into dropdown */
+.dropdown::before {
+  content: '';
+  position: absolute;
+  top: -10px; left: 0; right: 0; height: 10px;
+}
+@keyframes dropIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
 .dropHeader {
   padding: 12px 16px 8px;
   font-size: 10px; font-weight: 700; letter-spacing: .12em;
-  text-transform: uppercase; color: rgba(255,255,255,.35);
+  text-transform: uppercase; color: rgba(255,255,255,.32);
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
 .dropItem {
-  display: flex; align-items: center; gap: 10px;
-  padding: 9px 16px;
-  transition: background .15s;
+  display: flex; align-items: center; gap: 11px;
+  padding: 9px 16px; transition: background .12s;
 }
-.dropItem:hover { background: rgba(46,158,214,.1); }
+.dropItem:hover { background: rgba(46,158,214,.12); }
 .dropIcon { font-size: 15px; flex-shrink: 0; width: 20px; text-align: center; }
-.dropLabel { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.78); }
+.dropLabel { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.75); }
 .dropItem:hover .dropLabel { color: #fff; }
+
 .dropFooter {
-  padding: 8px 16px 12px;
+  padding: 8px 14px 12px;
   border-top: 1px solid rgba(255,255,255,.06);
 }
 .dropAll {
+  display: block; text-align: center;
+  padding: 8px 12px; border-radius: 8px;
   font-size: 12px; font-weight: 700; color: #FF6B2B;
-  display: block; text-align: center; padding: 6px;
-  border-radius: 7px; transition: background .15s;
+  background: rgba(255,107,43,.08);
+  border: 1px solid rgba(255,107,43,.18);
+  transition: background .15s;
 }
-.dropAll:hover { background: rgba(255,107,43,.1); }
+.dropAll:hover { background: rgba(255,107,43,.16); }
 
-/* CTA */
-.ctaWrap { flex-shrink: 0; }
+/* ── CTA ── */
+.ctaWrap { flex-shrink: 0; margin-left: 8px; }
 .cta {
   background: #FF6B2B; color: #fff;
-  padding: 10px 22px; border-radius: 8px;
-  font-size: 13.5px; font-weight: 700;
-  white-space: nowrap; letter-spacing: .02em; transition: all .2s; display: inline-block;
+  padding: 10px 20px; border-radius: 8px;
+  font-size: 13px; font-weight: 700; white-space: nowrap;
+  letter-spacing: .02em; transition: all .2s; display: inline-block;
 }
 .cta:hover { background: #e55a1f; box-shadow: 0 4px 18px rgba(255,107,43,.4); }
 
-/* HAMBURGER */
+/* ── HAMBURGER ── */
 .hamburger {
   display: none; flex-direction: column; gap: 5px;
   background: none; border: none; cursor: pointer;
@@ -108,30 +128,49 @@
 .barMid { opacity: 0; }
 .barBot { transform: translateY(-7px) rotate(-45deg); }
 
-/* MOBILE MENU */
+/* ── MOBILE MENU ── */
 .mobileMenu {
-  background: rgba(10,22,40,.97); backdrop-filter: blur(20px);
+  background: rgba(8,18,34,.98); backdrop-filter: blur(20px);
   border-top: 1px solid rgba(46,158,214,.12);
   padding: 12px 28px 24px;
   display: flex; flex-direction: column; gap: 2px;
 }
 .mobileLink {
-  color: rgba(255,255,255,.82); font-size: 16px; font-weight: 600;
-  padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.05); display: block;
+  color: rgba(255,255,255,.82); font-size: 15px; font-weight: 600;
+  padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.05);
+  display: block;
+}
+.mobileSvcBtn {
+  width: 100%; background: none; border: none; border-bottom: 1px solid rgba(255,255,255,.05);
+  text-align: left; display: flex; justify-content: space-between; align-items: center;
+  cursor: pointer; color: rgba(255,255,255,.82); font-size: 15px; font-weight: 600;
+  padding: 12px 0; font-family: 'Mulish', sans-serif;
+}
+.mobileSvcList {
+  background: rgba(255,255,255,.03); border-radius: 8px;
+  margin: 4px 0 8px; padding: 4px 0;
 }
 .mobileSubLink {
   display: flex; align-items: center; gap: 10px;
-  padding: 8px 16px; font-size: 13px; font-weight: 600;
-  color: rgba(255,255,255,.65); transition: color .2s;
+  padding: 9px 16px; font-size: 13px; font-weight: 600;
+  color: rgba(255,255,255,.62); transition: color .15s;
 }
 .mobileSubLink:hover { color: #7EC8E3; }
+.mobileSubAll {
+  display: block; padding: 9px 16px;
+  font-size: 12px; font-weight: 700; color: #FF6B2B;
+}
 .mobileCta {
   margin-top: 14px; background: #FF6B2B; color: #fff;
   padding: 14px; border-radius: 10px; text-align: center;
-  font-size: 15px; font-weight: 700; display: block; border-bottom: none;
+  font-size: 15px; font-weight: 700; display: block;
 }
 
-@media (max-width: 940px) {
+/* ── RESPONSIVE ── */
+@media (max-width: 980px) {
   .links, .ctaWrap { display: none; }
   .hamburger { display: flex; }
+}
+@media (max-width: 400px) {
+  .inner { padding: 0 16px; }
 }

@@ -143,7 +143,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── 9 SERVICE CARDS ── */}
-      <section className="svc-section">
+      <section className="svc-section" id="services">
         <div className="svc-inner">
           <div className="svc-hd rv">
             <div className="lbl" style={{color:'#1565A8',justifyContent:'center'}}><span className="lbl-dot"/>Our Services</div>

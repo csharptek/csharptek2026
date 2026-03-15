@@ -381,7 +381,7 @@ export default function ServicePage({ service, slug, prev, next, allServices }) 
               <div style={{fontSize:10,fontWeight:700,color:'rgba(255,255,255,.35)',letterSpacing:'.12em',textTransform:'uppercase',marginBottom:5}}>Explore Our Services</div>
               <h3 style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:20,fontWeight:800,color:'#fff'}}>More From CSharpTek</h3>
             </div>
-            <Link href="/services" style={{fontSize:13,fontWeight:700,color:'#FF6B2B',display:'inline-flex',alignItems:'center',gap:6}}>View All Services →</Link>
+            <Link href="/services#services" style={{fontSize:13,fontWeight:700,color:'#FF6B2B',display:'inline-flex',alignItems:'center',gap:6}}>View All Services →</Link>
           </div>
           <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:12}}>
             {allServices.filter(s => s.slug !== slug).slice(0,6).map(s => (
@@ -416,7 +416,7 @@ export default function ServicePage({ service, slug, prev, next, allServices }) 
             </Link>
           ) : <div/>}
 
-          <Link href="/services"
+          <Link href="/services#services"
             style={{display:'flex',alignItems:'center',gap:6,padding:'12px 20px',background:'rgba(255,107,43,.1)',border:'1px solid rgba(255,107,43,.25)',borderRadius:10,fontSize:13,fontWeight:700,color:'#FF6B2B',whiteSpace:'nowrap',transition:'all .2s',textDecoration:'none'}}
             onMouseEnter={e=>{e.currentTarget.style.background='rgba(255,107,43,.2)'}}
             onMouseLeave={e=>{e.currentTarget.style.background='rgba(255,107,43,.1)'}}>

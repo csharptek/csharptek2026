@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import Layout from '../../components/Layout'
+import ScrollToTop from '../../components/ScrollToTop'
 import { SERVICES_DATA, SERVICES_LIST } from '../../data/services'
 
 const STYLES = `
@@ -138,10 +139,13 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const service = SERVICES_DATA[params.slug] || null
   if (!service) return { notFound: true }
-  return { props: { service, slug: params.slug } }
+  const idx = SERVICES_LIST.findIndex(s => s.slug === params.slug)
+  const prev = idx > 0 ? SERVICES_LIST[idx - 1] : null
+  const next = idx < SERVICES_LIST.length - 1 ? SERVICES_LIST[idx + 1] : null
+  return { props: { service, slug: params.slug, prev, next, allServices: SERVICES_LIST } }
 }
 
-export default function ServicePage({ service, slug }) {
+export default function ServicePage({ service, slug, prev, next, allServices }) {
   useEffect(() => {
     const els = document.querySelectorAll('.rv')
     const obs = new IntersectionObserver(es => {
@@ -367,6 +371,72 @@ export default function ServicePage({ service, slug }) {
           </div>
         </div>
       </section>
+
+      {/* ── ALL SERVICES STRIP ── */}
+      <section style={{background:'#060f1d',padding:'52px 0',borderTop:'1px solid rgba(46,158,214,.08)'}}>
+        <div style={{maxWidth:1200,margin:'0 auto',padding:'0 28px'}}>
+          <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:28,flexWrap:'wrap',gap:12}}>
+            <div>
+              <div style={{fontSize:10,fontWeight:700,color:'rgba(255,255,255,.35)',letterSpacing:'.12em',textTransform:'uppercase',marginBottom:5}}>Explore Our Services</div>
+              <h3 style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:20,fontWeight:800,color:'#fff'}}>More From CSharpTek</h3>
+            </div>
+            <Link href="/services" style={{fontSize:13,fontWeight:700,color:'#FF6B2B',display:'inline-flex',alignItems:'center',gap:6}}>View All Services →</Link>
+          </div>
+          <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:12}}>
+            {allServices.filter(s => s.slug !== slug).slice(0,6).map(s => (
+              <Link key={s.slug} href={`/services/${s.slug}`}
+                style={{display:'flex',alignItems:'center',gap:12,padding:'14px 16px',background:'rgba(255,255,255,.03)',border:`1px solid ${s.slug===slug?'rgba(255,107,43,.4)':'rgba(46,158,214,.08)'}`,borderRadius:12,transition:'all .2s',textDecoration:'none'}}
+                onMouseEnter={e=>{e.currentTarget.style.background='rgba(46,158,214,.08)';e.currentTarget.style.borderColor='rgba(46,158,214,.25)'}}
+                onMouseLeave={e=>{e.currentTarget.style.background='rgba(255,255,255,.03)';e.currentTarget.style.borderColor='rgba(46,158,214,.08)'}}>
+                <span style={{fontSize:22,flexShrink:0}}>{s.icon}</span>
+                <div>
+                  <div style={{fontSize:13,fontWeight:700,color:'#fff',lineHeight:1.3}}>{s.title}</div>
+                  <div style={{fontSize:11,color:'rgba(255,255,255,.35)',marginTop:2}}>{s.tags.join(' · ')}</div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PREV / NEXT NAV ── */}
+      <nav style={{background:'#0A1628',borderTop:'1px solid rgba(46,158,214,.1)',padding:'28px 0'}}>
+        <div style={{maxWidth:1200,margin:'0 auto',padding:'0 28px',display:'flex',alignItems:'center',justifyContent:'space-between',gap:16}}>
+          {prev ? (
+            <Link href={`/services/${prev.slug}`}
+              style={{display:'flex',alignItems:'center',gap:12,padding:'14px 20px',background:'rgba(255,255,255,.03)',border:'1px solid rgba(46,158,214,.1)',borderRadius:12,flex:'0 1 320px',transition:'all .2s',textDecoration:'none'}}
+              onMouseEnter={e=>{e.currentTarget.style.borderColor='rgba(46,158,214,.3)';e.currentTarget.style.background='rgba(46,158,214,.06)'}}
+              onMouseLeave={e=>{e.currentTarget.style.borderColor='rgba(46,158,214,.1)';e.currentTarget.style.background='rgba(255,255,255,.03)'}}>
+              <span style={{fontSize:22,color:'rgba(255,255,255,.5)'}}>←</span>
+              <div>
+                <div style={{fontSize:10,fontWeight:700,color:'rgba(255,255,255,.35)',letterSpacing:'.1em',textTransform:'uppercase',marginBottom:3}}>Previous</div>
+                <div style={{fontSize:14,fontWeight:700,color:'#fff',display:'flex',alignItems:'center',gap:7}}><span>{prev.icon}</span>{prev.title}</div>
+              </div>
+            </Link>
+          ) : <div/>}
+
+          <Link href="/services"
+            style={{display:'flex',alignItems:'center',gap:6,padding:'12px 20px',background:'rgba(255,107,43,.1)',border:'1px solid rgba(255,107,43,.25)',borderRadius:10,fontSize:13,fontWeight:700,color:'#FF6B2B',whiteSpace:'nowrap',transition:'all .2s',textDecoration:'none'}}
+            onMouseEnter={e=>{e.currentTarget.style.background='rgba(255,107,43,.2)'}}
+            onMouseLeave={e=>{e.currentTarget.style.background='rgba(255,107,43,.1)'}}>
+            ⊞ All Services
+          </Link>
+
+          {next ? (
+            <Link href={`/services/${next.slug}`}
+              style={{display:'flex',alignItems:'center',gap:12,padding:'14px 20px',background:'rgba(255,255,255,.03)',border:'1px solid rgba(46,158,214,.1)',borderRadius:12,flex:'0 1 320px',justifyContent:'flex-end',transition:'all .2s',textDecoration:'none'}}
+              onMouseEnter={e=>{e.currentTarget.style.borderColor='rgba(46,158,214,.3)';e.currentTarget.style.background='rgba(46,158,214,.06)'}}
+              onMouseLeave={e=>{e.currentTarget.style.borderColor='rgba(46,158,214,.1)';e.currentTarget.style.background='rgba(255,255,255,.03)'}}>
+              <div style={{textAlign:'right'}}>
+                <div style={{fontSize:10,fontWeight:700,color:'rgba(255,255,255,.35)',letterSpacing:'.1em',textTransform:'uppercase',marginBottom:3}}>Next</div>
+                <div style={{fontSize:14,fontWeight:700,color:'#fff',display:'flex',alignItems:'center',gap:7,justifyContent:'flex-end'}}>{next.title}<span>{next.icon}</span></div>
+              </div>
+              <span style={{fontSize:22,color:'rgba(255,255,255,.5)'}}>→</span>
+            </Link>
+          ) : <div/>}
+        </div>
+      </nav>
+      <ScrollToTop />
     </Layout>
   )
 }

@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useEffect } from 'react'
 import Layout from '../../components/Layout'
+import ScrollToTop from '../../components/ScrollToTop'
 import { SERVICES_LIST } from '../../data/services'
 
 const STYLES = `
@@ -230,6 +231,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+      <ScrollToTop />
     </Layout>
   )
 }

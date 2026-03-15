@@ -1,4 +1,5 @@
 import Nav from './Nav'
+import ScrollToTop from './ScrollToTop'
 import Link from 'next/link'
 
 export default function Layout({ children }) {
@@ -19,7 +20,11 @@ export default function Layout({ children }) {
                 {['💼','🐙','🐦','▶️'].map(i=><a key={i} href="#" style={{width:34,height:34,borderRadius:7,background:'rgba(255,255,255,.05)',border:'1px solid rgba(255,255,255,.07)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:15,textDecoration:'none'}}>{i}</a>)}
               </div>
             </div>
-            {[{t:'Services',l:[['AI Integration','/services/ai-integration'],['AI Voice Agents','/services/ai-voice'],['Web & Mobile','/services/web-mobile'],['Cloud & DevOps','/services/cloud-devops'],['MVP & Vibe Coding','/services/mvp-vibe'],['Marketplace','/services/marketplace'],['Prompt Engineering','/services/prompt-engineering'],['CRM & Productivity','/services/crm-productivity'],['24/7 Support','/services/support']]},{t:'Company',l:[['About Us','/about'],['Portfolio','/portfolio'],['Blog','/blog'],['Careers','/careers'],['Contact','/contact']]},{t:'Contact',l:[['📧 hello@csharptek.com','mailto:hello@csharptek.com'],['📅 Book a Call','#'],['🔒 HIPAA Policy','/hipaa'],['📄 Privacy Policy','/privacy']]}].map(col=>(
+            {[
+              {t:'Services',l:[['AI Integration','/services/ai-integration'],['AI Voice Agents','/services/ai-voice'],['Web & Mobile','/services/web-mobile'],['Cloud & DevOps','/services/cloud-devops'],['MVP & Vibe Coding','/services/mvp-vibe'],['Marketplace','/services/marketplace'],['Prompt Engineering','/services/prompt-engineering'],['CRM & Productivity','/services/crm-productivity'],['24/7 Support','/services/support']]},
+              {t:'Company',l:[['About Us','/about'],['Portfolio','/portfolio'],['Blog','/blog'],['Careers','/careers'],['Contact','/contact']]},
+              {t:'Contact',l:[['📧 hello@csharptek.com','mailto:hello@csharptek.com'],['📅 Book a Call','/contact'],['🔒 HIPAA Policy','/hipaa'],['📄 Privacy Policy','/privacy']]},
+            ].map(col=>(
               <div key={col.t}>
                 <h4 style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:11,fontWeight:700,color:'rgba(255,255,255,.85)',letterSpacing:'.05em',textTransform:'uppercase',marginBottom:16}}>{col.t}</h4>
                 <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:9}}>
@@ -34,6 +39,7 @@ export default function Layout({ children }) {
           </div>
         </div>
       </footer>
+      <ScrollToTop />
     </>
   )
 }

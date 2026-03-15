@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useEffect, useRef, useState } from 'react'
+import NavComponent from '../components/Nav'
 
 /* ============================================================
    SINGLE-FILE HOMEPAGE — all sections, no external deps
@@ -479,40 +480,6 @@ function useCountUp(target,duration=1600,start=false){
 }
 
 /* ─── COMPONENTS ─────────────────────────────────── */
-function Nav(){
-  const [sc,setSc]=useState(false)
-  const [open,setOpen]=useState(false)
-  useEffect(()=>{
-    const h=()=>setSc(window.scrollY>10)
-    window.addEventListener('scroll',h);return()=>window.removeEventListener('scroll',h)
-  },[])
-  return(
-    <nav className={`nav${sc?' sc':''}`}>
-      <div className="nav-inner">
-        <a href="/" className="nav-logo"><span>C#</span><span>harpTek</span></a>
-        <div className="nav-links">
-          {['Services','Industries','Technologies','Portfolio','Blog','Careers','About'].map((l,i)=>(
-            <a key={l} href={['/services','/industries','/#tech','/portfolio','/blog','/careers','/about'][i]}>{l}</a>
-          ))}
-        </div>
-        <a href="#contact" className="nav-cta">Free Consultation</a>
-        <button className="hbg" onClick={()=>setOpen(!open)} aria-label="Menu">
-          <span style={{transform:open?'translateY(7px) rotate(45deg)':''}}/>
-          <span style={{opacity:open?0:1}}/>
-          <span style={{transform:open?'translateY(-7px) rotate(-45deg)':''}}/>
-        </button>
-      </div>
-      {open&&(
-        <div className="mob-menu" style={{display:'flex'}}>
-          {['Services','Industries','Technologies','Portfolio','Blog','Careers','About'].map((l,i)=>(
-            <a key={l} href={['/services','/industries','/#tech','/portfolio','/blog','/careers','/about'][i]} onClick={()=>setOpen(false)}>{l}</a>
-          ))}
-          <a href="#contact" className="mob-cta-link" onClick={()=>setOpen(false)}>Free Consultation</a>
-        </div>
-      )}
-    </nav>
-  )
-}
 
 function Hero(){
   const cvRef=useRef(null)
@@ -1026,7 +993,7 @@ export default function Home(){
         <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
       </Head>
       <style dangerouslySetInnerHTML={{__html:GLOBAL_STYLES}}/>
-      <Nav/>
+      <NavComponent/>
       <Hero/>
       <TrustBar/>
       <Services/>
@@ -1040,6 +1007,7 @@ export default function Home(){
       <CTABanner/>
       <Footer/>
       <Chatbot/>
+      <ScrollToTop/>
     </>
   )
 }

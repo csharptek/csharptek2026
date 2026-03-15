@@ -492,7 +492,7 @@ function Nav(){
         <a href="/" className="nav-logo"><span>C#</span><span>harpTek</span></a>
         <div className="nav-links">
           {['Services','Industries','Technologies','Portfolio','Blog','Careers','About'].map((l,i)=>(
-            <a key={l} href={['#services','#industries','#tech','#portfolio','#blog','#careers','#about'][i]}>{l}</a>
+            <a key={l} href={['/services','/industries','/#tech','/portfolio','/blog','/careers','/about'][i]}>{l}</a>
           ))}
         </div>
         <a href="#contact" className="nav-cta">Free Consultation</a>
@@ -505,7 +505,7 @@ function Nav(){
       {open&&(
         <div className="mob-menu" style={{display:'flex'}}>
           {['Services','Industries','Technologies','Portfolio','Blog','Careers','About'].map((l,i)=>(
-            <a key={l} href={['#services','#industries','#tech','#portfolio','#blog','#careers','#about'][i]} onClick={()=>setOpen(false)}>{l}</a>
+            <a key={l} href={['/services','/industries','/#tech','/portfolio','/blog','/careers','/about'][i]} onClick={()=>setOpen(false)}>{l}</a>
           ))}
           <a href="#contact" className="mob-cta-link" onClick={()=>setOpen(false)}>Free Consultation</a>
         </div>

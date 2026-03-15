@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react'
 import styles from './Nav.module.css'
 
 const NAV_LINKS = [
-  { label: 'Services',     href: '#services'    },
-  { label: 'Industries',   href: '#industries'  },
-  { label: 'Technologies', href: '#tech'        },
-  { label: 'Portfolio',    href: '#portfolio'   },
-  { label: 'Blog',         href: '#blog'        },
-  { label: 'Careers',      href: '#careers'     },
-  { label: 'About',        href: '#about'       },
+  { label: 'Services',     href: '/services'    },
+  { label: 'Industries',   href: '/industries'  },
+  { label: 'Technologies', href: '/#tech'       },
+  { label: 'Portfolio',    href: '/portfolio'   },
+  { label: 'Blog',         href: '/blog'        },
+  { label: 'Careers',      href: '/careers'     },
+  { label: 'About',        href: '/about'       },
 ]
 
 export default function Nav() {

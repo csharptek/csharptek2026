@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+/* ── RESET & CSS VARIABLES ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Mulish', sans-serif;
+  color: #0A1628;
+  overflow-x: hidden;
+  background: #0A1628;
+}
+
+:root {
+  --navy:     #0A1628;
+  --navy2:    #0D2B45;
+  --ocean:    #1565A8;
+  --sky:      #2E9ED6;
+  --cloud:    #7EC8E3;
+  --ice:      #B8E4F5;
+  --orange:   #FF6B2B;
+  --orange-d: #e55a1f;
+  --white:    #ffffff;
+  --light:    #F0F8FF;
+  --footer:   #060f1d;
+}
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.rd1 { transition-delay: .08s; }
+.rd2 { transition-delay: .16s; }
+.rd3 { transition-delay: .24s; }
+.rd4 { transition-delay: .32s; }
+.rd5 { transition-delay: .40s; }
+.rd6 { transition-delay: .48s; }
+
+/* ── SHARED ── */
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; margin-bottom: 14px;
+}
+.section-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800; line-height: 1.1; letter-spacing: -.02em;
+}
+
+/* ── SHARED BUTTONS ── */
+.btn-primary {
+  background: var(--orange); color: #fff;
+  padding: 15px 34px; border-radius: 10px;
+  text-decoration: none; font-weight: 700; font-size: 15px;
+  font-family: 'Mulish', sans-serif; letter-spacing: .02em;
+  transition: all .2s; display: inline-block;
+}
+.btn-primary:hover { background: var(--orange-d); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,107,43,.38); }
+
+.btn-secondary {
+  background: transparent; color: var(--cloud);
+  padding: 15px 34px; border-radius: 10px;
+  text-decoration: none; font-weight: 600; font-size: 15px;
+  font-family: 'Mulish', sans-serif; letter-spacing: .02em;
+  border: 1.5px solid rgba(46,158,214,.4); transition: all .2s; display: inline-block;
+}
+.btn-secondary:hover { border-color: var(--orange); color: var(--orange); background: rgba(255,107,43,.05); }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: 10px;
+  border: 2px solid var(--ocean); color: var(--ocean);
+  font-weight: 700; font-size: 15px;
+  font-family: 'Mulish', sans-serif; text-decoration: none; transition: all .2s;
+}
+.btn-outline:hover { background: var(--ocean); color: #fff; }
+
+.btn-orange {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: 10px;
+  background: var(--orange); color: #fff;
+  font-weight: 700; font-size: 15px;
+  font-family: 'Mulish', sans-serif; text-decoration: none; transition: all .2s;
+}
+.btn-orange:hover { background: var(--orange-d); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,107,43,.35); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: 10px;
+  border: 2px solid rgba(46,158,214,.35); color: var(--cloud);
+  font-weight: 700; font-size: 15px;
+  font-family: 'Mulish', sans-serif; text-decoration: none; transition: all .2s;
+}
+.btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
+
+/* ── KEYFRAMES ── */
+@keyframes fadeUp    { from { opacity:0; transform:translateY(28px) } to { opacity:1; transform:translateY(0) } }
+@keyframes shimmer   { 0% { background-position:-200% center } 100% { background-position:200% center } }
+@keyframes blink     { 0%,100% { opacity:1 } 50% { opacity:0 } }
+@keyframes orbFloat  { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-22px) } }
+@keyframes bounce    { 0%,100% { transform:translateY(0);opacity:.45 } 50% { transform:translateY(9px);opacity:1 } }
+@keyframes scrollLogos { 0% { transform:translateX(0) } 100% { transform:translateX(-50%) } }
+@keyframes chatPulse { 0%,100% { transform:scale(1) } 50% { transform:scale(1.2) } }

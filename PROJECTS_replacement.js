@@ -1,0 +1,13 @@
+// REPLACE the existing PROJECTS array in pages/index.js with this:
+
+const PROJECTS = [
+  // ── Real case studies from delivered projects ──
+  {e:'🩺',t:'AI Medical Scribe Platform',d:'Voice-to-SOAP documentation with real-time clinical knowledge engine. Multi-channel encounters, ICD-10/CPT coding, EHR integration.',stk:['Azure OpenAI','React','Node.js','.NET'],out:'⚡ Faster clinical documentation',cat:'healthcare',bg:'linear-gradient(135deg,#0A2540,#1565A8)',tb:'rgba(21,101,168,.85)',tc:'#fff',tl:'Healthcare AI'},
+  {e:'🌍',t:'Bilingual AI Scribe — Middle East',d:'Arabic + English mixed-language clinical documentation. Saudi PDPL & SeHE compliant. Supports Najdi, Hijazi and Khaleeji dialects.',stk:['Azure AI','React','.NET','Node.js'],out:'📉 70% less documentation time',cat:'healthcare',bg:'linear-gradient(135deg,#1a0a2e,#6B2FA0)',tb:'rgba(107,47,160,.85)',tc:'#fff',tl:'Healthcare AI'},
+  {e:'📞',t:'AI Receptionist for Clinics',d:'Replaces front-desk operations. Handles unlimited concurrent calls, books appointments, sends reminders, integrates with EHR & CRM.',stk:['Twilio','LLMs','Node.js','AWS / Azure'],out:'💰 60–90% cost reduction',cat:'automation',bg:'linear-gradient(135deg,#0A2A1A,#1A6B3A)',tb:'rgba(26,107,58,.85)',tc:'#fff',tl:'Healthcare Automation'},
+  {e:'⚡',t:'Fax-to-AI Healthcare Platform',d:'Transformed fax-driven wound care operations into a fully automated AI platform. OCR extracts referral data, smart matching dispatches staff.',stk:['Next.js','Django','PostgreSQL','Claude API','OCR'],out:'🚀 25 min → under 3 min dispatch',cat:'automation',bg:'linear-gradient(135deg,#2A1A00,#A05A00)',tb:'rgba(160,90,0,.85)',tc:'#fff',tl:'Healthcare Automation'},
+  {e:'🐾',t:'Pet Health Camp Platform',d:'Cloud-native dual-app for pet vaccination camps. Pet owner scheduling & virtual consultations. Staff inventory, messaging & task coordination.',stk:['Blazor','Azure SQL','SignalR','Azure Functions'],out:'✅ Eliminated manual processes',cat:'other',bg:'linear-gradient(135deg,#0A1A2A,#2E6EA6)',tb:'rgba(46,110,166,.85)',tc:'#fff',tl:'Veterinary'},
+  // ── Existing projects ──
+  {e:'🌸',t:'IVF & Fertility Platform',d:'Patient journey management and HIPAA-compliant records for fertility clinics.',stk:['React Native','Azure','HIPAA','Supabase'],out:'📈 3x patient engagement',cat:'wellness',bg:'linear-gradient(135deg,#1a0a2a,#6b1fa0)',tb:'rgba(180,80,220,.22)',tc:'#e0a0ff',tl:'Wellness'},
+  {e:'🎓',t:'Student Internship Portal',d:'AI-based matching and evaluation for students, educators and institutes.',stk:['Next.js','Claude API','PostgreSQL','Vercel'],out:'🏫 10k+ students',cat:'education',bg:'linear-gradient(135deg,#1a1a0a,#7a5a0a)',tb:'rgba(200,160,20,.22)',tc:'#f0d060',tl:'Education'},
+]

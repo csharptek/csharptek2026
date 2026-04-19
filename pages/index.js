@@ -56,7 +56,7 @@ const GLOBAL_STYLES = `
   .sc-hdr{display:flex;align-items:center;gap:10px;margin-bottom:18px;border-bottom:1px solid rgba(46,158,214,.1);padding-bottom:14px;}
   .sc-dots{display:flex;gap:6px;}
   .sc-dot{width:10px;height:10px;border-radius:50%;}
-  .sc-ttl{flex:1;text-align:center;font-size:12px;color:rgba(255,255,255,.4);font-weight:600;}
+  .sc-ttl{flex:1;text-align:center;font-size:13px;color:rgba(255,255,255,.85);font-weight:700;}
   .sc-live{display:flex;align-items:center;gap:5px;}
   .sc-live-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulseGlow 2s infinite;}
   .sc-live-txt{font-size:10px;color:#22c55e;font-weight:700;}
@@ -455,7 +455,7 @@ function CardScribe({shown}){
     <div className="scribe-card">
       <div className="sc-hdr">
         <div className="sc-dots">{['#ff5f57','#ffbd2e','#28c840'].map(c=><div key={c} className="sc-dot" style={{background:c}}/>)}</div>
-        <div className="sc-ttl">AI Clinical Documentation</div>
+        <div className="sc-ttl" style={{color:'rgba(255,255,255,.85)',fontWeight:700}}>AI Clinical Documentation</div>
         <div className="sc-live"><div className="sc-live-dot"/><span className="sc-live-txt">LIVE</span></div>
       </div>
       <div className="sc-wave">
@@ -494,7 +494,7 @@ function CardWorkflow({shown}){
     <div className="scribe-card">
       <div className="sc-hdr">
         <div className="sc-dots">{['#ff5f57','#ffbd2e','#28c840'].map(c=><div key={c} className="sc-dot" style={{background:c}}/>)}</div>
-        <div className="sc-ttl">Staff & Workflow Automation</div>
+        <div className="sc-ttl" style={{color:'rgba(255,255,255,.85)',fontWeight:700}}>Staff & Workflow Automation</div>
         <div className="sc-live"><div style={{width:6,height:6,borderRadius:'50%',background:'#FF6B2B',animation:'pulseGlow 2s infinite'}}/><span className="sc-live-txt" style={{color:'#FF6B2B'}}>n8n</span></div>
       </div>
       <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:16,padding:'8px 12px',background:'rgba(255,107,43,.06)',borderRadius:10,border:'1px solid rgba(255,107,43,.15)'}}>
@@ -536,7 +536,7 @@ function CardVoice({shown}){
     <div className="scribe-card">
       <div className="sc-hdr">
         <div className="sc-dots">{['#ff5f57','#ffbd2e','#28c840'].map(c=><div key={c} className="sc-dot" style={{background:c}}/>)}</div>
-        <div className="sc-ttl">AI Voice Agent</div>
+        <div className="sc-ttl" style={{color:'rgba(255,255,255,.85)',fontWeight:700}}>AI Voice Agent</div>
         <div className="sc-live"><div className="sc-live-dot"/><span className="sc-live-txt">LIVE</span></div>
       </div>
       <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:14}}>
@@ -587,7 +587,7 @@ function CardSearch({shown}){
     <div className="scribe-card">
       <div className="sc-hdr">
         <div className="sc-dots">{['#ff5f57','#ffbd2e','#28c840'].map(c=><div key={c} className="sc-dot" style={{background:c}}/>)}</div>
-        <div className="sc-ttl">AI Semantic Search</div>
+        <div className="sc-ttl" style={{color:'rgba(255,255,255,.85)',fontWeight:700}}>AI Semantic Search</div>
         <div className="sc-live"><div style={{width:6,height:6,borderRadius:'50%',background:'#8B5CF6',animation:'pulseGlow 2s infinite'}}/><span className="sc-live-txt" style={{color:'#8B5CF6'}}>pgvector</span></div>
       </div>
       <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:14,padding:'10px 13px',background:'rgba(139,92,246,.07)',border:'1px solid rgba(139,92,246,.2)',borderRadius:10}}>

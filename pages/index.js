@@ -371,12 +371,14 @@ const PROJECTS = [
   {e:'📲',t:'Social Media Automation',d:'AI content generation, scheduling and image-to-video pipeline at scale.',stk:['OpenAI','Instantly.ai','Apollo.io','LinkedIn API'],out:'📊 5x content output',cat:'automation',bg:'linear-gradient(135deg,#0a0a1a,#1a2a8a)',tb:'rgba(46,100,214,.22)',tc:'#a0b0ff',tl:'Automation'},
 ]
 const TECH = [
-  {l:'Cloud Platforms',p:[{i:'☁️',n:'Microsoft Azure',f:true},{i:'🟠',n:'AWS'},{i:'🔵',n:'Google Cloud'},{i:'🏪',n:'Azure Marketplace'},{i:'🏪',n:'AWS Marketplace'},{i:'🏪',n:'Google Marketplace'}]},
-  {l:'AI & LLMs',p:[{i:'🤖',n:'OpenAI / ChatGPT',f:true},{i:'⚡',n:'Claude (Anthropic)',f:true},{i:'🔷',n:'Azure OpenAI',f:true},{i:'🌐',n:'Google Gemini'},{i:'🐙',n:'GitHub Copilot'},{i:'🖼️',n:'AI Image Gen'},{i:'🎬',n:'AI Video Gen'},{i:'🔍',n:'Azure AI Search'}]},
+  {l:'Cloud Platforms',p:[{i:'☁️',n:'Microsoft Azure',f:true},{i:'🟠',n:'AWS',f:true},{i:'🔵',n:'Google Cloud',f:true},{i:'🏪',n:'Azure Marketplace'},{i:'🏪',n:'AWS Marketplace'},{i:'🏪',n:'GCP Marketplace'},{i:'🚂',n:'Railway',f:true},{i:'▲',n:'Vercel',f:true}]},
+  {l:'AI & LLMs',p:[{i:'🤖',n:'OpenAI / ChatGPT',f:true},{i:'⚡',n:'Claude (Anthropic)',f:true},{i:'🔷',n:'Azure OpenAI',f:true},{i:'🌐',n:'Google Gemini'},{i:'🐙',n:'GitHub Copilot'},{i:'🦙',n:'LLaMA / Ollama'},{i:'🔗',n:'LangChain',f:true},{i:'🦙',n:'LlamaIndex'}]},
+  {l:'AI Search & Vector DB',p:[{i:'🔍',n:'pgvector',f:true},{i:'📌',n:'Pinecone',f:true},{i:'🌊',n:'Weaviate'},{i:'🔷',n:'Azure AI Search',f:true},{i:'🔎',n:'Qdrant'},{i:'📊',n:'Embeddings API'},{i:'🧠',n:'Semantic Kernel'},{i:'🔗',n:'RAG Pipelines',f:true}]},
   {l:'AI Voice & Comms',p:[{i:'🎙️',n:'ElevenLabs',f:true},{i:'📞',n:'Twilio',f:true},{i:'🎤',n:'VAPI',f:true},{i:'💬',n:'AI SMS / IVR'},{i:'📅',n:'Appointment Setter'},{i:'🔔',n:'Reminder Agent'}]},
+  {l:'Automation & Workflow',p:[{i:'⚙️',n:'n8n',f:true},{i:'🔄',n:'Make (Integromat)',f:true},{i:'⚡',n:'Zapier'},{i:'🔗',n:'Azure Logic Apps',f:true},{i:'🔷',n:'Azure Functions'},{i:'🤖',n:'GoHighLevel'},{i:'📊',n:'HubSpot'},{i:'🚀',n:'Apollo.io'}]},
   {l:'Frontend & Mobile',p:[{i:'⚛️',n:'React',f:true},{i:'▲',n:'Next.js',f:true},{i:'📱',n:'React Native',f:true},{i:'📦',n:'Expo'},{i:'🔌',n:'Capacitor'},{i:'🔷',n:'Blazor'},{i:'🍎',n:'Swift / iOS'},{i:'🤖',n:'Kotlin / Android'}]},
-  {l:'Backend & Database',p:[{i:'🔷',n:'.NET Core / C#',f:true},{i:'🟢',n:'Node.js'},{i:'🗄️',n:'Supabase',f:true},{i:'🐘',n:'PostgreSQL'},{i:'🚂',n:'Railway'},{i:'▲',n:'Vercel'},{i:'🔷',n:'Azure Functions'},{i:'🔗',n:'Azure Logic Apps'}]},
-  {l:'DevOps & Vibe Coding',p:[{i:'🐳',n:'Docker'},{i:'☸️',n:'Kubernetes'},{i:'🔄',n:'Azure DevOps'},{i:'🐙',n:'GitHub Actions'},{i:'⚡',n:'Cursor',f:true},{i:'💜',n:'Lovable',f:true},{i:'🔁',n:'Replit'},{i:'4️⃣',n:'Base44'}]},
+  {l:'Backend & Database',p:[{i:'🔷',n:'.NET Core / C#',f:true},{i:'🟢',n:'Node.js',f:true},{i:'🗄️',n:'Supabase',f:true},{i:'🐘',n:'PostgreSQL',f:true},{i:'🔴',n:'Redis'},{i:'🐍',n:'Python / FastAPI'},{i:'📦',n:'BullMQ'},{i:'🔒',n:'Azure Entra ID'}]},
+  {l:'DevOps & Vibe Coding',p:[{i:'🐳',n:'Docker',f:true},{i:'☸️',n:'Kubernetes'},{i:'🔄',n:'Azure DevOps'},{i:'🐙',n:'GitHub Actions',f:true},{i:'⚡',n:'Cursor',f:true},{i:'💜',n:'Lovable',f:true},{i:'🔁',n:'Replit'},{i:'4️⃣',n:'Base44'}]},
 ]
 const TESTI = [
   {ind:'Healthcare',ic:'#1565A8',q:'CSharpTek built our AI medical scribe in record time. The FHIR integration with Epic was flawless — our physicians save hours every day.',nm:'Dr. Rachel Simmons',rl:'CMO, NovaCare Health',av:'DR',abg:'linear-gradient(135deg,#1565A8,#2E9ED6)'},
@@ -425,26 +427,13 @@ function useCountUp(target,duration=1600,start=false){
 }
 
 /* ─── HERO COMPONENTS ────────────────────────── */
-const SCRIBE_LINES = [
-  {role:'Patient',  color:'rgba(255,255,255,.35)',bg:'rgba(255,255,255,.04)',border:'rgba(255,255,255,.08)',text:'I have had sharp chest pain since this morning…'},
-  {role:'AI Scribe',color:'#2E9ED6',             bg:'rgba(46,158,214,.08)', border:'rgba(46,158,214,.18)', text:'CC: Acute chest pain onset 0800. SOAP note generating…'},
-  {role:'FHIR ✓',  color:'#22c55e',             bg:'rgba(34,197,94,.07)',  border:'rgba(34,197,94,.2)',   text:'Synced to Epic EHR — Encounter #48291'},
-]
-const FLOAT_BADGES = [
-  {label:'Azure OpenAI',color:'#0078D4',top:'8%',  left:'-10%'  },
-  {label:'Claude AI',   color:'#D4A843',top:'18%', right:'-8%'  },
-  {label:'HIPAA ✓',    color:'#22c55e',bottom:'30%',left:'-12%' },
-  {label:'FHIR',        color:'#8B5CF6',bottom:'14%',right:'-6%'},
-  {label:'VAPI',        color:'#FF6B2B',top:'52%', left:'-14%'  },
-  {label:'ElevenLabs',  color:'#2E9ED6',top:'68%', right:'-12%' },
-]
 const WAVE_BARS = Array.from({length:28},(_,i)=>({h:6+(i*7+13)%24,active:i<20,delay:(i%5)*0.1}))
 
 function HeroCounter({value,suffix,label,go}){
   const [n,setN]=useState(0)
   useEffect(()=>{
-    if(!go)return;let v=0;const step=Math.ceil(value/40)
-    const t=setInterval(()=>{v+=step;if(v>=value){setN(value);clearInterval(t)}else setN(v)},35)
+    if(!go)return;let v=0;const step=Math.ceil(value/60)
+    const t=setInterval(()=>{v+=step;if(v>=value){setN(value);clearInterval(t)}else setN(v)},30)
     return()=>clearInterval(t)
   },[go,value])
   return(
@@ -455,22 +444,18 @@ function HeroCounter({value,suffix,label,go}){
   )
 }
 
-function ScribeCard(){
-  const [shown,setShown]=useState(0)
-  useEffect(()=>{
-    const delays=[800,2200,3600]
-    const timers=delays.map((d,i)=>setTimeout(()=>setShown(i+1),d))
-    const loop=setInterval(()=>{
-      setShown(0)
-      delays.forEach((d,i)=>setTimeout(()=>setShown(i+1),d))
-    },8000)
-    return()=>{timers.forEach(clearTimeout);clearInterval(loop)}
-  },[])
+/* Card 1 — AI Clinical Documentation */
+function CardScribe({shown}){
+  const lines=[
+    {role:'Patient',  color:'rgba(255,255,255,.35)',bg:'rgba(255,255,255,.04)',border:'rgba(255,255,255,.08)',text:'I have had sharp chest pain since this morning…'},
+    {role:'AI Scribe',color:'#2E9ED6',             bg:'rgba(46,158,214,.08)', border:'rgba(46,158,214,.18)', text:'CC: Acute chest pain onset 0800. SOAP note generating…'},
+    {role:'FHIR ✓',  color:'#22c55e',             bg:'rgba(34,197,94,.07)',  border:'rgba(34,197,94,.2)',   text:'Synced to Epic EHR — Encounter #48291'},
+  ]
   return(
     <div className="scribe-card">
       <div className="sc-hdr">
         <div className="sc-dots">{['#ff5f57','#ffbd2e','#28c840'].map(c=><div key={c} className="sc-dot" style={{background:c}}/>)}</div>
-        <div className="sc-ttl">CSharpTek AI Medical Scribe</div>
+        <div className="sc-ttl">AI Clinical Documentation</div>
         <div className="sc-live"><div className="sc-live-dot"/><span className="sc-live-txt">LIVE</span></div>
       </div>
       <div className="sc-wave">
@@ -480,7 +465,7 @@ function ScribeCard(){
         ))}
       </div>
       <div className="sc-lines">
-        {SCRIBE_LINES.map((line,i)=>shown>i&&(
+        {lines.map((line,i)=>shown>i&&(
           <motion.div key={i} className="sc-line" style={{background:line.bg,border:`1px solid ${line.border}`}} initial={{opacity:0,x:-12}} animate={{opacity:1,x:0}} transition={{duration:.4}}>
             <div className="sc-role" style={{color:line.color}}>{line.role.toUpperCase()}</div>
             <div className="sc-text">{line.text}</div>
@@ -497,16 +482,176 @@ function ScribeCard(){
   )
 }
 
+/* Card 2 — Staff & Workflow Automation */
+function CardWorkflow({shown}){
+  const steps=[
+    {icon:'📋',label:'New Patient Registered',color:'#2E9ED6',done:shown>0},
+    {icon:'⚙️',label:'n8n Workflow Triggered',color:'#FF6B2B',done:shown>1},
+    {icon:'👩‍⚕️',label:'Staff Assigned Automatically',color:'#8B5CF6',done:shown>2},
+    {icon:'📅',label:'Appointment Booked & Notified',color:'#22c55e',done:shown>3},
+  ]
+  return(
+    <div className="scribe-card">
+      <div className="sc-hdr">
+        <div className="sc-dots">{['#ff5f57','#ffbd2e','#28c840'].map(c=><div key={c} className="sc-dot" style={{background:c}}/>)}</div>
+        <div className="sc-ttl">Staff & Workflow Automation</div>
+        <div className="sc-live"><div style={{width:6,height:6,borderRadius:'50%',background:'#FF6B2B',animation:'pulseGlow 2s infinite'}}/><span className="sc-live-txt" style={{color:'#FF6B2B'}}>n8n</span></div>
+      </div>
+      <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:16,padding:'8px 12px',background:'rgba(255,107,43,.06)',borderRadius:10,border:'1px solid rgba(255,107,43,.15)'}}>
+        <span style={{fontSize:11,color:'rgba(255,255,255,.4)'}}>Powered by</span>
+        {['n8n','Make','Zapier','Azure Logic Apps'].map(t=><span key={t} style={{fontSize:10,fontWeight:700,color:'#FF6B2B',background:'rgba(255,107,43,.12)',borderRadius:4,padding:'2px 7px'}}>{t}</span>)}
+      </div>
+      <div style={{display:'flex',flexDirection:'column',gap:10}}>
+        {steps.map((s,i)=>(
+          <motion.div key={i} initial={{opacity:0,x:-10}} animate={s.done?{opacity:1,x:0}:{opacity:0,x:-10}} transition={{duration:.35}}
+            style={{display:'flex',alignItems:'center',gap:12,padding:'10px 13px',background:s.done?`${s.color}11`:'rgba(255,255,255,.03)',border:`1px solid ${s.done?s.color+'33':'rgba(255,255,255,.06)'}`,borderRadius:10}}
+          >
+            <span style={{fontSize:18}}>{s.icon}</span>
+            <span style={{fontSize:12.5,color:s.done?'rgba(255,255,255,.85)':'rgba(255,255,255,.3)',fontWeight:600,flex:1}}>{s.label}</span>
+            {s.done&&<span style={{fontSize:10,color:s.color,fontWeight:700}}>✓ Done</span>}
+          </motion.div>
+        ))}
+      </div>
+      <div className="sc-metrics" style={{marginTop:16}}>
+        {[{v:'80%',l:'Manual Work Cut'},{v:'< 1s',l:'Trigger Speed'},{v:'24/7',l:'Always Running'}].map(m=>(
+          <div key={m.l} className="sc-metric"><div className="sc-mv">{m.v}</div><div className="sc-ml">{m.l}</div></div>
+        ))}
+      </div>
+      <div className="sc-glow" style={{background:'radial-gradient(circle,rgba(255,107,43,.1) 0%,transparent 70%)'}}/>
+    </div>
+  )
+}
+
+/* Card 3 — AI Voice Agent */
+function CardVoice({shown}){
+  const industries=['Healthcare','Real Estate','Insurance','Legal','Retail']
+  const [indIdx,setIndIdx]=useState(0)
+  useEffect(()=>{const t=setInterval(()=>setIndIdx(i=>(i+1)%industries.length),1800);return()=>clearInterval(t)},[])
+  const calls=[
+    {from:'Inbound Call',status:'Answered by AI',color:'#2E9ED6',done:shown>0},
+    {from:'Qualifying Lead',status:'Budget: $50k | Intent: High',color:'#FF6B2B',done:shown>1},
+    {from:'CRM Updated',status:'HubSpot — Contact #8821',color:'#22c55e',done:shown>2},
+  ]
+  return(
+    <div className="scribe-card">
+      <div className="sc-hdr">
+        <div className="sc-dots">{['#ff5f57','#ffbd2e','#28c840'].map(c=><div key={c} className="sc-dot" style={{background:c}}/>)}</div>
+        <div className="sc-ttl">AI Voice Agent</div>
+        <div className="sc-live"><div className="sc-live-dot"/><span className="sc-live-txt">LIVE</span></div>
+      </div>
+      <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:14}}>
+        <span style={{fontSize:11,color:'rgba(255,255,255,.35)'}}>Industry:</span>
+        <AnimatePresence mode="wait">
+          <motion.span key={indIdx} initial={{opacity:0,y:8}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-8}} transition={{duration:.3}}
+            style={{fontSize:12,fontWeight:700,color:'#7EC8E3',background:'rgba(46,158,214,.1)',borderRadius:6,padding:'3px 10px'}}
+          >{industries[indIdx]}</motion.span>
+        </AnimatePresence>
+      </div>
+      <div style={{display:'flex',alignItems:'center',gap:4,marginBottom:16,height:28}}>
+        <span style={{fontSize:11,color:'rgba(255,255,255,.35)',marginRight:4}}>Voice</span>
+        {Array.from({length:32}).map((_,i)=>(
+          <div key={i} style={{width:2.5,borderRadius:2,background:i%3===0?'#2E9ED6':i%3===1?'#7EC8E3':'rgba(255,255,255,.15)',height:`${6+(i*5)%20}px`,animationName:'waveBar',animationDuration:`${0.3+(i%4)*0.1}s`,animationIterationCount:'infinite',animationTimingFunction:'ease-in-out',animationDirection:'alternate'}}/>
+        ))}
+      </div>
+      <div style={{display:'flex',flexDirection:'column',gap:9}}>
+        {calls.map((c,i)=>(
+          <motion.div key={i} initial={{opacity:0,x:-10}} animate={c.done?{opacity:1,x:0}:{opacity:0,x:-10}} transition={{duration:.35}}
+            style={{display:'flex',alignItems:'center',gap:10,padding:'9px 12px',background:`${c.color}0d`,border:`1px solid ${c.color}33`,borderRadius:9}}
+          >
+            <div style={{width:7,height:7,borderRadius:'50%',background:c.color,flexShrink:0}}/>
+            <div style={{flex:1}}>
+              <div style={{fontSize:10,color:'rgba(255,255,255,.4)',fontWeight:700,letterSpacing:'.06em'}}>{c.from.toUpperCase()}</div>
+              <div style={{fontSize:12,color:'rgba(255,255,255,.8)',fontWeight:600}}>{c.status}</div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+      <div className="sc-metrics" style={{marginTop:16}}>
+        {[{v:'24/7',l:'Available'},{v:'< 3s',l:'Response'},{v:'60%',l:'Cost Saved'}].map(m=>(
+          <div key={m.l} className="sc-metric"><div className="sc-mv">{m.v}</div><div className="sc-ml">{m.l}</div></div>
+        ))}
+      </div>
+      <div className="sc-glow" style={{background:'radial-gradient(circle,rgba(46,158,214,.1) 0%,transparent 70%)'}}/>
+    </div>
+  )
+}
+
+/* Card 4 — AI Vector Search */
+function CardSearch({shown}){
+  const results=[
+    {score:'0.97',text:'HIPAA §164.312 — Access controls for ePHI systems…',color:'#22c55e',done:shown>0},
+    {score:'0.94',text:'Patient record #4821 — Dr. Thompson, Cardiology…',color:'#2E9ED6',done:shown>1},
+    {score:'0.91',text:'Insurance claim #IB-2291 — Approved, $12,400…',color:'#8B5CF6',done:shown>2},
+  ]
+  return(
+    <div className="scribe-card">
+      <div className="sc-hdr">
+        <div className="sc-dots">{['#ff5f57','#ffbd2e','#28c840'].map(c=><div key={c} className="sc-dot" style={{background:c}}/>)}</div>
+        <div className="sc-ttl">AI Semantic Search</div>
+        <div className="sc-live"><div style={{width:6,height:6,borderRadius:'50%',background:'#8B5CF6',animation:'pulseGlow 2s infinite'}}/><span className="sc-live-txt" style={{color:'#8B5CF6'}}>pgvector</span></div>
+      </div>
+      <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:14,padding:'10px 13px',background:'rgba(139,92,246,.07)',border:'1px solid rgba(139,92,246,.2)',borderRadius:10}}>
+        <span style={{fontSize:16}}>🔍</span>
+        <span style={{fontSize:12.5,color:'rgba(255,255,255,.65)',flex:1}}>"show me cardiology patients with overdue follow-ups"</span>
+        <span style={{fontSize:10,color:'#8B5CF6',fontWeight:700}}>NLP</span>
+      </div>
+      <div style={{fontSize:10,color:'rgba(255,255,255,.3)',marginBottom:10,fontWeight:700,letterSpacing:'.08em'}}>VECTOR SIMILARITY RESULTS</div>
+      <div style={{display:'flex',flexDirection:'column',gap:8}}>
+        {results.map((r,i)=>(
+          <motion.div key={i} initial={{opacity:0,x:-10}} animate={r.done?{opacity:1,x:0}:{opacity:0,x:-10}} transition={{duration:.35}}
+            style={{display:'flex',alignItems:'center',gap:10,padding:'9px 12px',background:`${r.color}0d`,border:`1px solid ${r.color}33`,borderRadius:9}}
+          >
+            <span style={{fontSize:11,fontWeight:800,color:r.color,minWidth:32}}>{r.score}</span>
+            <span style={{fontSize:12,color:'rgba(255,255,255,.75)',lineHeight:1.4}}>{r.text}</span>
+          </motion.div>
+        ))}
+      </div>
+      <div className="sc-metrics" style={{marginTop:16}}>
+        {[{v:'< 50ms',l:'Query Speed'},{v:'1M+',l:'Vectors'},{v:'RAG',l:'Pipeline'}].map(m=>(
+          <div key={m.l} className="sc-metric"><div className="sc-mv">{m.v}</div><div className="sc-ml">{m.l}</div></div>
+        ))}
+      </div>
+      <div className="sc-glow" style={{background:'radial-gradient(circle,rgba(139,92,246,.1) 0%,transparent 70%)'}}/>
+    </div>
+  )
+}
+
+const HERO_CARDS = [
+  {id:'scribe',  label:'AI Clinical Docs',  icon:'🩺', color:'#2E9ED6', badges:[{label:'Azure OpenAI',color:'#0078D4',top:'8%',left:'-10%'},{label:'HIPAA ✓',color:'#22c55e',bottom:'30%',left:'-12%'},{label:'FHIR',color:'#8B5CF6',bottom:'14%',right:'-6%'},{label:'Epic EHR',color:'#2E9ED6',top:'18%',right:'-8%'}]},
+  {id:'workflow',label:'Workflow Automation',icon:'⚙️', color:'#FF6B2B', badges:[{label:'n8n',color:'#FF6B2B',top:'8%',left:'-8%'},{label:'Make',color:'#8B5CF6',top:'22%',right:'-8%'},{label:'Azure Logic',color:'#0078D4',bottom:'28%',left:'-12%'},{label:'Zapier',color:'#FF6B2B',bottom:'12%',right:'-6%'}]},
+  {id:'voice',   label:'AI Voice Agent',    icon:'🎙️', color:'#22c55e', badges:[{label:'VAPI',color:'#FF6B2B',top:'8%',left:'-8%'},{label:'ElevenLabs',color:'#2E9ED6',top:'20%',right:'-10%'},{label:'Twilio',color:'#22c55e',bottom:'28%',left:'-12%'},{label:'HubSpot',color:'#FF6B2B',bottom:'12%',right:'-6%'}]},
+  {id:'search',  label:'AI Vector Search',  icon:'🔍', color:'#8B5CF6', badges:[{label:'pgvector',color:'#8B5CF6',top:'8%',left:'-10%'},{label:'LangChain',color:'#22c55e',top:'20%',right:'-10%'},{label:'RAG',color:'#2E9ED6',bottom:'28%',left:'-12%'},{label:'Pinecone',color:'#8B5CF6',bottom:'12%',right:'-6%'}]},
+]
+
 /* ─── HERO ───────────────────────────────────── */
 const INDUSTRIES_ROT = ['Healthcare','Education','Wellness','Automation','Pet Care','Marketplaces']
 
 function Hero(){
   const [ind,setInd]=useState(0)
   const [go,setGo]=useState(false)
+  const [cardIdx,setCardIdx]=useState(0)
+  const [shown,setShown]=useState(0)
   const statsRef=useRef(null)
   const canvasRef=useRef(null)
 
   useEffect(()=>{const t=setInterval(()=>setInd(i=>(i+1)%INDUSTRIES_ROT.length),2500);return()=>clearInterval(t)},[])
+
+  // auto-rotate cards every 7s
+  useEffect(()=>{
+    const t=setInterval(()=>{
+      setCardIdx(i=>(i+1)%HERO_CARDS.length)
+      setShown(0)
+    },7000)
+    return()=>clearInterval(t)
+  },[])
+
+  // animate lines within card
+  useEffect(()=>{
+    setShown(0)
+    const delays=[700,1800,3000]
+    const timers=delays.map((d,i)=>setTimeout(()=>setShown(i+1),d))
+    return()=>timers.forEach(clearTimeout)
+  },[cardIdx])
 
   useEffect(()=>{
     const el=statsRef.current;if(!el)return
@@ -531,6 +676,7 @@ function Hero(){
 
   const fadeUp={hidden:{opacity:0,y:28},show:{opacity:1,y:0,transition:{duration:.65,ease:[.22,1,.36,1]}}}
   const stagger={hidden:{},show:{transition:{staggerChildren:.1}}}
+  const activeCard=HERO_CARDS[cardIdx]
 
   return(
     <section className="hero-new" id="home">
@@ -573,30 +719,42 @@ function Hero(){
             ))}
           </motion.div>
           <motion.div ref={statsRef} className="h-stats" variants={fadeUp}>
-            {[{value:10,suffix:'+',label:'Years Experience'},{value:50,suffix:'+',label:'Projects Delivered'},{value:7,suffix:'',label:'Industries Served'},{value:3,suffix:'',label:'Cloud Marketplaces'}].map(s=>(
+            {[{value:10,suffix:'+',label:'Years Experience'},{value:300,suffix:'+',label:'Projects Delivered'},{value:7,suffix:'',label:'Industries Served'},{value:3,suffix:'',label:'Cloud Marketplaces'}].map(s=>(
               <HeroCounter key={s.label} {...s} go={go}/>
             ))}
           </motion.div>
         </motion.div>
 
-        {/* RIGHT */}
+        {/* RIGHT — rotating cards */}
         <motion.div className="h-right" initial={{opacity:0,x:60}} animate={{opacity:1,x:0}} transition={{duration:.9,delay:.3,ease:[.22,1,.36,1]}}>
-          {FLOAT_BADGES.map((b,i)=>(
-            <motion.div key={b.label} className="h-fbadge"
+          {/* floating badges for active card */}
+          {activeCard.badges.map((b,i)=>(
+            <motion.div key={`${cardIdx}-${b.label}`} className="h-fbadge"
               style={{top:b.top,bottom:b.bottom,left:b.left,right:b.right,border:`1px solid ${b.color}44`,color:b.color,boxShadow:`0 4px 20px ${b.color}22`}}
-              initial={{opacity:0,scale:.7}} animate={{opacity:1,scale:1}} transition={{delay:1+i*.15,type:'spring',stiffness:160}}
+              initial={{opacity:0,scale:.7}} animate={{opacity:1,scale:1}} transition={{delay:i*.12,type:'spring',stiffness:160}}
               whileHover={{scale:1.1}}
             >{b.label}</motion.div>
           ))}
-          <div style={{position:'absolute',inset:-2,background:'linear-gradient(135deg,rgba(46,158,214,.15),rgba(255,107,43,.1))',borderRadius:24,filter:'blur(20px)',zIndex:-1}}/>
-          <ScribeCard/>
-          <motion.div initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:1.2}}
-            style={{marginTop:14,display:'flex',alignItems:'center',justifyContent:'center',gap:8,fontSize:12,color:'rgba(255,255,255,.3)',fontWeight:600}}
-          >
-            <div style={{width:4,height:4,borderRadius:'50%',background:'#22c55e'}}/>
-            Live demo — AI Medical Scribe · Healthcare
-            <div style={{width:4,height:4,borderRadius:'50%',background:'#22c55e'}}/>
-          </motion.div>
+          <div style={{position:'absolute',inset:-2,background:`linear-gradient(135deg,${activeCard.color}22,rgba(255,107,43,.08))`,borderRadius:24,filter:'blur(20px)',zIndex:-1,transition:'background .5s'}}/>
+
+          {/* card switcher */}
+          <AnimatePresence mode="wait">
+            <motion.div key={cardIdx} initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} exit={{opacity:0,y:-20}} transition={{duration:.4}}>
+              {cardIdx===0&&<CardScribe shown={shown}/>}
+              {cardIdx===1&&<CardWorkflow shown={shown}/>}
+              {cardIdx===2&&<CardVoice shown={shown}/>}
+              {cardIdx===3&&<CardSearch shown={shown}/>}
+            </motion.div>
+          </AnimatePresence>
+
+          {/* tab selector */}
+          <div style={{display:'flex',gap:8,marginTop:14,justifyContent:'center',flexWrap:'wrap'}}>
+            {HERO_CARDS.map((c,i)=>(
+              <button key={c.id} onClick={()=>{setCardIdx(i);setShown(0)}}
+                style={{display:'flex',alignItems:'center',gap:5,padding:'5px 12px',borderRadius:100,border:`1px solid ${cardIdx===i?c.color+'66':'rgba(255,255,255,.1)'}`,background:cardIdx===i?`${c.color}18`:'transparent',color:cardIdx===i?c.color:'rgba(255,255,255,.35)',fontSize:11,fontWeight:700,cursor:'pointer',transition:'all .2s'}}
+              >{c.icon} {c.label}</button>
+            ))}
+          </div>
         </motion.div>
       </div>
       <div className="h-scroll"><span className="h-scroll-t">Scroll</span><div className="h-scroll-d"/></div>
@@ -720,7 +878,7 @@ function Why(){
             <div className="wcard">
               <div className="wcard-lbl">Delivery Track Record</div>
               <div className="wcard-t">Consistent. Reliable. Fast.</div>
-              <div className="wcard-s">Measured across 50+ projects and 10+ years</div>
+              <div className="wcard-s">Measured across 300+ projects and 10+ years</div>
               <div ref={bref}>
                 {[['On-time delivery',96],['Client retention',92],['AI integrations',100]].map(([l,p])=>(
                   <div key={l} className="wmet"><span className="wmet-l">{l}</span><div className="wmet-bw"><div className="wmet-bf" style={{width:bars?`${p}%`:'0%'}}/></div><span className="wmet-p">{p}%</span></div>

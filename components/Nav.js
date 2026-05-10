@@ -16,13 +16,14 @@ const SERVICES_DROPDOWN = [
 ]
 
 const INDUSTRIES_DROPDOWN = [
-  { icon:'🏥', label:'Healthcare',             href:'/industries/healthcare' },
-  { icon:'🌸', label:'Wellness & Fertility',   href:'/industries/wellness' },
-  { icon:'🎓', label:'Education & EdTech',     href:'/industries/education' },
-  { icon:'🤖', label:'Marketing & Automation', href:'/industries/automation' },
-  { icon:'🛒', label:'Service Marketplaces',   href:'/industries/marketplace' },
-  { icon:'🐾', label:'Pet Care & Wellness',    href:'/industries/petcare' },
-  { icon:'⚙️', label:'CRM & Productivity',     href:'/industries/crm' },
+  { icon:'🏥', label:'Healthcare AI',          href:'/industries/healthcare' },
+  { icon:'🌸', label:'Wellness AI',            href:'/industries/wellness' },
+  { icon:'🎓', label:'Education AI',           href:'/industries/education' },
+  { icon:'🏡', label:'Real Estate AI',         href:'/industries/realestate' },
+  { icon:'🤖', label:'Business Automation AI', href:'/industries/automation' },
+  { icon:'🛒', label:'Marketplace AI',         href:'/industries/marketplace' },
+  { icon:'🐾', label:'Pet Care AI',            href:'/industries/petcare' },
+  { icon:'⚙️', label:'CRM & Sales AI',         href:'/industries/crm' },
 ]
 
 function NavDropdown({ label, items, viewAllHref, viewAllLabel }) {
@@ -97,7 +98,7 @@ export default function Nav() {
             label="Industries"
             items={INDUSTRIES_DROPDOWN}
             viewAllHref="/industries"
-            viewAllLabel="View All 7 Industries"
+            viewAllLabel="View All 8 Industries"
           />
 
           <Link href="/#tech"      className={styles.link}>Technologies</Link>

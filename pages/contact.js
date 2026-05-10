@@ -86,9 +86,9 @@ const S = `
 `
 
 const CHANNELS = [
-  { ic: '📧', bg: 'rgba(46,158,214,.12)', t: 'Email Us', s: 'Best for project briefs and detailed queries', v: 'hello@csharptek.com', href: 'mailto:hello@csharptek.com' },
-  { ic: '💬', bg: 'rgba(34,197,94,.1)', t: 'WhatsApp', s: 'Quick questions and fast responses', v: 'Message us on WhatsApp', href: 'https://wa.me/message/csharptek' },
-  { ic: '📅', bg: 'rgba(255,107,43,.1)', t: 'Book a Call', s: 'Free 30-min discovery call — no obligation', v: 'Schedule via Calendly', href: 'https://calendly.com/csharptek' },
+  { ic: '📧', bg: 'rgba(46,158,214,.12)', t: 'Email Us', s: 'Best for project briefs and detailed queries', v: 'info@csharptek.com', href: 'mailto:info@csharptek.com' },
+  { ic: '💬', bg: 'rgba(34,197,94,.1)', t: 'WhatsApp', s: 'Quick questions and fast responses', v: '+91 92290 69558', href: 'https://wa.me/919229069558' },
+  { ic: '📅', bg: 'rgba(255,107,43,.1)', t: 'Book a Call', s: 'Free 30-min discovery call — no obligation', v: 'Schedule via Microsoft Bookings', href: 'https://outlook.office.com/book/BookMeetingwithBhanuGupta@csharptek.com' },
   { ic: '💼', bg: 'rgba(139,92,246,.1)', t: 'LinkedIn', s: 'Connect professionally', v: 'linkedin.com/company/csharptek', href: 'https://in.linkedin.com/company/csharptek' },
   { ic: '📘', bg: 'rgba(24,119,242,.1)', t: 'Facebook', s: 'Follow us for updates', v: 'facebook.com/csharptek', href: 'https://www.facebook.com/csharptek/' },
   { ic: '📸', bg: 'rgba(225,48,108,.1)', t: 'Instagram', s: 'Behind the scenes & team culture', v: '@csharptekofficial', href: 'https://instagram.com/csharptekofficial' },
@@ -103,7 +103,7 @@ const FAQS = [
 ]
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', company: '', phone: '', service: '', budget: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', company: '', phone: '', service: '', message: '' })
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
   const [openFaq, setOpenFaq] = useState(null)
@@ -113,10 +113,19 @@ export default function Contact() {
   const submit = async () => {
     if (!form.name || !form.email || !form.message) return
     setSending(true)
-    // POST to /api/contact when ready — for now simulate
-    await new Promise(r => setTimeout(r, 1200))
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      const data = await res.json()
+      if (data.success) { setSent(true) }
+      else { alert('Failed to send. Please email info@csharptek.com directly.') }
+    } catch {
+      alert('Network error. Please email info@csharptek.com directly.')
+    }
     setSending(false)
-    setSent(true)
   }
 
   return (
@@ -240,28 +249,16 @@ export default function Contact() {
                     <label className="ct-lbl">Service Needed</label>
                     <select className="ct-inp ct-sel" value={form.service} onChange={e => set('service', e.target.value)}>
                       <option value="">Select a service</option>
-                      <option>AI Integration & Automation</option>
-                      <option>AI Voice Agents</option>
-                      <option>Web & Mobile Development</option>
-                      <option>Cloud Infrastructure & DevOps</option>
-                      <option>MVP & Vibe Coding</option>
-                      <option>Marketplace Publishing</option>
-                      <option>CRM & Productivity Tools</option>
-                      <option>Prompt Engineering</option>
-                      <option>24/7 Support</option>
-                      <option>Other / Not Sure</option>
-                    </select>
-                  </div>
-                  <div className="ct-field">
-                    <label className="ct-lbl">Budget Range</label>
-                    <select className="ct-inp ct-sel" value={form.budget} onChange={e => set('budget', e.target.value)}>
-                      <option value="">Select budget</option>
-                      <option>Under $10k</option>
-                      <option>$10k – $25k</option>
-                      <option>$25k – $50k</option>
-                      <option>$50k – $100k</option>
-                      <option>$100k+</option>
-                      <option>Ongoing retainer</option>
+                      <option value="AI Integration & Automation">AI Integration &amp; Automation</option>
+                      <option value="AI Voice Agents">AI Voice Agents</option>
+                      <option value="Web & Mobile Development">Web &amp; Mobile Development</option>
+                      <option value="Cloud Infrastructure & DevOps">Cloud Infrastructure &amp; DevOps</option>
+                      <option value="MVP & Vibe Coding">MVP &amp; Vibe Coding</option>
+                      <option value="Marketplace Publishing">Marketplace Publishing</option>
+                      <option value="CRM & Productivity Tools">CRM &amp; Productivity Tools</option>
+                      <option value="Prompt Engineering">Prompt Engineering</option>
+                      <option value="24/7 Support">24/7 Support</option>
+                      <option value="Other / Not Sure">Other / Not Sure</option>
                     </select>
                   </div>
                 </div>

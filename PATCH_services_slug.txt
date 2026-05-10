@@ -1,0 +1,36 @@
+// FILE: pages/services/[slug].js
+// REPLACE the existing <Head> block inside ServicePage return() with this:
+
+      <Head>
+        <title>{service.title} | AI Software Development — CSharpTek</title>
+        <meta name="description" content={service.metaDesc} />
+        <link rel="canonical" href={`https://www.csharptek.com/services/${slug}`} />
+        <meta property="og:title" content={`${service.title} | CSharpTek`} />
+        <meta property="og:description" content={service.metaDesc} />
+        <meta property="og:url" content={`https://www.csharptek.com/services/${slug}`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.csharptek.com/og-image.jpg" />
+        <meta name="twitter:title" content={`${service.title} | CSharpTek`} />
+        <meta name="twitter:description" content={service.metaDesc} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: service.title,
+          description: service.metaDesc,
+          provider: { '@type': 'Organization', name: 'CSharpTek', url: 'https://www.csharptek.com' },
+          url: `https://www.csharptek.com/services/${slug}`,
+          areaServed: ['IN', 'AE', 'US', 'GB'],
+        })}} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.csharptek.com' },
+            { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.csharptek.com/services' },
+            { '@type': 'ListItem', position: 3, name: service.title, item: `https://www.csharptek.com/services/${slug}` },
+          ],
+        })}} />
+      </Head>
+
+// NOTE: The title bug (`<!-- -->` leaking) was caused by JSX comment inside title string.
+// The new title format above fixes it — no JSX expression that could inject comment nodes.

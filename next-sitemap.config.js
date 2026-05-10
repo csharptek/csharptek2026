@@ -1,36 +1,34 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://www.csharptek.com',
-  generateRobotsTxt: false, // we have manual robots.txt
+  generateRobotsTxt: true,
   changefreq: 'weekly',
   priority: 0.7,
+  sitemapSize: 5000,
   exclude: ['/404', '/500'],
-  additionalPaths: async (config) => [
-    await config.transform(config, '/'),
-    await config.transform(config, '/about'),
-    await config.transform(config, '/contact'),
-    await config.transform(config, '/portfolio'),
-    await config.transform(config, '/services'),
-    await config.transform(config, '/industries'),
-    await config.transform(config, '/blog'),
-    // Industries
-    await config.transform(config, '/industries/healthcare'),
-    await config.transform(config, '/industries/wellness'),
-    await config.transform(config, '/industries/education'),
-    await config.transform(config, '/industries/realestate'),
-    await config.transform(config, '/industries/automation'),
-    await config.transform(config, '/industries/marketplace'),
-    await config.transform(config, '/industries/petcare'),
-    await config.transform(config, '/industries/crm'),
-    // Services
-    await config.transform(config, '/services/ai-integration'),
-    await config.transform(config, '/services/ai-voice'),
-    await config.transform(config, '/services/web-mobile'),
-    await config.transform(config, '/services/cloud-devops'),
-    await config.transform(config, '/services/mvp-vibe'),
-    await config.transform(config, '/services/marketplace'),
-    await config.transform(config, '/services/prompt-engineering'),
-    await config.transform(config, '/services/crm-productivity'),
-    await config.transform(config, '/services/support'),
-  ],
+  robotsTxtOptions: {
+    policies: [
+      { userAgent: '*', allow: '/' },
+    ],
+    additionalSitemaps: [
+      'https://www.csharptek.com/sitemap.xml',
+    ],
+  },
+  transform: async (config, path) => {
+    // Higher priority for key pages
+    const high = ['/', '/services', '/industries', '/portfolio', '/about', '/contact']
+    const medium = ['/blog', '/careers']
+    let priority = 0.6
+    if (high.includes(path)) priority = 1.0
+    else if (medium.includes(path)) priority = 0.8
+    else if (path.startsWith('/services/') || path.startsWith('/industries/')) priority = 0.9
+    else if (path.startsWith('/blog/')) priority = 0.7
+
+    return {
+      loc: path,
+      changefreq: config.changefreq,
+      priority,
+      lastmod: new Date().toISOString(),
+    }
+  },
 }

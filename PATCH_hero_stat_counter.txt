@@ -1,0 +1,18 @@
+// FILE: components/Hero.js
+// FIX: Stat counters show 0 to Google because useState(0) renders 0 server-side.
+// FIND this function:
+
+function useCountUp(target, duration=1600, start=false) {
+  const [count, setCount] = useState(0)   // <-- PROBLEM: renders 0 to crawlers
+
+// REPLACE WITH:
+
+function useCountUp(target, duration=1600, start=false) {
+  const [count, setCount] = useState(target)  // SSR renders real value; animation runs client-side
+
+
+// Also in pages/index.js, find the same pattern in the inline Stats component:
+// FIND:
+  const [v, setV] = useState(0)
+// REPLACE WITH:
+  const [v, setV] = useState(target)

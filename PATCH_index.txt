@@ -1,0 +1,54 @@
+// FILE: pages/index.js
+// PATCH 1 — Replace the existing <Head> block (inside the return statement) with this:
+
+<Head>
+  <title>CSharpTek — AI-First Software Development Company | India & UAE</title>
+  <meta name="description" content="CSharpTek builds AI-powered software for healthcare, education, wellness and enterprise. HIPAA-compliant AI medical scribe, voice agents, Azure cloud — India & UAE." />
+  <link rel="canonical" href="https://www.csharptek.com" />
+
+  {/* Open Graph */}
+  <meta property="og:title" content="CSharpTek — AI-First Software Development Company | India & UAE" />
+  <meta property="og:description" content="CSharpTek builds AI-powered software for healthcare, education, wellness and enterprise. HIPAA-compliant AI medical scribe, voice agents, Azure cloud — India & UAE." />
+  <meta property="og:url" content="https://www.csharptek.com" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.csharptek.com/og-image.jpg" />
+
+  {/* Twitter */}
+  <meta name="twitter:title" content="CSharpTek — AI-First Software Development Company | India & UAE" />
+  <meta name="twitter:description" content="CSharpTek builds AI-powered software for healthcare, education, wellness and enterprise. HIPAA-compliant AI medical scribe, voice agents, Azure cloud." />
+
+  {/* JSON-LD WebSite + SearchAction */}
+  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'CSharpTek',
+    url: 'https://www.csharptek.com',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: 'https://www.csharptek.com/blog?q={search_term_string}' },
+      'query-input': 'required name=search_term_string',
+    },
+  })}} />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
+</Head>
+
+
+// PATCH 2 — Fix stat counters showing 0 to Google (SSR fix)
+// Find the STATS array at the top of index.js. It currently looks like:
+//   { id:'s1', target:10, suffix:'+', label:'Years Experience' }
+// The StatItem component uses useCountUp which starts from 0.
+// FIX: render the real number as the initial state value so crawlers see it.
+// In the StatItem component, change:
+//   const [count, setCount] = useState(0)
+// TO:
+//   const [count, setCount] = useState(target)   // SSR sees real value; animation still runs client-side
+
+// PATCH 3 — Fix footer # links (in the Footer section of index.js)
+// Replace all href="#" inside the footer columns with real URLs:
+// Services column: use /services/ai-integration, /services/ai-voice, /services/web-mobile, etc.
+// Industries column: use /industries/healthcare, /industries/education, /industries/wellness, etc.
+// Company column: use /about, /portfolio, /blog, /careers, /contact
+// Social links: use real LinkedIn/GitHub/Twitter/YouTube URLs

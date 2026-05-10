@@ -1,0 +1,96 @@
+// ─────────────────────────────────────────────
+// FILE: pages/services/index.js — replace <Head>
+// ─────────────────────────────────────────────
+      <Head>
+        <title>AI Software Development Services — Web, Mobile, Cloud & AI | CSharpTek</title>
+        <meta name="description" content="9 end-to-end AI software services: AI integration, voice agents, web & mobile development, cloud DevOps, MVP vibe coding, marketplace publishing, CRM tools and 24/7 support. India & UAE." />
+        <link rel="canonical" href="https://www.csharptek.com/services" />
+        <meta property="og:title" content="AI Software Development Services | CSharpTek" />
+        <meta property="og:description" content="9 end-to-end AI software services — from AI integration and voice agents to cloud infrastructure, MVPs and 24/7 support." />
+        <meta property="og:url" content="https://www.csharptek.com/services" />
+        <meta property="og:image" content="https://www.csharptek.com/og-image.jpg" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.csharptek.com' },
+            { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.csharptek.com/services' },
+          ],
+        })}} />
+      </Head>
+
+
+// ─────────────────────────────────────────────
+// FILE: pages/industries/index.js — replace <Head>
+// ─────────────────────────────────────────────
+      <Head>
+        <title>AI Software for Healthcare, Education, Wellness & More | CSharpTek</title>
+        <meta name="description" content="Industry-specific AI software development for healthcare, education, wellness, marketing automation, pet care, CRM and service marketplaces. HIPAA-compliant. India & UAE." />
+        <link rel="canonical" href="https://www.csharptek.com/industries" />
+        <meta property="og:title" content="AI Software by Industry | CSharpTek" />
+        <meta property="og:description" content="Industry-specific AI software for healthcare, education, wellness, marketing automation, pet care, CRM and marketplaces." />
+        <meta property="og:url" content="https://www.csharptek.com/industries" />
+        <meta property="og:image" content="https://www.csharptek.com/og-image.jpg" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.csharptek.com' },
+            { '@type': 'ListItem', position: 2, name: 'Industries', item: 'https://www.csharptek.com/industries' },
+          ],
+        })}} />
+      </Head>
+
+
+// ─────────────────────────────────────────────
+// FILE: pages/about.js — replace <Head>
+// (already has a good title/desc — just add OG, canonical, JSON-LD)
+// ─────────────────────────────────────────────
+      <Head>
+        <title>About CSharpTek — AI-First Software Development Company Since 2016</title>
+        <meta name="description" content="CSharpTek is an AI-first software development company founded in 2016, with offices in Ranchi, India and Dubai, UAE. Microsoft, AWS and Google Cloud partner. HIPAA-compliant." />
+        <link rel="canonical" href="https://www.csharptek.com/about" />
+        <meta property="og:title" content="About CSharpTek — AI-First Software Development Company Since 2016" />
+        <meta property="og:description" content="Founded in 2016, CSharpTek builds AI-powered software for healthcare, education and enterprise. Offices in India and UAE." />
+        <meta property="og:url" content="https://www.csharptek.com/about" />
+        <meta property="og:image" content="https://www.csharptek.com/og-image.jpg" />
+        <meta name="twitter:title" content="About CSharpTek — AI-First Software Development Company" />
+        <meta name="twitter:description" content="Founded in 2016, CSharpTek builds AI-powered software for healthcare, education and enterprise." />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'AboutPage',
+          name: 'About CSharpTek',
+          url: 'https://www.csharptek.com/about',
+          description: 'CSharpTek is an AI-first software development company founded in 2016.',
+          mainEntity: { '@type': 'Organization', name: 'CSharpTek', foundingDate: '2016', url: 'https://www.csharptek.com' },
+        })}} />
+      </Head>
+
+
+// ─────────────────────────────────────────────
+// FILE: pages/portfolio/index.js — replace/add <Head>
+// ─────────────────────────────────────────────
+      <Head>
+        <title>Portfolio — AI & Software Case Studies | CSharpTek</title>
+        <meta name="description" content="Real AI and software projects delivered by CSharpTek — AI medical scribe, IVF patient portal, voice lead qualifier, social media automation, pet vaccination kiosk and more." />
+        <link rel="canonical" href="https://www.csharptek.com/portfolio" />
+        <meta property="og:title" content="Portfolio — AI & Software Case Studies | CSharpTek" />
+        <meta property="og:description" content="Real AI and software projects delivered by CSharpTek across healthcare, wellness, education and automation." />
+        <meta property="og:url" content="https://www.csharptek.com/portfolio" />
+        <meta property="og:image" content="https://www.csharptek.com/og-image.jpg" />
+      </Head>
+
+
+// ─────────────────────────────────────────────
+// FILE: pages/contact.js — replace/add <Head>
+// ─────────────────────────────────────────────
+      <Head>
+        <title>Contact CSharpTek — Book a Free AI Consultation | India & UAE</title>
+        <meta name="description" content="Book a free 30-minute discovery call with CSharpTek. AI software development for healthcare, education and enterprise. Offices in Ranchi, India and Dubai, UAE." />
+        <link rel="canonical" href="https://www.csharptek.com/contact" />
+        <meta property="og:title" content="Contact CSharpTek — Book a Free AI Consultation" />
+        <meta property="og:description" content="Book a free 30-minute discovery call. AI software development for healthcare, education and enterprise. India & UAE." />
+        <meta property="og:url" content="https://www.csharptek.com/contact" />
+        <meta property="og:image" content="https://www.csharptek.com/og-image.jpg" />
+        <meta name="robots" content="noindex, follow" />
+      </Head>

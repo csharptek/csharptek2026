@@ -331,7 +331,7 @@ export default function CareersPage() {
             <a href="#apply" className="btn-s">Apply Now</a>
           </div>
           <div className="stats rv">
-            {[[loading?'...':jobs.length+'+','Open Roles'],['50+','Team Members'],['3','Countries'],['Global','Client Base']].map(([n,l])=>(
+            {[[loading?'...':jobs.length+'+','Open Roles'],['50+','Team Members'],['10+','Countries Served']].map(([n,l])=>(
               <div key={l} className="stat"><div className="stat-n">{n}</div><div className="stat-l">{l}</div></div>
             ))}
           </div>

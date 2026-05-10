@@ -246,19 +246,15 @@ export default function Contact() {
 
                 <div className="ct-row">
                   <div className="ct-field">
-                    <label className="ct-lbl">Service Needed</label>
+                    <label className="ct-lbl">Reason for Contact</label>
                     <select className="ct-inp ct-sel" value={form.service} onChange={e => set('service', e.target.value)}>
-                      <option value="">Select a service</option>
-                      <option value="AI Integration & Automation">AI Integration &amp; Automation</option>
-                      <option value="AI Voice Agents">AI Voice Agents</option>
-                      <option value="Web & Mobile Development">Web &amp; Mobile Development</option>
-                      <option value="Cloud Infrastructure & DevOps">Cloud Infrastructure &amp; DevOps</option>
-                      <option value="MVP & Vibe Coding">MVP &amp; Vibe Coding</option>
-                      <option value="Marketplace Publishing">Marketplace Publishing</option>
-                      <option value="CRM & Productivity Tools">CRM &amp; Productivity Tools</option>
-                      <option value="Prompt Engineering">Prompt Engineering</option>
-                      <option value="24/7 Support">24/7 Support</option>
-                      <option value="Other / Not Sure">Other / Not Sure</option>
+                      <option value="">Select a reason</option>
+                      <option value="General Enquiry">General Enquiry</option>
+                      <option value="Project Consultation (Free)">Project Consultation (Free)</option>
+                      <option value="Career / Job Application">Career / Job Application</option>
+                      <option value="Partnership / Collaboration">Partnership / Collaboration</option>
+                      <option value="Support / Existing Client">Support / Existing Client</option>
+                      <option value="Other">Other</option>
                     </select>
                   </div>
                 </div>

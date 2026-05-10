@@ -60,6 +60,7 @@ const S = `
   .ct-inp::placeholder{color:rgba(255,255,255,.22);}
   .ct-ta{resize:vertical;min-height:110px;}
   .ct-sel{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237EC8E3' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;cursor:pointer;}
+  .ct-sel option{background:#0D2B45;color:#fff;}
 
   .ct-submit{width:100%;padding:15px;background:linear-gradient(135deg,#FF6B2B,#e55a1f);border:none;border-radius:12px;font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;color:#fff;cursor:pointer;transition:all .2s;margin-top:8px;box-shadow:0 8px 24px rgba(255,107,43,.3);}
   .ct-submit:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(255,107,43,.4);}
@@ -250,9 +251,9 @@ export default function Contact() {
                     <select className="ct-inp ct-sel" value={form.service} onChange={e => set('service', e.target.value)}>
                       <option value="">Select a reason</option>
                       <option value="General Enquiry">General Enquiry</option>
-                      <option value="Project Consultation (Free)">Project Consultation (Free)</option>
+                      <option value="Project Consultation">Project Consultation (Free)</option>
                       <option value="Career / Job Application">Career / Job Application</option>
-                      <option value="Partnership / Collaboration">Partnership / Collaboration</option>
+                      <option value="Partnership">Partnership / Collaboration</option>
                       <option value="Support / Existing Client">Support / Existing Client</option>
                       <option value="Other">Other</option>
                     </select>

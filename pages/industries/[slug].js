@@ -361,16 +361,16 @@ export default function IndustryPage({ ind, slug, prev, next, allInds }){
       <Head>
         <title>{ind.name} AI Software Development — CSharpTek</title>
         <meta name="description" content={ind.metaDesc} />
-        <link rel="canonical" href={`https://www.csharptek.com/industries/${params?.slug || ''}`} />
+        <link rel="canonical" href={`https://www.csharptek.com/industries/${slug}`} />
         <meta property="og:title" content={`${ind.name} AI — CSharpTek`} />
         <meta property="og:description" content={ind.metaDesc} />
-        <meta property="og:url" content={`https://www.csharptek.com/industries/${params?.slug || ''}`} />
+        <meta property="og:url" content={`https://www.csharptek.com/industries/${slug}`} />
         <meta property="og:type" content="website" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'WebPage',
           name: `${ind.name} AI Software Development — CSharpTek`,
-          url: `https://www.csharptek.com/industries/${params?.slug || ''}`,
+          url: `https://www.csharptek.com/industries/${slug}`,
           description: ind.metaDesc,
           breadcrumb: {
             '@type': 'BreadcrumbList',

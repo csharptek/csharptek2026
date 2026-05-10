@@ -167,16 +167,16 @@ export default function ServicePage({ service, slug, prev, next, allServices }) 
       <Head>
         <title>{service.title} — CSharpTek AI Software Development</title>
         <meta name="description" content={service.metaDesc} />
-        <link rel="canonical" href={`https://www.csharptek.com/services/${params?.slug || ''}`} />
+        <link rel="canonical" href={`https://www.csharptek.com/services/${slug}`} />
         <meta property="og:title" content={`${service.title} — CSharpTek`} />
         <meta property="og:description" content={service.metaDesc} />
-        <meta property="og:url" content={`https://www.csharptek.com/services/${params?.slug || ''}`} />
+        <meta property="og:url" content={`https://www.csharptek.com/services/${slug}`} />
         <meta property="og:type" content="website" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Service',
           name: service.title,
-          url: `https://www.csharptek.com/services/${params?.slug || ''}`,
+          url: `https://www.csharptek.com/services/${slug}`,
           description: service.metaDesc,
           provider: { '@type': 'Organization', name: 'CSharpTek', url: 'https://www.csharptek.com' },
           areaServed: ['IN', 'US', 'GB', 'AU'],

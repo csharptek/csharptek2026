@@ -152,7 +152,7 @@ const TIMELINE = [
   {year:'2018',t:'Microsoft Partnership',d:'Became a Microsoft Solutions Partner. First enterprise cloud migration projects.'},
   {year:'2020',t:'Healthcare Vertical',d:'First HIPAA-compliant EHR integration. Medical software became a core specialisation.'},
   {year:'2022',t:'AI Integration Launch',d:'First AI products — document intelligence and GPT-powered automation for clients.'},
-  {year:'2023',t:'Dubai Office + Global Clients',d:'Opened Meydan Hotel office. Now serving clients across UK, UAE and India.'},
+  {year:'2023',t:'Microsoft Solutions Partner',d:'Achieved Microsoft Solutions Partner designation for Digital & App Innovation.'},
   {year:'2024',t:'AI Medical Scribe',d:'Shipped real-time clinical transcription with FHIR & Epic. 70% doc time reduction.'},
   {year:'2025',t:'AI-First by Design',d:'Launched AI Voice Agents, pgvector search and multi-cloud marketplace publishing.'},
 ]
@@ -167,7 +167,6 @@ const TEAM = [
 
 const OFFICES = [
   {flag:'🇮🇳',city:'Ranchi',type:'Headquarters',addr:'Jharkhand, India\nFull engineering & delivery team'},
-  {flag:'🇦🇪',city:'Dubai',type:'Middle East Office',addr:'Meydan Hotel, Dubai, UAE\nBusiness development & client success'},
   {flag:'🌍',city:'Remote',type:'Global Delivery',addr:'UK · USA · Europe\nRemote-first for global clients'},
 ]
 
@@ -202,7 +201,7 @@ function HeroCounter({value,suffix,label,go}){
 function AboutCard(){
   const [locIdx,setLocIdx]=useState(0)
   const [memberIdx,setMemberIdx]=useState(0)
-  const locs=['Ranchi 🇮🇳','Dubai 🇦🇪','Remote 🌍']
+  const locs=['Ranchi 🇮🇳','Remote 🌍']
   const partners=['Microsoft','AWS','Google Cloud','OpenAI','Anthropic']
 
   useEffect(()=>{
@@ -345,14 +344,34 @@ export default function AboutPage(){
     {label:'Microsoft Partner',color:'#0078D4',top:'6%',left:'-12%'},
     {label:'HIPAA Certified',color:'#22c55e',top:'20%',right:'-10%'},
     {label:'10+ Years',color:'#FF6B2B',bottom:'28%',left:'-10%'},
-    {label:'Dubai · Ranchi',color:'#7EC8E3',bottom:'12%',right:'-8%'},
+    {label:'Ranchi · India',color:'#7EC8E3',bottom:'12%',right:'-8%'},
   ]
 
   return(
     <Layout>
       <Head>
-        <title>About Us — CSharpTek AI-First Software Development</title>
-        <meta name="description" content="CSharpTek — AI-first software company founded 2016. Healthcare, EdTech, Wellness and enterprise software across UK, UAE and India."/>
+        <title>About CSharpTek — AI-First Software Development Company Since 2016</title>
+        <meta name="description" content="CSharpTek — AI-first software development company founded 2016. Healthcare AI, EdTech, Wellness and enterprise software for clients across the US, UK and Australia."/>
+        <link rel="canonical" href="https://www.csharptek.com/about" />
+        <meta property="og:title" content="About CSharpTek — AI-First Software Development" />
+        <meta property="og:description" content="Founded 2016 in India. Microsoft Solutions Partner. 300+ projects across healthcare, education, wellness and automation." />
+        <meta property="og:url" content="https://www.csharptek.com/about" />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'AboutPage',
+          name: 'About CSharpTek',
+          url: 'https://www.csharptek.com/about',
+          description: 'AI-first software development company founded 2016. Microsoft Solutions Partner. Healthcare AI, medical scribe, AI voice agents and enterprise automation.',
+          mainEntity: {
+            '@type': 'Organization',
+            name: 'CSharpTek',
+            foundingDate: '2016',
+            foundingLocation: 'Ranchi, Jharkhand, India',
+            numberOfEmployees: { '@type': 'QuantitativeValue', value: '11-50' },
+            knowsAbout: ['Healthcare AI', 'AI Medical Scribe', 'Azure OpenAI', 'AI Voice Agents', 'HIPAA Compliance', 'React Native', 'Next.js'],
+          }
+        })}} />
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
         <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
@@ -377,7 +396,7 @@ export default function AboutPage(){
               <span className="h-grad">One Deployment at a Time.</span>
             </motion.h1>
             <motion.p className="h-sub" variants={fadeUp}>
-              Founded in 2016 in Ranchi with 4 people and a big ambition — CSharpTek has grown into an AI-first software company trusted by healthcare providers, EdTech startups and enterprise clients across UK, UAE and India.
+              Founded in 2016 in Ranchi with 4 people and a big ambition — CSharpTek has grown into an AI-first software company trusted by healthcare providers, EdTech startups and enterprise clients across the US, UK and Australia.
             </motion.p>
             <motion.div className="h-ctas" variants={fadeUp}>
               <motion.div whileHover={{scale:1.04}} whileTap={{scale:.97}}>
@@ -417,7 +436,7 @@ export default function AboutPage(){
               <div className="lbl" style={{color:'#1565A8'}}><span className="ldot"/>Our Journey</div>
               <h2 className="sec-t" style={{fontSize:'clamp(28px,3.5vw,44px)',color:'#0A1628',marginBottom:16}}>From 4 People to<br/>AI-First Pioneers</h2>
               <p style={{fontSize:16,color:'rgba(10,22,40,.58)',lineHeight:1.78,marginBottom:20}}>We started as a cloud and .NET development shop. Over nine years, we evolved with the technology — from Azure migration specialists to a team that ships AI medical scribes, voice agents and intelligent marketplaces.</p>
-              <p style={{fontSize:16,color:'rgba(10,22,40,.58)',lineHeight:1.78,marginBottom:28}}>Today we operate across Ranchi, Dubai and remote-first — serving clients who need software that is fast, compliant, AI-ready and built to last.</p>
+              <p style={{fontSize:16,color:'rgba(10,22,40,.58)',lineHeight:1.78,marginBottom:28}}>Today we operate from Ranchi, India and remote-first — serving clients across the US, UK and Australia who need software that is fast, compliant, AI-ready and built to last.</p>
               <div style={{display:'flex',gap:10,flexWrap:'wrap'}}>
                 {['Microsoft Solutions Partner','NASSCOM Member','HIPAA Certified Builds','Azure Marketplace Published'].map(b=>(
                   <span key={b} style={{background:'rgba(21,101,168,.07)',border:'1px solid rgba(21,101,168,.15)',borderRadius:8,padding:'6px 14px',fontSize:12,fontWeight:700,color:'#1565A8'}}>{b}</span>
@@ -569,7 +588,7 @@ export default function AboutPage(){
           <div className="join-grid">
             {[
               {i:'🚀',t:'Ship Real AI Products',d:'Work on actual AI voice agents, medical scribes and intelligent platforms — not toy projects.'},
-              {i:'🌍',t:'Global Exposure',d:'Clients across UK, UAE and India. Remote-friendly culture with offices in Ranchi and Dubai.'},
+              {i:'🌍',t:'Global Exposure',d:'Clients across the US, UK and Australia. Remote-friendly culture based in Ranchi, India.'},
               {i:'📈',t:'Grow Fast',d:'Small team means big impact. You will own features, lead modules and grow your skills rapidly.'},
               {i:'🧠',t:'Learn Cutting-Edge Tech',d:'Azure OpenAI, pgvector, VAPI, n8n, LangChain — you work with the best tools available.'},
               {i:'🤝',t:'Collaborative Culture',d:'No bureaucracy. Direct access to leadership. Ideas are heard and actioned.'},

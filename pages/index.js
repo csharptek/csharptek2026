@@ -1147,12 +1147,25 @@ export default function Home(){
   return(
     <>
       <Head>
-        <title>CSharpTek — AI-First Software Development</title>
-        <meta name="description" content="CSharpTek — AI-First Software Development for Healthcare, Education, Wellness and more."/>
-        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        <title>CSharpTek — AI-First Software Development for Healthcare, Education &amp; More</title>
+        <meta name="description" content="CSharpTek builds AI-powered software for healthcare, education, wellness and automation. Azure OpenAI, AI voice agents, HIPAA-compliant systems and cloud-native apps." />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="canonical" href="https://www.csharptek.com/" />
+        <meta property="og:title" content="CSharpTek — AI-First Software Development" />
+        <meta property="og:description" content="AI integration, healthcare automation, voice agents and cloud-native apps. Microsoft Solutions Partner. 300+ projects delivered." />
+        <meta property="og:url" content="https://www.csharptek.com/" />
+        <meta property="og:type" content="website" />
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
         <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'WebSite',
+          name: 'CSharpTek',
+          url: 'https://www.csharptek.com',
+          description: 'AI-first software development for healthcare, education, wellness and enterprise automation.',
+          potentialAction: { '@type': 'SearchAction', target: 'https://www.csharptek.com/search?q={search_term_string}', 'query-input': 'required name=search_term_string' }
+        })}} />
       </Head>
       <style dangerouslySetInnerHTML={{__html:GLOBAL_STYLES}}/>
       <NavComponent/>

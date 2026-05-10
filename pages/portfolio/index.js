@@ -226,8 +226,13 @@ export default function Portfolio() {
   return (
     <Layout>
       <Head>
-        <title>Portfolio & Case Studies — CSharpTek</title>
-        <meta name="description" content="Real projects delivered by CSharpTek — AI medical scribes, healthcare automation, voice AI and cloud-native platforms." />
+        <title>Portfolio & Case Studies — CSharpTek AI Software Development</title>
+        <meta name="description" content="Real projects delivered by CSharpTek — AI medical scribes, healthcare automation, AI voice agents, EdTech platforms and cloud-native enterprise software." />
+        <link rel="canonical" href="https://www.csharptek.com/portfolio" />
+        <meta property="og:title" content="Portfolio — CSharpTek AI Software Projects" />
+        <meta property="og:description" content="300+ projects across healthcare, education, wellness and automation. See real case studies." />
+        <meta property="og:url" content="https://www.csharptek.com/portfolio" />
+        <meta property="og:type" content="website" />
         <style>{STYLES}</style>
       </Head>
 

@@ -359,8 +359,28 @@ export default function IndustryPage({ ind, slug, prev, next, allInds }){
   return(
     <Layout>
       <Head>
-        <title>{ind.name} Software — CSharpTek</title>
-        <meta name="description" content={ind.metaDesc}/>
+        <title>{ind.name} AI Software Development — CSharpTek</title>
+        <meta name="description" content={ind.metaDesc} />
+        <link rel="canonical" href={`https://www.csharptek.com/industries/${params?.slug || ''}`} />
+        <meta property="og:title" content={`${ind.name} AI — CSharpTek`} />
+        <meta property="og:description" content={ind.metaDesc} />
+        <meta property="og:url" content={`https://www.csharptek.com/industries/${params?.slug || ''}`} />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          name: `${ind.name} AI Software Development — CSharpTek`,
+          url: `https://www.csharptek.com/industries/${params?.slug || ''}`,
+          description: ind.metaDesc,
+          breadcrumb: {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.csharptek.com' },
+              { '@type': 'ListItem', position: 2, name: 'Industries', item: 'https://www.csharptek.com/industries' },
+              { '@type': 'ListItem', position: 3, name: ind.name },
+            ]
+          }
+        })}} />
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous"/>
         <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>

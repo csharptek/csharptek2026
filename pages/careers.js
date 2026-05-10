@@ -349,7 +349,7 @@ export default function CareersPage() {
           <div className="why-grid">
             {[
               {ic:'🚀',t:'Ship Real AI Products',d:'Work on production AI voice agents, medical scribes and intelligent platforms — not toy projects.'},
-              {ic:'🌍',t:'Global Client Exposure',d:'Work with clients across the US, UK, UAE, Australia and more. International communication from day one.'},
+              {ic:'🌍',t:'Global Client Exposure',d:'Work with clients across the US, UK and Australia. International communication from day one.'},
               {ic:'📈',t:'Grow Fast',d:'Small senior team means big impact. Own features, lead modules, grow your skills rapidly.'},
               {ic:'🧠',t:'Cutting-Edge Stack',d:'Azure OpenAI, Claude, GitHub Copilot, pgvector, VAPI, LangChain, n8n, Make — tools shaping the future of AI.'},
               {ic:'🤝',t:'No Bureaucracy',d:'Direct access to leadership. Ideas heard and actioned quickly. We ship constantly.'},

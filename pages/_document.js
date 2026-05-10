@@ -43,12 +43,12 @@ export default function Document() {
                 '@type': 'ContactPoint',
                 email: 'hello@csharptek.com',
                 contactType: 'customer service',
-                areaServed: ['IN', 'AE', 'US', 'GB'],
+                areaServed: ['IN', 'US', 'GB', 'AU'],
                 availableLanguage: ['English', 'Arabic'],
               },
               address: [
                 { '@type': 'PostalAddress', addressLocality: 'Ranchi', addressRegion: 'Jharkhand', addressCountry: 'IN' },
-                { '@type': 'PostalAddress', addressLocality: 'Dubai', addressCountry: 'AE' },
+                
               ],
               sameAs: [
                 'https://linkedin.com/company/csharptek',

@@ -165,7 +165,30 @@ export default function ServicePage({ service, slug, prev, next, allServices }) 
   return (
     <Layout>
       <Head>
-        <title>{service.title} — CSharpTek</title>
+        <title>{service.title} — CSharpTek AI Software Development</title>
+        <meta name="description" content={service.metaDesc} />
+        <link rel="canonical" href={`https://www.csharptek.com/services/${params?.slug || ''}`} />
+        <meta property="og:title" content={`${service.title} — CSharpTek`} />
+        <meta property="og:description" content={service.metaDesc} />
+        <meta property="og:url" content={`https://www.csharptek.com/services/${params?.slug || ''}`} />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Service',
+          name: service.title,
+          url: `https://www.csharptek.com/services/${params?.slug || ''}`,
+          description: service.metaDesc,
+          provider: { '@type': 'Organization', name: 'CSharpTek', url: 'https://www.csharptek.com' },
+          areaServed: ['IN', 'US', 'GB', 'AU'],
+          breadcrumb: {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.csharptek.com' },
+              { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.csharptek.com/services' },
+              { '@type': 'ListItem', position: 3, name: service.title },
+            ]
+          }
+        })}} />
         <meta name="description" content={service.metaDesc} />
 </Head>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />

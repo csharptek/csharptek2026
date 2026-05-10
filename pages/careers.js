@@ -331,7 +331,7 @@ export default function CareersPage() {
             <a href="#apply" className="btn-s">Apply Now</a>
           </div>
           <div className="stats rv">
-            {[[loading?'...':jobs.length+'+','Open Roles'],['50+','Team Members'],['3','Countries'],['100%','Remote OK']].map(([n,l])=>(
+            {[[loading?'...':jobs.length+'+','Open Roles'],['50+','Team Members'],['3','Countries'],['Global','Client Base']].map(([n,l])=>(
               <div key={l} className="stat"><div className="stat-n">{n}</div><div className="stat-l">{l}</div></div>
             ))}
           </div>
@@ -349,11 +349,11 @@ export default function CareersPage() {
           <div className="why-grid">
             {[
               {ic:'🚀',t:'Ship Real AI Products',d:'Work on production AI voice agents, medical scribes and intelligent platforms — not toy projects.'},
-              {ic:'🌍',t:'Global Client Exposure',d:'Clients in the US, UK, UAE and Australia. International communication from day one.'},
+              {ic:'🌍',t:'Global Client Exposure',d:'Work with clients across the US, UK, UAE, Australia and more. International communication from day one.'},
               {ic:'📈',t:'Grow Fast',d:'Small senior team means big impact. Own features, lead modules, grow your skills rapidly.'},
-              {ic:'🧠',t:'Cutting-Edge Stack',d:'Azure OpenAI, pgvector, VAPI, n8n, LangChain — the best tools available in AI.'},
+              {ic:'🧠',t:'Cutting-Edge Stack',d:'Azure OpenAI, Claude, GitHub Copilot, pgvector, VAPI, LangChain, n8n, Make — tools shaping the future of AI.'},
               {ic:'🤝',t:'No Bureaucracy',d:'Direct access to leadership. Ideas heard and actioned quickly. We ship constantly.'},
-              {ic:'💰',t:'Competitive Pay',d:'Market-rate salaries, performance bonuses and recognition for exceptional work.'},
+              {ic:'🏆',t:'Recognition & Growth',d:'Performance matters here. Strong contributors get real responsibility, fast progression and compensation that reflects the value they create.'},
             ].map((w,i)=>(
               <div key={w.t} className={`why-card rv d${i+1}`}>
                 <div className="why-ic">{w.ic}</div>

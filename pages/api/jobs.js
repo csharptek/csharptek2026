@@ -1,7 +1,4 @@
 // pages/api/jobs.js
-// Env vars needed on Railway:
-//   DATABASE_URL=postgresql://csharptek:Test105*@interviewschedulerdbserver.postgres.database.azure.com/interviewdatabaseProd?sslmode=require
-
 import { Pool } from 'pg'
 
 const pool = new Pool({
@@ -12,11 +9,25 @@ const pool = new Pool({
   connectionTimeoutMillis: 5000,
 })
 
-export default async function handler(req, res) {
-  if (req.method !== 'GET') {
-    return res.status(405).json({ success: false, message: 'Method not allowed' })
-  }
+// Strip HTML tags and decode HTML entities
+function clean(str) {
+  if (!str) return ''
+  return str
+    .replace(/\\u003C/gi, '<').replace(/\\u003E/gi, '>') // unescape unicode
+    .replace(/\\u0026/gi, '&').replace(/\\u0022/gi, '"')
+    .replace(/<\/p>/gi, '\n').replace(/<\/li>/gi, '\n') // block endings → newline
+    .replace(/<li>/gi, '• ')                             // list items → bullet
+    .replace(/<br\s*\/?>/gi, '\n')                       // line breaks
+    .replace(/<[^>]+>/g, '')                             // strip remaining tags
+    .replace(/&amp;/gi, '&').replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>').replace(/&quot;/gi, '"')
+    .replace(/&nbsp;/gi, ' ').replace(/&#39;/gi, "'")
+    .replace(/\n{3,}/g, '\n\n')                          // collapse excess newlines
+    .trim()
+}
 
+export default async function handler(req, res) {
+  if (req.method !== 'GET') return res.status(405).json({ success: false })
   try {
     const { rows } = await pool.query(`
       SELECT
@@ -35,7 +46,15 @@ export default async function handler(req, res) {
         AND status = true
       ORDER BY created_on DESC
     `)
-    return res.status(200).json({ success: true, jobs: rows })
+    // Clean HTML from all text fields
+    const jobs = rows.map(j => ({
+      ...j,
+      jobSummary:        clean(j.jobSummary),
+      keyResponsibility: clean(j.keyResponsibility),
+      requiredSkills:    clean(j.requiredSkills),
+      preferredSkills:   clean(j.preferredSkills),
+    }))
+    return res.status(200).json({ success: true, jobs })
   } catch (err) {
     console.error('DB error:', err.message)
     return res.status(500).json({ success: false, jobs: [], message: 'Could not load jobs' })

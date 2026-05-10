@@ -89,7 +89,9 @@ const CHANNELS = [
   { ic: '📧', bg: 'rgba(46,158,214,.12)', t: 'Email Us', s: 'Best for project briefs and detailed queries', v: 'hello@csharptek.com', href: 'mailto:hello@csharptek.com' },
   { ic: '💬', bg: 'rgba(34,197,94,.1)', t: 'WhatsApp', s: 'Quick questions and fast responses', v: 'Message us on WhatsApp', href: 'https://wa.me/message/csharptek' },
   { ic: '📅', bg: 'rgba(255,107,43,.1)', t: 'Book a Call', s: 'Free 30-min discovery call — no obligation', v: 'Schedule via Calendly', href: 'https://calendly.com/csharptek' },
-  { ic: '💼', bg: 'rgba(139,92,246,.1)', t: 'LinkedIn', s: 'Connect professionally', v: 'linkedin.com/company/csharptek', href: 'https://linkedin.com/company/csharptek' },
+  { ic: '💼', bg: 'rgba(139,92,246,.1)', t: 'LinkedIn', s: 'Connect professionally', v: 'linkedin.com/company/csharptek', href: 'https://in.linkedin.com/company/csharptek' },
+  { ic: '📘', bg: 'rgba(24,119,242,.1)', t: 'Facebook', s: 'Follow us for updates', v: 'facebook.com/csharptek', href: 'https://www.facebook.com/csharptek/' },
+  { ic: '📸', bg: 'rgba(225,48,108,.1)', t: 'Instagram', s: 'Behind the scenes & team culture', v: '@csharptekofficial', href: 'https://instagram.com/csharptekofficial' },
 ]
 
 const FAQS = [

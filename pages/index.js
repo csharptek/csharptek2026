@@ -1075,7 +1075,20 @@ function Footer(){
           <div>
             <div className="ft-logo"><span className="ft-lcs">C#</span><span className="ft-lre">harpTek</span></div>
             <p className="ft-desc">AI-first software development across healthcare, education, wellness, automation and more. Building the future, one deployment at a time.</p>
-            <div className="ft-soc">{['💼','🐙','🐦','▶️'].map(i=><a key={i} href="#" className="ft-si">{i}</a>)}</div>
+            <div className="ft-soc">
+                <a href="https://www.facebook.com/csharptek/" target="_blank" rel="noopener noreferrer" className="ft-si" title="Facebook" aria-label="Facebook">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{color:'rgba(255,255,255,.6)'}}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://in.linkedin.com/company/csharptek" target="_blank" rel="noopener noreferrer" className="ft-si" title="LinkedIn" aria-label="LinkedIn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{color:'rgba(255,255,255,.6)'}}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+                </a>
+                <a href="https://twitter.com/csharptek1" target="_blank" rel="noopener noreferrer" className="ft-si" title="Twitter / X" aria-label="Twitter">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{color:'rgba(255,255,255,.6)'}}><path d="M4 4l16 16M4 20L20 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none"/></svg>
+                </a>
+                <a href="https://instagram.com/csharptekofficial" target="_blank" rel="noopener noreferrer" className="ft-si" title="Instagram" aria-label="Instagram">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{color:'rgba(255,255,255,.6)'}}><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                </a>
+              </div>
             <div className="ft-news">
               <div className="ft-nt">📧 The AI Edge Newsletter</div>
               <div className="ft-ns">Bi-weekly AI insights. No spam.</div>

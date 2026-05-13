@@ -31,6 +31,7 @@ const GLOBAL_STYLES = `
 
   /* ── HERO NEW ── */
   .hero-new{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:linear-gradient(155deg,#0A1628 0%,#0D2B45 55%,#091422 100%);padding:100px 0 60px;}
+  .hero-new .h-bg-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80&auto=format&fit=crop');background-size:cover;background-position:center;opacity:0.07;pointer-events:none;z-index:0;}
   .hero-new canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
   .hero-new .h-orb1{position:absolute;top:4%;left:-8%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(21,101,168,.18) 0%,transparent 70%);pointer-events:none;animation:orbFloat 9s ease-in-out infinite;}
   .hero-new .h-orb2{position:absolute;bottom:0;right:-12%;width:720px;height:720px;border-radius:50%;background:radial-gradient(circle,rgba(46,158,214,.1) 0%,transparent 70%);pointer-events:none;animation:orbFloat 11s ease-in-out infinite reverse;}
@@ -116,7 +117,7 @@ const GLOBAL_STYLES = `
   .ind-g2{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px;}
   .icard{border-radius:16px;overflow:hidden;cursor:pointer;aspect-ratio:3/4;position:relative;transition:transform .3s;}
   .icard:hover{transform:translateY(-6px);}
-  .ibg{position:absolute;inset:0;transition:transform .4s;}
+  .ibg{position:absolute;inset:0;transition:transform .4s;background-size:cover;background-position:center;}
   .icard:hover .ibg{transform:scale(1.06);}
   .igrd{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,22,40,.95) 0%,rgba(10,22,40,.4) 55%,rgba(10,22,40,.15) 100%);}
   .icnt{position:absolute;bottom:0;left:0;right:0;padding:22px 18px;}
@@ -354,13 +355,14 @@ const SERVICES = [
   {i:'🛒',t:'Marketplace Publishing',d:'We publish production-ready software on Azure, AWS and Google Marketplaces — enterprise-ready.',tags:['Azure MP','AWS','GCP'],href:'/services/marketplace'},
 ]
 const INDUSTRIES = [
-  {i:'🏥',n:'Healthcare',d:'HIPAA, EHR/FHIR, Epic, Medical Scribe',bg:'linear-gradient(135deg,#0D2B45,#1565A8)'},
-  {i:'🌸',n:'Wellness & Fertility',d:"IVF, Fertility Clinics, Women's Wellness",bg:'linear-gradient(135deg,#0a2a1e,#0f6e56)'},
-  {i:'🎓',n:'Education & EdTech',d:'K-12, Internships, AI Evaluation',bg:'linear-gradient(135deg,#1a1a0a,#7a5a0a)'},
-  {i:'🤖',n:'Marketing & Automation',d:'HubSpot, GoHighLevel, Apollo',bg:'linear-gradient(135deg,#1a0a1a,#6b2fa0)'},
-  {i:'🛒',n:'Service Marketplaces',d:'Multi-vendor, Bookings, Payments',bg:'linear-gradient(135deg,#0a1a1a,#0a5a5a)'},
-  {i:'🐾',n:'Pet Care & Wellness',d:'Vaccination Kiosk, RFID, Pet Tech',bg:'linear-gradient(135deg,#0a1a0a,#3a6a0a)'},
-  {i:'⚙️',n:'CRM & Productivity',d:'Custom CRMs, Internal Tools',bg:'linear-gradient(135deg,#1a0a0a,#8B2a2a)'},
+  {i:'🏥',n:'Healthcare',d:'HIPAA, EHR/FHIR, Epic, Medical Scribe',bg:'linear-gradient(135deg,#0D2B45,#1565A8)',bgImg:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&q=70&auto=format&fit=crop'},
+  {i:'🌸',n:'Wellness & Fertility',d:"IVF, Fertility Clinics, Women's Wellness",bg:'linear-gradient(135deg,#0a2a1e,#0f6e56)',bgImg:'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=70&auto=format&fit=crop'},
+  {i:'🎓',n:'Education & EdTech',d:'K-12, Internships, AI Evaluation',bg:'linear-gradient(135deg,#1a1a0a,#7a5a0a)',bgImg:'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&q=70&auto=format&fit=crop'},
+  {i:'🤖',n:'Marketing & Automation',d:'HubSpot, GoHighLevel, Apollo',bg:'linear-gradient(135deg,#1a0a1a,#6b2fa0)',bgImg:'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=600&q=70&auto=format&fit=crop'},
+  {i:'🛒',n:'Service Marketplaces',d:'Multi-vendor, Bookings, Payments',bg:'linear-gradient(135deg,#0a1a1a,#0a5a5a)',bgImg:'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=70&auto=format&fit=crop'},
+  {i:'🐾',n:'Pet Care & Wellness',d:'Vaccination Kiosk, RFID, Pet Tech',bg:'linear-gradient(135deg,#0a1a0a,#3a6a0a)',bgImg:'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=70&auto=format&fit=crop'},
+  {i:'⚙️',n:'CRM & Productivity',d:'Custom CRMs, Internal Tools',bg:'linear-gradient(135deg,#1a0a0a,#8B2a2a)',bgImg:'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=70&auto=format&fit=crop'},
+  {i:'🏡',n:'Real Estate AI',d:'Property Listings, Lead Automation, CRM',bg:'linear-gradient(135deg,#0d1b2a,#1a5276)',bgImg:'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=70&auto=format&fit=crop'},
 ]
 const PROJECTS = [
   {e:'🩺',t:'Medical Scribe AI',d:'Real-time clinical transcription with FHIR & Epic EHR integration.',stk:['Azure OpenAI','FHIR','Epic','.NET'],out:'⚡ 70% faster note-taking',cat:'healthcare',bg:'linear-gradient(135deg,#0D2B45,#1565A8)',tb:'rgba(46,158,214,.22)',tc:'#7EC8E3',tl:'Healthcare'},
@@ -680,6 +682,7 @@ function Hero(){
 
   return(
     <section className="hero-new" id="home">
+      <div className="h-bg-img"/>
       <canvas ref={canvasRef}/>
       <div className="h-orb1"/><div className="h-orb2"/>
       <div className="h-grid">
@@ -824,7 +827,7 @@ function Industries(){
         <div className="ind-g1">
           {INDUSTRIES.slice(0,4).map((ind,i)=>(
             <div key={ind.n} className={`icard rv d${i+1}`}>
-              <div className="ibg" style={{background:ind.bg}}/><div className="igrd"/>
+              <div className="ibg" style={{background:ind.bg,backgroundImage:ind.bgImg?`url('${ind.bgImg}')`:undefined}}/><div className="igrd"/>
               <div className="icnt"><div className="i-ico">{ind.i}</div><div className="i-nm">{ind.n}</div><div className="i-ds">{ind.d}</div></div>
             </div>
           ))}
@@ -832,7 +835,7 @@ function Industries(){
         <div className="ind-g2">
           {INDUSTRIES.slice(4).map((ind,i)=>(
             <div key={ind.n} className={`icard rv d${i+3}`}>
-              <div className="ibg" style={{background:ind.bg}}/><div className="igrd"/>
+              <div className="ibg" style={{background:ind.bg,backgroundImage:ind.bgImg?`url('${ind.bgImg}')`:undefined}}/><div className="igrd"/>
               <div className="icnt"><div className="i-ico">{ind.i}</div><div className="i-nm">{ind.n}</div><div className="i-ds">{ind.d}</div></div>
             </div>
           ))}

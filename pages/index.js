@@ -1125,9 +1125,9 @@ function Footer(){
             <h4>Contact</h4>
             <ul>
               <li><a href="mailto:info@csharptek.com">📧 info@csharptek.com</a></li>
-              <li><a href="#">💬 WhatsApp Us</a></li>
-              <li><a href="#">📅 Book a Call</a></li>
-              <li><a href="https://www.csharptek.com/privacy-policy" target="_blank" rel="noopener noreferrer">📄 Privacy Policy</a></li>
+              <li><a href="https://wa.me/919229069558" target="_blank" rel="noopener noreferrer">💬 WhatsApp Us</a></li>
+              <li><a href="https://outlook.office.com/book/BookMeetingwithBhanuGupta@csharptek.com" target="_blank" rel="noopener noreferrer">📅 Book a Call</a></li>
+              <li><a href="/privacy-policy">📄 Privacy Policy</a></li>
             </ul>
             <div className="ft-resp"><div className="ft-resp-t">🕐 Response Time</div><div className="ft-resp-s">We reply within 24 hours.</div></div>
             {/* Clutch Widget */}

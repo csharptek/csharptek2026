@@ -71,7 +71,7 @@ export default function Layout({ children }) {
             <div>
               <h4 style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:11,fontWeight:700,color:'rgba(255,255,255,.85)',letterSpacing:'.05em',textTransform:'uppercase',marginBottom:16}}>Contact</h4>
               <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:9}}>
-                {[['📧 hello@csharptek.com','mailto:hello@csharptek.com'],['📅 Book a Call','/contact'],['🔒 HIPAA Policy','/hipaa'],['📄 Privacy Policy','/privacy']].map(([label,href])=>(
+                {[['📧 info@csharptek.com','mailto:info@csharptek.com'],['📅 Book a Call','/contact'],['🔒 HIPAA Policy','/hipaa'],['📄 Privacy Policy','/privacy']].map(([label,href])=>(
                   <li key={label}><Link href={href} style={{fontSize:12,color:'rgba(255,255,255,.36)',textDecoration:'none',fontWeight:500}}>{label}</Link></li>
                 ))}
               </ul>

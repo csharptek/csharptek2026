@@ -1067,7 +1067,7 @@ function CTABanner(){
         <h2 className="ctab-t">Ready to Transform Your Business<br/>with <span className="ctab-ts">AI?</span></h2>
         <p className="ctab-s">From a quick MVP to a full enterprise AI rollout — we&apos;ll scope it, build it and support it. Your first consultation is completely free.</p>
         <div className="ctab-acts">
-          <a href="mailto:hello@csharptek.com" className="btn-or">Book a Free Consultation →</a>
+          <a href="mailto:info@csharptek.com" className="btn-or">Book a Free Consultation →</a>
           <a href="#portfolio" className="btn-gh">View Our Work</a>
         </div>
         <div className="ctab-chk">
@@ -1117,7 +1117,7 @@ function Footer(){
           ))}
           <div className="ft-col">
             <h4>Contact</h4>
-            <ul>{['📧 hello@csharptek.com','💬 WhatsApp Us','📅 Book a Call','🔒 HIPAA Policy','📄 Privacy Policy'].map(l=><li key={l}><a href="#">{l}</a></li>)}</ul>
+            <ul>{['📧 info@csharptek.com','💬 WhatsApp Us','📅 Book a Call','🔒 HIPAA Policy','📄 Privacy Policy'].map(l=><li key={l}><a href="#">{l}</a></li>)}</ul>
             <div className="ft-resp"><div className="ft-resp-t">🕐 Response Time</div><div className="ft-resp-s">We reply within 24 hours.</div></div>
           </div>
         </div>

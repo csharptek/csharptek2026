@@ -117,6 +117,7 @@ export default function Nav() {
           <Link href="/#tech"      className={styles.link}>Technologies</Link>
           <Link href="/portfolio"  className={styles.link}>Portfolio</Link>
           <Link href="/about"      className={styles.link}>About</Link>
+          <Link href="/careers"    className={styles.link}>Careers</Link>
         </div>
 
         {/* CTA */}
@@ -190,6 +191,7 @@ export default function Nav() {
           <Link href="/#tech"     className={styles.mobileLink} onClick={closeAll}>Technologies</Link>
           <Link href="/portfolio" className={styles.mobileLink} onClick={closeAll}>Portfolio</Link>
           <Link href="/about"     className={styles.mobileLink} onClick={closeAll}>About</Link>
+          <Link href="/careers"   className={styles.mobileLink} onClick={closeAll}>Careers</Link>
           <Link href="/contact"   className={styles.mobileCta}  onClick={closeAll}>Free Consultation</Link>
         </div>
       )}

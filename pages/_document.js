@@ -41,7 +41,7 @@ export default function Document() {
               description: 'AI-first software development company specialising in healthcare AI, medical scribe software, AI voice agents and enterprise automation.',
               contactPoint: {
                 '@type': 'ContactPoint',
-                email: 'hello@csharptek.com',
+                email: 'info@csharptek.com',
                 contactType: 'customer service',
                 areaServed: ['IN', 'US', 'GB', 'AU'],
                 availableLanguage: ['English', 'Arabic'],

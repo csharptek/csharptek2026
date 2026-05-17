@@ -148,7 +148,7 @@ export default function Contact() {
           mainEntity: {
             '@type': 'Organization',
             name: 'CSharpTek',
-            email: 'hello@csharptek.com',
+            email: 'info@csharptek.com',
             url: 'https://www.csharptek.com',
             areaServed: ['IN', 'US', 'GB', 'AU'],
           }

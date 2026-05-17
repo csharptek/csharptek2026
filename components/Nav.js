@@ -87,8 +87,7 @@ export default function Nav() {
 
         {/* LOGO */}
         <Link href="/" className={styles.logo} onClick={closeAll}>
-          <span className={styles.logoCs}>C#</span>
-          <span className={styles.logoRest}>harpTek</span>
+          <img src="/logo.png" alt="CSharpTek" style={{height:42,width:'auto',objectFit:'contain'}} />
         </Link>
 
         {/* Desktop links */}

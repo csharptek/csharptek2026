@@ -169,14 +169,14 @@ const OFFICES = [
 ]
 
 const PARTNERS = [
-  {i:'🔷',n:'Microsoft',t:'Solutions Partner',d:'Azure, Microsoft 365 and AI services.', badge:'Cloud Partner'},
+  {i:'🔷',n:'Microsoft',t:'Solutions Partner',d:'Azure, Microsoft 365 and AI services.', badge:'Cloud Partner', logo:'/ms-solutions-partner.jpg'},
   {i:'🟠',n:'AWS',t:'Partner Network',d:'EC2, Lambda, S3 and managed services.',badge:'AWS Partner'},
   {i:'🔵',n:'Google Cloud',t:'Partner',d:'GKE, BigQuery and Vertex AI.',badge:'GCP Partner'},
   {i:'🤖',n:'OpenAI',t:'API Partner',d:'GPT-4o, Whisper and Embeddings API.',badge:'API Partner'},
   {i:'⚡',n:'Anthropic',t:'Claude Partner',d:'Claude 3.5 for enterprise AI products.',badge:'Claude API'},
   {i:'🏢',n:'NASSCOM',t:'Member',d:'India\'s premier IT industry body.',badge:'Member'},
   {i:'🛡️',n:'Acronis',t:'Partner',d:'Backup, DR and cybersecurity solutions.',badge:'Partner'},
-  {i:'🌐',n:'IAMCP',t:'Member',d:'International Microsoft Channel community.',badge:'Member'},
+  {i:'🌐',n:'IAMCP',t:'Member',d:'International Microsoft Channel community.',badge:'Member', logo:'/iamcp.png'},
 ]
 
 /* ── STATS COUNTER ── */
@@ -564,7 +564,7 @@ export default function AboutPage(){
           <div className="part-grid">
             {PARTNERS.map((p,i)=>(
               <div key={p.n} className={`part-card rv d${(i%4)+1}`}>
-                <div className="part-ic">{p.i}</div>
+                <div className="part-ic">{p.logo ? <img src={p.logo} alt={p.n} style={{height:48,width:'auto',maxWidth:120,objectFit:'contain'}} /> : p.i}</div>
                 <div className="part-nm">{p.n}</div>
                 <div className="part-type">{p.t}</div>
                 <div className="part-desc">{p.d}</div>

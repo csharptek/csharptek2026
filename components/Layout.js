@@ -16,9 +16,8 @@ export default function Layout({ children }) {
 
             {/* Brand col */}
             <div>
-              <Link href="/" style={{display:'flex',alignItems:'center',gap:3,marginBottom:14,textDecoration:'none'}}>
-                <span style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontWeight:800,fontSize:19,background:'linear-gradient(135deg,#2E9ED6,#7EC8E3)',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundClip:'text'}}>C#</span>
-                <span style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontWeight:800,fontSize:19,color:'#fff'}}>harpTek</span>
+              <Link href="/" style={{display:'flex',alignItems:'center',marginBottom:14,textDecoration:'none'}}>
+                <img src="/logo-white.png" alt="CSharpTek" style={{height:44,width:'auto',objectFit:'contain'}} />
               </Link>
               <p style={{fontSize:13,color:'rgba(255,255,255,.36)',lineHeight:1.68,marginBottom:20,maxWidth:270}}>AI-first software development across healthcare, education, wellness, automation and more.</p>
               <div style={{display:'flex',gap:9,marginBottom:20}}>

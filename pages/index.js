@@ -777,7 +777,7 @@ function Hero(){
 /* ─── REST OF SECTIONS ─────────────────────── */
 function TrustBar(){
   const all=[...LOGOS,...LOGOS]
-  const badges=[{i:'🔷',n:'Microsoft Azure',l:'Cloud Partner'},{i:'🟠',n:'AWS Partner',l:'Network Member'},{i:'🔵',n:'Google Cloud',l:'Partner'},{i:'🤖',n:'OpenAI',l:'API Partner'},{i:'🏥',n:'HIPAA Compliant',l:'Healthcare Ready'}]
+  const badges=[{logo:'/ms-solutions-partner.jpg',n:'Microsoft Azure',l:'Cloud Partner'},{i:'🟠',n:'AWS Partner',l:'Network Member'},{i:'🔵',n:'Google Cloud',l:'Partner'},{i:'🤖',n:'OpenAI',l:'API Partner'},{logo:'/iamcp.png',n:'IAMCP',l:'Member'}]
   return(
     <section className="trust">
       <div className="trust-inner">
@@ -791,7 +791,7 @@ function TrustBar(){
           </div>
         </div>
         <div className="pbadges rv">
-          {badges.map(b=>(<div key={b.n} className="pb"><span className="pb-ic">{b.i}</span><div><div className="pb-nm">{b.n}</div><div className="pb-lv">{b.l}</div></div></div>))}
+          {badges.map(b=>(<div key={b.n} className="pb"><span className="pb-ic">{b.logo ? <img src={b.logo} alt={b.n} style={{height:28,width:'auto',maxWidth:80,objectFit:'contain',display:'block'}} /> : b.i}</span><div><div className="pb-nm">{b.n}</div><div className="pb-lv">{b.l}</div></div></div>))}
         </div>
       </div>
     </section>
@@ -1085,7 +1085,7 @@ function Footer(){
       <div className="ft-inner">
         <div className="ft-top">
           <div>
-            <div className="ft-logo"><span className="ft-lcs">C#</span><span className="ft-lre">harpTek</span></div>
+            <div className="ft-logo"><img src="/logo-white.png" alt="CSharpTek" style={{height:44,width:'auto',objectFit:'contain'}} /></div>
             <p className="ft-desc">AI-first software development across healthcare, education, wellness, automation and more. Building the future, one deployment at a time.</p>
             <div className="ft-soc">
                 <a href="https://www.facebook.com/csharptek/" target="_blank" rel="noopener noreferrer" className="ft-si" title="Facebook" aria-label="Facebook">

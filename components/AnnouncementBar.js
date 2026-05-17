@@ -10,7 +10,7 @@ export default function AnnouncementBar() {
       borderBottom: '1px solid rgba(46,158,214,.25)',
       padding: '9px 20px',
       display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16,
-      position: 'sticky', top: 0, zIndex: 102,
+      position: 'relative', zIndex: 99,
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
         <span style={{ fontSize: 13, color: 'rgba(255,255,255,.6)', fontWeight: 600 }}>🚀 Introducing</span>

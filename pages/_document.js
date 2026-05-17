@@ -65,6 +65,28 @@ export default function Document() {
             }),
           }}
         />
+        {/* Instantly Website Visitors */}
+        <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="mDDHbLWi0hqV3zw2" data-version="062024" />
+
+        {/* Apollo Website Tracker */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"69296e5a357c820019e56ac6"})},document.head.appendChild(o)}initApollo();`,
+          }}
+        />
+
+        {/* Google Analytics GA4 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-M7WKDLH3T1" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-M7WKDLH3T1', { page_path: window.location.pathname });
+            `,
+          }}
+        />
       </Head>
       <body>
         <Main />

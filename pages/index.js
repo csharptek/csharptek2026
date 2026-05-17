@@ -275,7 +275,7 @@ const GLOBAL_STYLES = `
   /* ── FOOTER ── */
   footer{background:#060f1d;padding:48px 0 0;}
   .ft-inner{max-width:1200px;margin:0 auto;padding:0 28px;}
-  .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.05);}
+  .ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:36px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.05);}
   .ft-logo{display:flex;align-items:center;gap:3px;margin-bottom:14px;}
   .ft-lcs{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:19px;background:linear-gradient(135deg,#2E9ED6,#7EC8E3);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
   .ft-lre{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:19px;color:#fff;}
@@ -1118,7 +1118,7 @@ function Footer(){
               )}
             </div>
           </div>
-          {[{t:'Services',l:['AI Integration','AI Voice Agents','Web & Mobile Dev','Cloud & DevOps','MVP & Vibe Coding','Prompt Engineering','24/7 Support']},{t:'Industries',l:['Healthcare','Wellness & Fertility','Education','Marketing','Marketplaces','Pet Care','CRM & Productivity']},{t:'Company',l:['About Us','Portfolio','Careers','Partners','Contact']}].map(col=>(
+          {[{t:'Services',l:['AI Integration','AI Voice Agents','Web & Mobile Dev','Cloud & DevOps','MVP & Vibe Coding','Prompt Engineering','24/7 Support']},{t:'Industries',l:['Healthcare','Wellness & Fertility','Education','Marketing','Marketplaces','Pet Care','CRM & Productivity']},{t:'Company',l:['About Us','Portfolio','Careers','Partners']}].map(col=>(
             <div key={col.t} className="ft-col"><h4>{col.t}</h4><ul>{col.l.map(l=><li key={l}><a href="#">{l}</a></li>)}</ul></div>
           ))}
           <div className="ft-col">

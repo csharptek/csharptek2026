@@ -161,7 +161,6 @@ const TEAM = [
   {name:'Mukesh Barik',   role:'Product Manager',         bio:'Drives product vision and delivery across all client engagements.',             initials:'MB',bg:'linear-gradient(135deg,#1565A8,#2E9ED6)'},
   {name:'Nippu Kumar',    role:'Solutions Architect',      bio:'Azure certified. Designs cloud and AI architectures for enterprise clients.',   initials:'NK',bg:'linear-gradient(135deg,#0f6e56,#2E9ED6)'},
   {name:'Ashwika Agarwal',role:'Head of Human Resources',  bio:'Leads talent acquisition and champions our people-first philosophy.',          initials:'AA',bg:'linear-gradient(135deg,#6b2fa0,#9b5fd0)'},
-  {name:'Manjika Tantia', role:'Business Development',     bio:'Builds client relationships and drives partnerships across global markets.',    initials:'MT',bg:'linear-gradient(135deg,#0a7a7a,#2E9ED6)'},
 ]
 
 const OFFICES = [

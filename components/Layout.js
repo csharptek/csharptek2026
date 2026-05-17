@@ -82,9 +82,9 @@ export default function Layout({ children }) {
               <h4 style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:11,fontWeight:700,color:'rgba(255,255,255,.85)',letterSpacing:'.05em',textTransform:'uppercase',marginBottom:16}}>Contact</h4>
               <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:9}}>
                 <li><a href="mailto:info@csharptek.com" style={{fontSize:12,color:'rgba(255,255,255,.36)',textDecoration:'none',fontWeight:500}}>📧 info@csharptek.com</a></li>
-                <li><a href="/contact" style={{fontSize:12,color:'rgba(255,255,255,.36)',textDecoration:'none',fontWeight:500}}>💬 WhatsApp Us</a></li>
-                <li><a href="/contact" style={{fontSize:12,color:'rgba(255,255,255,.36)',textDecoration:'none',fontWeight:500}}>📅 Book a Call</a></li>
-                <li><a href="https://www.csharptek.com/privacy-policy" target="_blank" rel="noopener noreferrer" style={{fontSize:12,color:'rgba(255,255,255,.36)',textDecoration:'none',fontWeight:500}}>📄 Privacy Policy</a></li>
+                <li><a href="https://wa.me/919229069558" target="_blank" rel="noopener noreferrer" style={{fontSize:12,color:'rgba(255,255,255,.36)',textDecoration:'none',fontWeight:500}}>💬 WhatsApp Us</a></li>
+                <li><a href="https://outlook.office.com/book/BookMeetingwithBhanuGupta@csharptek.com" target="_blank" rel="noopener noreferrer" style={{fontSize:12,color:'rgba(255,255,255,.36)',textDecoration:'none',fontWeight:500}}>📅 Book a Call</a></li>
+                <li><a href="/privacy-policy" style={{fontSize:12,color:'rgba(255,255,255,.36)',textDecoration:'none',fontWeight:500}}>📄 Privacy Policy</a></li>
               </ul>
               <div style={{marginTop:16,padding:'12px 14px',background:'rgba(255,255,255,.03)',border:'1px solid rgba(255,255,255,.06)',borderRadius:10}}>
                 <div style={{fontSize:12,color:'rgba(255,255,255,.5)',fontWeight:600,marginBottom:4}}>🕐 Response Time</div>

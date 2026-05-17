@@ -158,7 +158,6 @@ const TIMELINE = [
 ]
 
 const TEAM = [
-  {name:'Bhanu Gupta',    role:'CEO & Founder',          bio:'10+ years building enterprise software. Drives company vision and client strategy.',initials:'BG',bg:'linear-gradient(135deg,#FF6B2B,#e55a1f)'},
   {name:'Mukesh Barik',   role:'Product Manager',         bio:'Drives product vision and delivery across all client engagements.',             initials:'MB',bg:'linear-gradient(135deg,#1565A8,#2E9ED6)'},
   {name:'Nippu Kumar',    role:'Solutions Architect',      bio:'Azure certified. Designs cloud and AI architectures for enterprise clients.',   initials:'NK',bg:'linear-gradient(135deg,#0f6e56,#2E9ED6)'},
   {name:'Ashwika Agarwal',role:'Head of Human Resources',  bio:'Leads talent acquisition and champions our people-first philosophy.',          initials:'AA',bg:'linear-gradient(135deg,#6b2fa0,#9b5fd0)'},
@@ -167,7 +166,6 @@ const TEAM = [
 
 const OFFICES = [
   {flag:'🇮🇳',city:'Ranchi',type:'Headquarters',addr:'Jharkhand, India\nFull engineering & delivery team'},
-  {flag:'🌍',city:'Remote',type:'Global Delivery',addr:'UK · USA · Europe\nRemote-first for global clients'},
 ]
 
 const PARTNERS = [

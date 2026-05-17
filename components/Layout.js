@@ -40,7 +40,7 @@ export default function Layout({ children }) {
             <div>
               <h4 style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:11,fontWeight:700,color:'rgba(255,255,255,.85)',letterSpacing:'.05em',textTransform:'uppercase',marginBottom:16}}>Company</h4>
               <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:9}}>
-                {[['About Us','/about'],['Portfolio','/portfolio'],['Blog','/blog'],['Careers','/careers'],['Contact','/contact']].map(([label,href])=>(
+                {[['About Us','/about'],['Portfolio','/portfolio'],['Careers','/careers'],['Contact','/contact']].map(([label,href])=>(
                   <li key={label}><Link href={href} style={{fontSize:12,color:'rgba(255,255,255,.36)',textDecoration:'none',fontWeight:500}}>{label}</Link></li>
                 ))}
               </ul>
@@ -71,7 +71,7 @@ export default function Layout({ children }) {
             <div>
               <h4 style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:11,fontWeight:700,color:'rgba(255,255,255,.85)',letterSpacing:'.05em',textTransform:'uppercase',marginBottom:16}}>Contact</h4>
               <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:9}}>
-                {[['📧 info@csharptek.com','mailto:info@csharptek.com'],['📅 Book a Call','/contact'],['🔒 HIPAA Policy','/hipaa'],['📄 Privacy Policy','/privacy']].map(([label,href])=>(
+                {[['📧 info@csharptek.com','mailto:info@csharptek.com'],['📅 Book a Call','/contact'],['📄 Privacy Policy','https://www.csharptek.com/privacy-policy']].map(([label,href])=>(
                   <li key={label}><Link href={href} style={{fontSize:12,color:'rgba(255,255,255,.36)',textDecoration:'none',fontWeight:500}}>{label}</Link></li>
                 ))}
               </ul>
@@ -79,7 +79,7 @@ export default function Layout({ children }) {
 
           </div>
           <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',padding:'22px 0',flexWrap:'wrap',gap:10}}>
-            <span style={{fontSize:11,color:'rgba(255,255,255,.28)'}}>© 2025 CSharpTek. All rights reserved.</span>
+            <span style={{fontSize:11,color:'rgba(255,255,255,.28)'}}>© 2026 CSharpTek. All rights reserved.</span>
             <span style={{fontSize:10,color:'rgba(255,255,255,.22)',fontWeight:600}}>⚡ Built with AI · CSharpTek</span>
           </div>
         </div>

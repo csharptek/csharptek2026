@@ -1100,6 +1100,12 @@ function Footer(){
                 <a href="https://instagram.com/csharptekofficial" target="_blank" rel="noopener noreferrer" className="ft-si" title="Instagram" aria-label="Instagram">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{color:'rgba(255,255,255,.6)'}}><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
                 </a>
+                <a href="https://github.com/csharptek" target="_blank" rel="noopener noreferrer" className="ft-si" title="GitHub" aria-label="GitHub">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{color:'rgba(255,255,255,.6)'}}><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@csharptek" target="_blank" rel="noopener noreferrer" className="ft-si" title="YouTube" aria-label="YouTube">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style={{color:'rgba(255,255,255,.6)'}}><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#060f1d"/></svg>
+                </a>
               </div>
             <div className="ft-news">
               <div className="ft-nt">📧 The AI Edge Newsletter</div>
@@ -1112,18 +1118,36 @@ function Footer(){
               )}
             </div>
           </div>
-          {[{t:'Services',l:['AI Integration','AI Voice Agents','Web & Mobile Dev','Cloud & DevOps','MVP & Vibe Coding','Prompt Engineering','24/7 Support']},{t:'Industries',l:['Healthcare','Wellness & Fertility','Education','Marketing','Marketplaces','Pet Care','CRM & Productivity']},{t:'Company',l:['About Us','Portfolio','Blog','Careers','Partners','Marketplace','Contact']}].map(col=>(
+          {[{t:'Services',l:['AI Integration','AI Voice Agents','Web & Mobile Dev','Cloud & DevOps','MVP & Vibe Coding','Prompt Engineering','24/7 Support']},{t:'Industries',l:['Healthcare','Wellness & Fertility','Education','Marketing','Marketplaces','Pet Care','CRM & Productivity']},{t:'Company',l:['About Us','Portfolio','Careers','Partners','Contact']}].map(col=>(
             <div key={col.t} className="ft-col"><h4>{col.t}</h4><ul>{col.l.map(l=><li key={l}><a href="#">{l}</a></li>)}</ul></div>
           ))}
           <div className="ft-col">
             <h4>Contact</h4>
-            <ul>{['📧 info@csharptek.com','💬 WhatsApp Us','📅 Book a Call','🔒 HIPAA Policy','📄 Privacy Policy'].map(l=><li key={l}><a href="#">{l}</a></li>)}</ul>
+            <ul>
+              <li><a href="mailto:info@csharptek.com">📧 info@csharptek.com</a></li>
+              <li><a href="#">💬 WhatsApp Us</a></li>
+              <li><a href="#">📅 Book a Call</a></li>
+              <li><a href="https://www.csharptek.com/privacy-policy" target="_blank" rel="noopener noreferrer">📄 Privacy Policy</a></li>
+            </ul>
             <div className="ft-resp"><div className="ft-resp-t">🕐 Response Time</div><div className="ft-resp-s">We reply within 24 hours.</div></div>
+            {/* Clutch Widget */}
+            <div style={{marginTop:20,background:'#fff',borderRadius:10,padding:'12px 14px',display:'inline-block',minWidth:160}}>
+              <div style={{fontFamily:'serif',fontWeight:700,fontSize:15,color:'#17313b',letterSpacing:1,marginBottom:6}}>Clutch</div>
+              <div style={{display:'flex',alignItems:'center',gap:6}}>
+                <div style={{display:'flex',gap:2}}>{[1,2,3,4,5].map(s=><svg key={s} width="14" height="14" viewBox="0 0 24 24" fill="#e62415"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>)}</div>
+                <span style={{fontSize:11,color:'#333',fontWeight:600}}>5.0 · 4 Reviews</span>
+              </div>
+              <a href="https://clutch.co/profile/csharptek" target="_blank" rel="noopener noreferrer" style={{fontSize:10,color:'#e62415',fontWeight:600,textDecoration:'none',display:'block',marginTop:4}}>See Reviews →</a>
+            </div>
           </div>
         </div>
         <div className="ft-bot">
-          <span className="ft-cp">© 2025 CSharpTek. All rights reserved.</span>
-          <div className="ft-lks">{['Privacy','HIPAA','Terms','Sitemap'].map(l=><a key={l} href="#">{l}</a>)}</div>
+          <span className="ft-cp">© 2026 CSharpTek. All rights reserved.</span>
+          <div className="ft-lks">
+            <a href="https://www.csharptek.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="/sitemap.xml">Sitemap</a>
+          </div>
           <span className="ft-bdg">⚡ Built with AI · CSharpTek</span>
         </div>
       </div>

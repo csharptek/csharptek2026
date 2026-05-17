@@ -37,7 +37,16 @@
 }
 .link:hover, .linkActive { color: #fff; background: rgba(255,255,255,.08); }
 
-/* button reset for Services trigger */
+/* Products nav link — accent colour */
+.linkProducts {
+  color: #FF6B2B !important;
+}
+.linkProducts:hover {
+  color: #fff !important;
+  background: rgba(255,107,43,.15) !important;
+}
+
+/* button reset for dropdown triggers */
 .linkBtn {
   background: none; border: none; cursor: pointer;
   font-family: 'Mulish', sans-serif;
@@ -60,10 +69,9 @@
   overflow: hidden;
   backdrop-filter: blur(24px);
   animation: dropIn .16s ease;
-  /* Invisible bridge — prevents gap between trigger and dropdown */
   padding-top: 2px;
 }
-/* Invisible hover bridge so mouse can travel into dropdown */
+/* Invisible hover bridge */
 .dropdown::before {
   content: '';
   position: absolute;
@@ -86,8 +94,20 @@
 }
 .dropItem:hover { background: rgba(46,158,214,.12); }
 .dropIcon { font-size: 15px; flex-shrink: 0; width: 20px; text-align: center; }
-.dropLabel { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.75); }
+.dropLabel { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.75); flex: 1; }
 .dropItem:hover .dropLabel { color: #fff; }
+
+/* Products dropdown item styles */
+.dropItemProduct { border-bottom: 1px solid rgba(255,255,255,.04); }
+.dropItemProduct:hover { background: rgba(255,107,43,.08); }
+.dropItemProduct:last-child { border-bottom: none; }
+
+.dropBadge {
+  font-size: 9px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: #FF6B2B;
+  background: rgba(255,107,43,.12); border: 1px solid rgba(255,107,43,.25);
+  border-radius: 4px; padding: 2px 6px; flex-shrink: 0;
+}
 
 .dropFooter {
   padding: 8px 14px 12px;
@@ -146,6 +166,7 @@
   cursor: pointer; color: rgba(255,255,255,.82); font-size: 15px; font-weight: 600;
   padding: 12px 0; font-family: 'Mulish', sans-serif;
 }
+.mobileProdBtn { color: #FF6B2B !important; }
 .mobileSvcList {
   background: rgba(255,255,255,.03); border-radius: 8px;
   margin: 4px 0 8px; padding: 4px 0;
@@ -177,6 +198,6 @@
 
 /* Narrower font for more nav items */
 @media (min-width: 981px) {
-  .link { font-size: 12.5px; padding: 6px 8px; }
-  .cta  { padding: 9px 16px; font-size: 13px; }
+  .link { font-size: 12px; padding: 6px 7px; }
+  .cta  { padding: 9px 14px; font-size: 12.5px; }
 }

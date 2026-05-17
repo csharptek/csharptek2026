@@ -35,6 +35,36 @@ export default function TekDial() {
       <Head>
         <title>TekDial — AI Voice Receptionist & Call Automation | CSharpTek</title>
         <meta name="description" content="TekDial is an AI-powered voice receptionist that handles inbound calls, outbound campaigns, appointment setting and IVR flows — 24/7, HIPAA compliant." />
+        <link rel="canonical" href="https://www.csharptek.com/products/tekdial" />
+        <meta property="og:title" content="TekDial — AI Voice Receptionist & Call Automation | CSharpTek" />
+        <meta property="og:description" content="TekDial is an AI-powered voice receptionist that handles inbound calls, outbound campaigns, appointment setting and IVR flows — 24/7, HIPAA compliant." />
+        <meta property="og:url" content="https://www.csharptek.com/products/tekdial" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.csharptek.com/og-image.jpg" />
+        <meta name="twitter:title" content="TekDial — AI Voice Receptionist & Call Automation | CSharpTek" />
+        <meta name="twitter:description" content="TekDial is an AI-powered voice receptionist that handles inbound calls, outbound campaigns, appointment setting and IVR flows — 24/7, HIPAA compliant." />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.csharptek.com' },
+                { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://www.csharptek.com/products/tekdial' },
+                { '@type': 'ListItem', position: 3, name: 'TekDial', item: 'https://www.csharptek.com/products/tekdial' },
+              ],
+            },
+            {
+              '@type': 'SoftwareApplication',
+              name: 'TekDial',
+              applicationCategory: 'BusinessApplication',
+              description: 'AI-powered voice receptionist handling inbound calls, outbound campaigns, appointment setting and IVR flows — 24/7, HIPAA compliant.',
+              operatingSystem: 'Web, iOS, Android',
+              offers: { '@type': 'Offer', availability: 'https://schema.org/InStock' },
+              provider: { '@type': 'Organization', name: 'CSharpTek', url: 'https://www.csharptek.com' },
+            },
+          ],
+        }) }} />
       </Head>
 
       <style>{`

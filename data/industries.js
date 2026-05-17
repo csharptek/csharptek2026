@@ -123,6 +123,13 @@ export const INDUSTRIES_DATA = {
     ],
     ctaHeadline: 'Your HIPAA-Compliant AI Partner',
     ctaDesc: 'Book a free discovery call. We\'ll assess your current systems, identify the highest-ROI opportunities and give you a clear roadmap — no obligation.',
+    faqs: [
+      { q: 'Is your healthcare software HIPAA compliant?', a: 'Yes. Every solution we build is HIPAA-compliant by default — including BAA agreements, end-to-end encryption, audit logging and Azure HIPAA-eligible infrastructure.' },
+      { q: 'Which EHR systems do you integrate with?', a: 'We integrate with Epic, Cerner, Athena Health, eClinicalWorks and any FHIR R4 or HL7-compliant system. Custom connectors built on request.' },
+      { q: 'How long does a healthcare AI project take?', a: 'A focused solution like an AI medical scribe or patient portal typically takes 6–12 weeks from kickoff to production. We provide a fixed timeline and scope before starting.' },
+      { q: 'Can you build on our existing systems?', a: 'Yes. We extend and integrate with your current EHR, billing and scheduling tools rather than replacing them — minimising disruption for your team.' },
+      { q: 'Do you offer post-launch support?', a: 'All projects include 3 months of post-launch support. We also offer ongoing maintenance and SLA-backed support plans.' },
+    ],
   },
 
   wellness: {
@@ -171,6 +178,13 @@ export const INDUSTRIES_DATA = {
     ],
     ctaHeadline: 'Software That Cares for Your Patients',
     ctaDesc: 'Tell us about your clinic and what you\'re trying to improve. We\'ll give you a free technical assessment and propose a roadmap within 48 hours.',
+    faqs: [
+      { q: 'Can you build software for IVF and fertility clinics?', a: 'Yes. We have delivered platforms for fertility clinics including patient journey tracking, cycle monitoring, consent management and secure document handling.' },
+      { q: 'How do you handle sensitive patient data in wellness apps?', a: 'All wellness platforms are built with HIPAA-grade encryption, role-based access and audit trails — regardless of whether HIPAA is legally required for your jurisdiction.' },
+      { q: 'Can you integrate wearable device data?', a: 'Yes — Apple HealthKit, Google Fit, Fitbit and most Bluetooth-enabled devices via their SDKs or open APIs.' },
+      { q: 'Do you build mobile apps for wellness platforms?', a: 'We build cross-platform React Native apps (iOS + Android) alongside a web portal and admin dashboard — all from a single codebase.' },
+      { q: 'What is a typical project timeline?', a: 'A core wellness platform MVP typically takes 8–14 weeks. We scope and fix the timeline before starting.' },
+    ],
   },
 
   education: {
@@ -219,6 +233,13 @@ export const INDUSTRIES_DATA = {
     ],
     ctaHeadline: 'Build EdTech That Students Love',
     ctaDesc: 'Tell us about your institution or EdTech idea. We\'ll scope a solution and give you a fixed-price proposal within 48 hours.',
+    faqs: [
+      { q: 'Can you build a custom LMS from scratch?', a: 'Yes. We build custom LMS platforms with video streaming, quiz engines, progress tracking, certificates and mobile apps — tailored to your pedagogy.' },
+      { q: 'Do you integrate with existing school management systems?', a: 'We integrate with Canvas, Moodle, Blackboard, Google Classroom and most SMS platforms via REST APIs or LTI connectors.' },
+      { q: 'Can you add AI tutoring features to our platform?', a: 'Yes — AI-powered Q&A tutors, adaptive learning paths, automatic grading and student performance analytics using Azure OpenAI.' },
+      { q: 'Do you support multilingual EdTech platforms?', a: 'Yes. We have built bilingual platforms including Arabic/English interfaces with full RTL support.' },
+      { q: 'What is the cost of building an EdTech platform?', a: 'Projects start from $15,000 for a focused MVP. We provide a detailed fixed-price quote after an initial scoping call — no surprises.' },
+    ],
   },
 
   automation: {
@@ -267,6 +288,13 @@ export const INDUSTRIES_DATA = {
     ],
     ctaHeadline: 'Let\'s Automate Your Revenue Engine',
     ctaDesc: 'Tell us your current stack and biggest bottleneck. We\'ll map out a 30-day automation roadmap — free, no obligation.',
+    faqs: [
+      { q: 'What automation tools do you use?', a: 'We build with n8n, Make (Integromat), Zapier, Azure Logic Apps and custom webhook pipelines — choosing the right tool for your scale and budget.' },
+      { q: 'Can you automate our lead generation and CRM updates?', a: 'Yes — end-to-end lead capture, enrichment, CRM entry, follow-up sequences and pipeline stage updates, all automated.' },
+      { q: 'How quickly can you deliver an automation workflow?', a: 'Simple workflows are live in 1–2 weeks. Complex multi-system automations take 3–6 weeks. We always deliver a working prototype in week one.' },
+      { q: 'Can you connect tools we already use?', a: 'We integrate with 500+ apps including HubSpot, Salesforce, Slack, Google Workspace, Microsoft 365, Shopify, Stripe and most REST-API-enabled tools.' },
+      { q: 'Do you build AI agents as part of automation?', a: 'Yes. We build AI agents using LangChain, Claude and Azure OpenAI that can reason, decide and act — not just move data between systems.' },
+    ],
   },
 
   marketplace: {
@@ -315,6 +343,13 @@ export const INDUSTRIES_DATA = {
     ],
     ctaHeadline: 'Build a Marketplace That Scales',
     ctaDesc: 'Tell us your marketplace idea. We\'ll give you a free technical assessment and a phased build plan within 48 hours.',
+    faqs: [
+      { q: 'How long does it take to build a marketplace platform?', a: 'An MVP marketplace with core buyer/seller flows, payments and ratings takes 10–16 weeks. We deliver in phases so you can launch and iterate fast.' },
+      { q: 'Do you handle payments and escrow?', a: 'Yes — Stripe Connect, PayPal, Razorpay and custom escrow flows depending on your geography and compliance requirements.' },
+      { q: 'Can you build a mobile app for the marketplace?', a: 'Yes. We build React Native apps for iOS and Android alongside the web platform — sharing the same backend API.' },
+      { q: 'How do you handle trust and safety on marketplaces?', a: 'We implement ID verification, review moderation, dispute resolution workflows, fraud detection and AI-powered content moderation.' },
+      { q: 'Can you integrate AI matching or recommendations?', a: 'Yes — AI-powered search, personalised recommendations, smart matching between buyers and providers using vector search and LLMs.' },
+    ],
   },
 
   petcare: {
@@ -363,6 +398,13 @@ export const INDUSTRIES_DATA = {
     ],
     ctaHeadline: 'Modernise Your Vet Practice or Pet Platform',
     ctaDesc: 'Tell us about your clinic or pet care business. We\'ll propose a solution and timeline within 48 hours — no obligation.',
+    faqs: [
+      { q: 'Can you build a custom vet clinic management system?', a: 'Yes — appointment booking, patient records, vaccination tracking, billing and owner portals. Built to your workflow, not a generic template.' },
+      { q: 'Do you integrate with existing vet software?', a: 'We integrate with Vetspire, Covetrus, AVImark and other major platforms via API or direct database connectors.' },
+      { q: 'Can you build a pet care marketplace or booking platform?', a: 'Yes — grooming, boarding, daycare and vet appointment marketplaces with real-time availability, payments and automated reminders.' },
+      { q: 'How do you handle vaccination record management?', a: 'We build automated vaccination tracking with owner notifications, certificate generation and vet-portal synchronisation.' },
+      { q: 'Can you build a mobile app for pet owners?', a: 'Yes. React Native apps for iOS and Android with pet profiles, appointment history, reminders and direct messaging with the clinic.' },
+    ],
   },
 
   crm: {
@@ -411,5 +453,12 @@ export const INDUSTRIES_DATA = {
     ],
     ctaHeadline: 'A CRM Your Team Will Actually Use',
     ctaDesc: 'Tell us what\'s broken with your current setup. We\'ll propose a solution — whether that\'s a custom build, HubSpot, GoHighLevel or a hybrid — within 48 hours.',
+    faqs: [
+      { q: 'Should we build a custom CRM or use HubSpot/Salesforce?', a: 'It depends on your process complexity. We help you decide — and if custom is right, we build it at a fraction of enterprise CRM licensing costs.' },
+      { q: 'Can you migrate our data from our existing CRM?', a: 'Yes. We handle full data migration from Salesforce, HubSpot, Zoho, Pipedrive and most other CRMs — including custom field mapping and data cleaning.' },
+      { q: 'Can you add AI features to our CRM?', a: 'Yes — AI lead scoring, automated follow-up drafting, sentiment analysis on customer communications and predictive pipeline forecasting.' },
+      { q: 'How long does a custom CRM take to build?', a: 'A core CRM with contacts, pipeline, tasks and reporting takes 8–12 weeks. We add modules in subsequent phases.' },
+      { q: 'Can you integrate our CRM with other tools?', a: 'Yes — email (Microsoft 365, Gmail), calendar, WhatsApp, Slack, accounting tools and any REST API-enabled platform.' },
+    ],
   },
 }

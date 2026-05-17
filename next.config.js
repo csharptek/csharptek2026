@@ -19,6 +19,8 @@ const nextConfig = {
       { source: '/casestudy/:slug*',                            destination: '/portfolio',                         permanent: true },
       { source: '/case-study/:slug*',                           destination: '/portfolio',                         permanent: true },
       { source: '/blog/:slug',                                  destination: '/blog/:slug',                        permanent: false },
+      // Real estate old URLs
+      { source: '/real-estate-software-development',            destination: '/industries/realestate',             permanent: true },
     ]
   },
 }

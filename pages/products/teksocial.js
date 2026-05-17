@@ -42,6 +42,36 @@ export default function TekSocial() {
       <Head>
         <title>TekSocial — AI Social Media Content Generator & Scheduler | CSharpTek</title>
         <meta name="description" content="TekSocial generates AI-powered social media posts, images and videos for LinkedIn, Instagram, Twitter and Facebook — then schedules them automatically." />
+        <link rel="canonical" href="https://www.csharptek.com/products/teksocial" />
+        <meta property="og:title" content="TekSocial — AI Social Media Content Generator & Scheduler | CSharpTek" />
+        <meta property="og:description" content="TekSocial generates AI-powered social media posts, images and videos for LinkedIn, Instagram, Twitter and Facebook — then schedules them automatically." />
+        <meta property="og:url" content="https://www.csharptek.com/products/teksocial" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.csharptek.com/og-image.jpg" />
+        <meta name="twitter:title" content="TekSocial — AI Social Media Content Generator & Scheduler | CSharpTek" />
+        <meta name="twitter:description" content="TekSocial generates AI-powered social media posts, images and videos for LinkedIn, Instagram, Twitter and Facebook — then schedules them automatically." />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.csharptek.com' },
+                { '@type': 'ListItem', position: 2, name: 'Products', item: 'https://www.csharptek.com/products/teksocial' },
+                { '@type': 'ListItem', position: 3, name: 'TekSocial', item: 'https://www.csharptek.com/products/teksocial' },
+              ],
+            },
+            {
+              '@type': 'SoftwareApplication',
+              name: 'TekSocial',
+              applicationCategory: 'BusinessApplication',
+              description: 'AI-powered social media content generator and scheduler for LinkedIn, Instagram, Twitter and Facebook.',
+              operatingSystem: 'Web',
+              offers: { '@type': 'Offer', availability: 'https://schema.org/InStock' },
+              provider: { '@type': 'Organization', name: 'CSharpTek', url: 'https://www.csharptek.com' },
+            },
+          ],
+        }) }} />
       </Head>
 
       <style>{`

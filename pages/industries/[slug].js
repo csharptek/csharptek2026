@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import Layout from '../../components/Layout'
 import { INDUSTRIES_DATA, INDUSTRIES_LIST } from '../../data/industries'
@@ -225,6 +225,17 @@ const STYLES = `
   .pn-all{display:flex;align-items:center;gap:6px;padding:10px 18px;background:rgba(255,107,43,.08);border:1px solid rgba(255,107,43,.2);border-radius:9px;font-size:13px;font-weight:700;color:#FF6B2B;transition:background .15s;}
   .pn-all:hover{background:rgba(255,107,43,.16);}
 
+  /* FAQ */
+  .faq-sec{background:#0A1628;padding:80px 28px;}
+  .faq-list{max-width:760px;margin:0 auto;margin-top:40px;display:flex;flex-direction:column;gap:12px;}
+  .faq-item{background:rgba(255,255,255,.03);border:1px solid rgba(46,158,214,.12);border-radius:12px;overflow:hidden;transition:border-color .2s;}
+  .faq-item.open{border-color:rgba(46,158,214,.35);}
+  .faq-q{width:100%;background:none;border:none;text-align:left;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;font-family:'Mulish',sans-serif;}
+  .faq-qt{font-size:15px;font-weight:700;color:#fff;line-height:1.4;}
+  .faq-arr{font-size:18px;color:#7EC8E3;flex-shrink:0;transition:transform .25s;}
+  .faq-item.open .faq-arr{transform:rotate(45deg);}
+  .faq-a{font-size:14px;color:rgba(255,255,255,.6);line-height:1.75;padding:0 22px 18px;}
+
   @media(max-width:1000px){
     .hero-in{grid-template-columns:1fr;gap:40px;}
     .pain-grid{grid-template-columns:repeat(2,1fr);}
@@ -244,6 +255,8 @@ const STYLES = `
 `
 
 export default function IndustryPage({ slug, ind, prev, next, allInds }) {
+  const [openFaq, setOpenFaq] = useState(null)
+
   useEffect(() => {
     const els = document.querySelectorAll('.rv')
     const obs = new IntersectionObserver(
@@ -261,9 +274,46 @@ export default function IndustryPage({ slug, ind, prev, next, allInds }) {
       <Head>
         <title>{ind.name} AI Software Development — CSharpTek</title>
         <meta name="description" content={ind.metaDesc} />
+        <link rel="canonical" href={`https://www.csharptek.com/industries/${slug}`} />
+        <meta property="og:title" content={`${ind.name} AI Software Development — CSharpTek`} />
+        <meta property="og:description" content={ind.metaDesc} />
+        <meta property="og:url" content={`https://www.csharptek.com/industries/${slug}`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.csharptek.com/og-image.jpg" />
+        <meta name="twitter:title" content={`${ind.name} AI Software Development — CSharpTek`} />
+        <meta name="twitter:description" content={ind.metaDesc} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.csharptek.com' },
+                { '@type': 'ListItem', position: 2, name: 'Industries', item: 'https://www.csharptek.com/industries' },
+                { '@type': 'ListItem', position: 3, name: `${ind.name} AI`, item: `https://www.csharptek.com/industries/${slug}` },
+              ],
+            },
+            {
+              '@type': 'Service',
+              name: `${ind.name} AI Software Development`,
+              description: ind.metaDesc,
+              provider: { '@type': 'Organization', name: 'CSharpTek', url: 'https://www.csharptek.com' },
+              areaServed: ['IN', 'US', 'GB', 'AU', 'AE'],
+              url: `https://www.csharptek.com/industries/${slug}`,
+            },
+            ...(ind.faqs ? [{
+              '@type': 'FAQPage',
+              mainEntity: ind.faqs.map(f => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a },
+              })),
+            }] : []),
+          ],
+        }) }} />
       </Head>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
 
@@ -499,6 +549,30 @@ export default function IndustryPage({ slug, ind, prev, next, allInds }) {
           </div>
         </div>
       </section>
+
+      {/* ── FAQ ── */}
+      {ind.faqs && ind.faqs.length > 0 && (
+        <section className="faq-sec">
+          <div className="in">
+            <div style={{ textAlign:'center', marginBottom:0 }}>
+              <div className="lbl" style={{ color:'#7EC8E3', justifyContent:'center' }}><span className="ldot" />FAQ</div>
+              <h2 className="sec-t rv" style={{ fontSize:'clamp(22px,3vw,36px)', color:'#fff', marginBottom:8 }}>Frequently Asked Questions</h2>
+              <p style={{ fontSize:15, color:'rgba(255,255,255,.45)', maxWidth:520, margin:'0 auto' }}>Common questions about our {ind.name.toLowerCase()} software services.</p>
+            </div>
+            <div className="faq-list">
+              {ind.faqs.map((f, i) => (
+                <div key={i} className={`faq-item rv d${(i%6)+1}${openFaq === i ? ' open' : ''}`}>
+                  <button className="faq-q" onClick={() => setOpenFaq(openFaq === i ? null : i)} aria-expanded={openFaq === i}>
+                    <span className="faq-qt">{f.q}</span>
+                    <span className="faq-arr">+</span>
+                  </button>
+                  {openFaq === i && <p className="faq-a">{f.a}</p>}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── BOTTOM CTA ── */}
       <section className="cta-sec">

@@ -6,8 +6,12 @@ export default function PrivacyPolicy() {
     <Layout>
       <Head>
         <title>Privacy Policy | CSharpTek</title>
-        <meta name="description" content="Learn about CSharpTek's privacy policy — how we collect and protect your personal information." />
+        <meta name="description" content="CSharpTek Privacy Policy — how we collect, use and protect your personal information." />
+        <link rel="canonical" href="https://www.csharptek.com/privacy-policy" />
         <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Privacy Policy | CSharpTek" />
+        <meta property="og:url" content="https://www.csharptek.com/privacy-policy" />
+        <meta property="og:type" content="website" />
       </Head>
 
       <section style={{background:'#060f1d',minHeight:'100vh',padding:'120px 0 80px'}}>

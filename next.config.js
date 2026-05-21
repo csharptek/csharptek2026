@@ -6,7 +6,6 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      // Old site URL → new
       { source: '/e-learning-solutions',                        destination: '/industries/education',              permanent: true },
       { source: '/azure-ai-service',                            destination: '/services/ai-integration',           permanent: true },
       { source: '/custom-mobile-app-development-services',      destination: '/services/web-mobile',               permanent: true },
@@ -18,8 +17,6 @@ const nextConfig = {
       { source: '/cloud-consulting-services',                   destination: '/services/cloud-devops',             permanent: true },
       { source: '/casestudy/:slug*',                            destination: '/portfolio',                         permanent: true },
       { source: '/case-study/:slug*',                           destination: '/portfolio',                         permanent: true },
-      { source: '/blog/:slug',                                  destination: '/blog/:slug',                        permanent: false },
-      // Real estate old URLs
       { source: '/real-estate-software-development',            destination: '/industries/realestate',             permanent: true },
     ]
   },

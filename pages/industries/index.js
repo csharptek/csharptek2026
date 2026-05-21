@@ -101,6 +101,12 @@ export default function IndustriesPage() {
         <title>AI Industry Solutions | CSharpTek — Healthcare, Education, Real Estate & More</title>
         <meta name="description" content="CSharpTek builds AI-first software for Healthcare, Education, Real Estate, Wellness, Marketplace, Pet Care and CRM industries. Industry-specific AI solutions with compliance built in." />
         <link rel="canonical" href="https://www.csharptek.com/industries" />
+        <meta property="og:title" content="AI Industry Solutions | CSharpTek" />
+        <meta property="og:description" content="AI-first software for Healthcare, Education, Real Estate, Wellness, Marketplace, Pet Care and CRM industries." />
+        <meta property="og:url" content="https://www.csharptek.com/industries" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:title" content="AI Industry Solutions | CSharpTek" />
+        <meta name="twitter:description" content="AI-first software for Healthcare, Education, Real Estate, Wellness and more industries." />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />

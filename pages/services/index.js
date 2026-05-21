@@ -117,7 +117,14 @@ export default function ServicesPage() {
       <Head>
         <title>Services — CSharpTek AI-First Software Development</title>
         <meta name="description" content="9 AI-first services from CSharpTek — AI Integration, Voice Agents, Web & Mobile, Cloud DevOps, MVP Vibe Coding, Marketplace Publishing, Prompt Engineering, CRM Tools and 24/7 Support." />
-</Head>
+        <link rel="canonical" href="https://www.csharptek.com/services" />
+        <meta property="og:title" content="Services — CSharpTek AI-First Software Development" />
+        <meta property="og:description" content="9 AI-first services from CSharpTek — AI Integration, Voice Agents, Web & Mobile, Cloud DevOps, MVP Vibe Coding, Prompt Engineering, CRM and 24/7 Support." />
+        <meta property="og:url" content="https://www.csharptek.com/services" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:title" content="Services — CSharpTek AI-First Software Development" />
+        <meta name="twitter:description" content="9 AI-first services from CSharpTek — AI Integration, Voice Agents, Web & Mobile, Cloud DevOps and more." />
+      </Head>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
 
       {/* ── HERO ── */}

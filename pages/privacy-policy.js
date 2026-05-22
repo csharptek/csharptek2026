@@ -47,6 +47,11 @@ export default function PrivacyPolicy() {
               content:'Cookies are small data files that a website you visit may save on your computer or handheld device that usually includes an anonymous unique identifier. This anonymous information is used and analyzed in order to provide a better user experience. When you use some of the social share features, a cookie may be set by the widget to share content. If you access those links through the CSharpTek site, you will leave our site. We do not control these cookies or make any representations about third-party websites.'
             },
             {
+              title:'Data Deletion and Retention',
+              content:null,
+              deletion: true
+            },
+            {
               title:'Contacting Us',
               content:null,
               contact: true
@@ -76,6 +81,23 @@ export default function PrivacyPolicy() {
                   199/A Mandaliya Nagar, Bariatu, Ranchi, Jharkhand - 834009<br/>
                   Telephone: <a href="tel:18008902630" style={{color:'#2E9ED6',textDecoration:'none'}}>1800 890 2630</a><br/>
                   Email: <a href="mailto:info@csharptek.com" style={{color:'#2E9ED6',textDecoration:'none'}}>info@csharptek.com</a>
+                </div>
+              )}
+              {section.deletion && (
+                <div style={{fontSize:15,color:'rgba(255,255,255,.6)',lineHeight:1.9}}>
+                  <p style={{margin:'0 0 16px'}}>We respect your right to control your personal data. You may request deletion of your data from TEKLead AI (operated by CSharpTek) at any time.</p>
+
+                  <h3 style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:16,fontWeight:700,color:'#fff',marginBottom:8,marginTop:20}}>How to request deletion</h3>
+                  <p style={{margin:'0 0 16px'}}>To delete your data, send an email to <a href="mailto:info@csharptek.in" style={{color:'#2E9ED6',textDecoration:'none'}}>info@csharptek.in</a> with the subject line <strong style={{color:'#fff'}}>&quot;Data Deletion Request&quot;</strong>. Include the phone number, email address, or name associated with your data so we can identify your records.</p>
+
+                  <h3 style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:16,fontWeight:700,color:'#fff',marginBottom:8,marginTop:20}}>What we delete</h3>
+                  <p style={{margin:'0 0 16px'}}>Upon a valid request, we permanently delete all personal data associated with you, including contact details, message and conversation history, and any lead or proposal records linked to your identifier.</p>
+
+                  <h3 style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:16,fontWeight:700,color:'#fff',marginBottom:8,marginTop:20}}>Timeline</h3>
+                  <p style={{margin:'0 0 16px'}}>We process all deletion requests and permanently remove the associated data within 30 days of receiving your request. We will confirm completion by email.</p>
+
+                  <h3 style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:16,fontWeight:700,color:'#fff',marginBottom:8,marginTop:20}}>Data we collect</h3>
+                  <p style={{margin:0}}>We collect and process contact information (name, email, phone number), communication records (messages sent and received through WhatsApp and email), and business-related details you or your organization provide. This data is used solely to provide outreach, communication, and lead-management services.</p>
                 </div>
               )}
             </div>

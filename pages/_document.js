@@ -50,7 +50,6 @@ export default function Document() {
               },
               address: [
                 { '@type': 'PostalAddress', addressLocality: 'Ranchi', addressRegion: 'Jharkhand', addressCountry: 'IN' },
-                
               ],
               sameAs: [
                 'https://linkedin.com/company/csharptek',
@@ -65,6 +64,7 @@ export default function Document() {
             }),
           }}
         />
+
         {/* Instantly Website Visitors */}
         <script id="vtag-ai-js" async src="https://r2.leadsy.ai/tag.js" data-pid="mDDHbLWi0hqV3zw2" data-version="062024" />
 
@@ -84,6 +84,19 @@ export default function Document() {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-M7WKDLH3T1', { page_path: window.location.pathname });
+            `,
+          }}
+        />
+
+        {/* Microsoft Clarity */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "wvfah46m8a");
             `,
           }}
         />

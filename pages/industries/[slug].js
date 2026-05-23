@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import Layout from '../../components/Layout'
 import { INDUSTRIES_DATA, INDUSTRIES_LIST } from '../../data/industries'
+import { track } from '../../lib/analytics'
 const ScrollToTop = dynamic(() => import('../../components/ScrollToTop'), { ssr: false })
 
 export async function getStaticPaths() {
@@ -267,6 +268,10 @@ export default function IndustryPage({ slug, ind, prev, next, allInds }) {
     return () => obs.disconnect()
   }, [slug])
 
+  useEffect(() => {
+    track.industryView(slug)
+  }, [slug])
+
   const isHealthcare = slug === 'healthcare'
 
   return (
@@ -330,8 +335,8 @@ export default function IndustryPage({ slug, ind, prev, next, allInds }) {
             <p className="hero-sub rv">{ind.subline}</p>
             <div className="hero-tags rv">{ind.heroTags.map(t => <span key={t} className="hero-tag">{t}</span>)}</div>
             <div className="hero-btns rv">
-              <Link href="/contact" className="btn-p">Book a Free Consultation →</Link>
-              <Link href="/portfolio" className="btn-s">See Our Work</Link>
+              <Link href="/contact" className="btn-p" onClick={() => track.industryCta('Book a Free Consultation', slug)}>Book a Free Consultation →</Link>
+              <Link href="/portfolio" className="btn-s" onClick={() => track.industryCta('See Our Work', slug)}>See Our Work</Link>
             </div>
           </div>
           <div className="hcard rv" style={{ background: `linear-gradient(135deg,rgba(0,0,0,.35),rgba(0,0,0,.2))`, border:'1px solid rgba(255,255,255,.1)' }}>
@@ -516,7 +521,7 @@ export default function IndustryPage({ slug, ind, prev, next, allInds }) {
               <h3 className="case-t">{ind.caseStudy.title}</h3>
               <p className="case-d">{ind.caseStudy.desc}</p>
               <div className="case-stk">{ind.caseStudy.stack.map(s => <span key={s} className="case-tk">{s}</span>)}</div>
-              <Link href="/portfolio" className="btn-p" style={{ display:'inline-block' }}>View Full Case Study →</Link>
+              <Link href="/portfolio" className="btn-p" style={{ display:'inline-block' }} onClick={() => track.caseStudyClick(ind.caseStudy?.title || 'Case Study', slug)}>View Full Case Study →</Link>
             </div>
             <div className="metrics">
               {ind.caseStudy.metrics.map(m => (
@@ -581,8 +586,8 @@ export default function IndustryPage({ slug, ind, prev, next, allInds }) {
           <h2 className="cta-t">{ind.ctaHeadline}</h2>
           <p className="cta-s">{ind.ctaDesc}</p>
           <div style={{ display:'flex', gap:14, justifyContent:'center', flexWrap:'wrap' }}>
-            <Link href="/contact" className="btn-p">Book a Free Consultation →</Link>
-            <Link href="/services" className="btn-s">View All Services</Link>
+            <Link href="/contact" className="btn-p" onClick={() => track.industryCta('Book a Free Consultation', slug)}>Book a Free Consultation →</Link>
+            <Link href="/services" className="btn-s" onClick={() => track.industryCta('View All Services', slug)}>View All Services</Link>
           </div>
           <div className="trust-items">
             {['No obligation','Reply within 24 hours','HIPAA-ready','10+ years experience'].map(t => (

@@ -5,6 +5,7 @@ import Layout from '../../components/Layout'
 import dynamic from 'next/dynamic'
 const ScrollToTop = dynamic(() => import('../../components/ScrollToTop'), { ssr: false })
 import { SERVICES_DATA, SERVICES_LIST } from '../../data/services'
+import { track } from '../../lib/analytics'
 
 const STYLES = `
   *{box-sizing:border-box;margin:0;padding:0;}
@@ -156,6 +157,10 @@ export default function ServicePage({ service, slug, prev, next, allServices }) 
     return () => obs.disconnect()
   }, [])
 
+  useEffect(() => {
+    track.serviceView(slug)
+  }, [slug])
+
   const TIERS = [
     { key:'spark',   name:'🚀 Spark',    badge:'Starter',     hl:false, badgeBg:'rgba(46,158,214,.1)',    badgeCol:'#1565A8', nameCol:'#0A1628', descCol:'rgba(10,22,40,.6)',   desc:'Perfect for MVPs, pilots and proof-of-concepts. Fast delivery, core features.' },
     { key:'scale',   name:'⚡ Scale',    badge:'Most Popular', hl:true,  badgeBg:'rgba(255,107,43,.15)',  badgeCol:'#FF6B2B', nameCol:'#fff',     descCol:'rgba(255,255,255,.65)',desc:'Full-featured build with advanced AI, cloud deployment and integrations.' },
@@ -203,8 +208,8 @@ export default function ServicePage({ service, slug, prev, next, allServices }) 
           <h1 className="sp-title rv">{service.headline}<br/><span className="sp-grad">{service.headlineAccent}</span></h1>
           <p className="sp-sub rv">{service.subline}</p>
           <div className="sp-ctas rv">
-            <Link href="/contact" className="btn-p">Start a Project →</Link>
-            <Link href="/portfolio" className="btn-s">View Case Studies</Link>
+            <Link href="/contact" className="btn-p" onClick={() => track.serviceCta("Start a Project", slug)}>Start a Project →</Link>
+            <Link href="/portfolio" className="btn-s" onClick={() => track.serviceCta("View Case Studies", slug)}>View Case Studies</Link>
           </div>
           <div className="sp-tags rv">
             {service.topTags.map(t => <span key={t} className="sp-tag">{t}</span>)}
@@ -318,7 +323,7 @@ export default function ServicePage({ service, slug, prev, next, allServices }) 
               <div className="sp-case-stk">
                 {service.caseStudy.stack.map(s => <span key={s} className="sp-case-tk">{s}</span>)}
               </div>
-              <Link href="/portfolio" className="btn-p" style={{display:'inline-block'}}>View Full Case Study →</Link>
+              <Link href="/portfolio" className="btn-p" style={{display:"inline-block"}} onClick={() => track.serviceCta("View Full Case Study", slug)}>View Full Case Study →</Link>
             </div>
             <div className="sp-metrics">
               {service.caseStudy.metrics.map(m => (
@@ -358,7 +363,7 @@ export default function ServicePage({ service, slug, prev, next, allServices }) 
             ))}
           </div>
           <div className="rv" style={{textAlign:'center',marginTop:32}}>
-            <Link href="/contact" className="btn-p" style={{display:'inline-block'}}>Get a Free Quote →</Link>
+            <Link href="/contact" className="btn-p" style={{display:"inline-block"}} onClick={() => track.serviceCta("Get a Free Quote", slug)}>Get a Free Quote →</Link>
           </div>
         </div>
       </section>
@@ -390,8 +395,8 @@ export default function ServicePage({ service, slug, prev, next, allServices }) 
           <h2 className="sp-cta-t">Let&apos;s Build Your<br/><span style={{color:'#FF6B2B'}}>{service.ctaAccent}</span></h2>
           <p className="sp-cta-s">{service.ctaDesc}</p>
           <div className="sp-cta-acts">
-            <Link href="/contact" className="btn-p">Book a Free Consultation →</Link>
-            <Link href="/portfolio" className="btn-s">See Our Work</Link>
+            <Link href="/contact" className="btn-p" onClick={() => track.serviceCta("Book a Free Consultation", slug)}>Book a Free Consultation →</Link>
+            <Link href="/portfolio" className="btn-s" onClick={() => track.serviceCta("See Our Work", slug)}>See Our Work</Link>
           </div>
         </div>
       </section>

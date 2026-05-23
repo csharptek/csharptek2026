@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from './Nav.module.css'
+import { track } from '../lib/analytics'
 
 const SERVICES_DROPDOWN = [
   { icon:'🧠', label:'AI Integration & Automation', href:'/services/ai-integration' },
@@ -47,7 +48,8 @@ function NavDropdown({ label, items, viewAllHref, viewAllLabel, isProducts }) {
         <div className={styles.dropdown} onMouseEnter={stay} onMouseLeave={hide}>
           <div className={styles.dropHeader}>{label}</div>
           {items.map(s => (
-            <Link key={s.href} href={s.href} className={`${styles.dropItem} ${isProducts ? styles.dropItemProduct : ''}`} onClick={() => setOpen(false)}>
+            <Link key={s.href} href={s.href} className={`${styles.dropItem} ${isProducts ? styles.dropItemProduct : ''}`}
+              onClick={() => { setOpen(false); track.navDropdownClick(s.label, label) }}>
               <span className={styles.dropIcon}>{s.icon}</span>
               <span className={styles.dropLabel}>{s.label}</span>
               {s.badge && <span className={styles.dropBadge}>{s.badge}</span>}
@@ -55,7 +57,8 @@ function NavDropdown({ label, items, viewAllHref, viewAllLabel, isProducts }) {
           ))}
           {viewAllHref && (
             <div className={styles.dropFooter}>
-              <Link href={viewAllHref} className={styles.dropAll} onClick={() => setOpen(false)}>
+              <Link href={viewAllHref} className={styles.dropAll}
+                onClick={() => { setOpen(false); track.navDropdownClick(`View All ${label}`, label) }}>
                 ⊞ {viewAllLabel} →
               </Link>
             </div>
@@ -122,7 +125,10 @@ export default function Nav() {
 
         {/* CTA */}
         <div className={styles.ctaWrap}>
-          <Link href="/contact" className={styles.cta}>Free Consultation</Link>
+          <Link href="/contact" className={styles.cta}
+            onClick={() => track.navCtaClick('Free Consultation')}>
+            Free Consultation
+          </Link>
         </div>
 
         {/* Hamburger */}
@@ -138,7 +144,6 @@ export default function Nav() {
         <div className={styles.mobileMenu}>
           <Link href="/" className={styles.mobileLink} onClick={closeAll}>🏠 Home</Link>
 
-          {/* Services accordion */}
           <div>
             <button className={styles.mobileSvcBtn} onClick={() => setMobSvc(!mobSvc)}>
               Services <span>{mobSvc ? '▲' : '▾'}</span>
@@ -146,7 +151,8 @@ export default function Nav() {
             {mobSvc && (
               <div className={styles.mobileSvcList}>
                 {SERVICES_DROPDOWN.map(s => (
-                  <Link key={s.href} href={s.href} className={styles.mobileSubLink} onClick={closeAll}>
+                  <Link key={s.href} href={s.href} className={styles.mobileSubLink}
+                    onClick={() => { closeAll(); track.navDropdownClick(s.label, 'Services') }}>
                     <span>{s.icon}</span>{s.label}
                   </Link>
                 ))}
@@ -155,7 +161,6 @@ export default function Nav() {
             )}
           </div>
 
-          {/* Industries accordion */}
           <div>
             <button className={styles.mobileSvcBtn} onClick={() => setMobInd(!mobInd)}>
               Industries <span>{mobInd ? '▲' : '▾'}</span>
@@ -163,7 +168,8 @@ export default function Nav() {
             {mobInd && (
               <div className={styles.mobileSvcList}>
                 {INDUSTRIES_DROPDOWN.map(i => (
-                  <Link key={i.href} href={i.href} className={styles.mobileSubLink} onClick={closeAll}>
+                  <Link key={i.href} href={i.href} className={styles.mobileSubLink}
+                    onClick={() => { closeAll(); track.navDropdownClick(i.label, 'Industries') }}>
                     <span>{i.icon}</span>{i.label}
                   </Link>
                 ))}
@@ -172,7 +178,6 @@ export default function Nav() {
             )}
           </div>
 
-          {/* Products accordion */}
           <div>
             <button className={`${styles.mobileSvcBtn} ${styles.mobileProdBtn}`} onClick={() => setMobProd(!mobProd)}>
               🚀 Products <span>{mobProd ? '▲' : '▾'}</span>
@@ -180,7 +185,8 @@ export default function Nav() {
             {mobProd && (
               <div className={styles.mobileSvcList}>
                 {PRODUCTS_DROPDOWN.map(p => (
-                  <Link key={p.href} href={p.href} className={styles.mobileSubLink} onClick={closeAll}>
+                  <Link key={p.href} href={p.href} className={styles.mobileSubLink}
+                    onClick={() => { closeAll(); track.navDropdownClick(p.label, 'Products') }}>
                     <span>{p.icon}</span>{p.label}
                   </Link>
                 ))}
@@ -192,7 +198,10 @@ export default function Nav() {
           <Link href="/portfolio" className={styles.mobileLink} onClick={closeAll}>Portfolio</Link>
           <Link href="/about"     className={styles.mobileLink} onClick={closeAll}>About</Link>
           <Link href="/careers"   className={styles.mobileLink} onClick={closeAll}>Careers</Link>
-          <Link href="/contact"   className={styles.mobileCta}  onClick={closeAll}>Free Consultation</Link>
+          <Link href="/contact"   className={styles.mobileCta}
+            onClick={() => { closeAll(); track.navCtaClick('Free Consultation Mobile') }}>
+            Free Consultation
+          </Link>
         </div>
       )}
     </nav>

@@ -1,7 +1,8 @@
 import Head from 'next/head'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Layout from '../components/Layout'
 import dynamic from 'next/dynamic'
+import { track } from '../lib/analytics'
 const ScrollToTop = dynamic(() => import('../components/ScrollToTop'), { ssr: false })
 
 const S = `
@@ -13,7 +14,6 @@ const S = `
   .rv.on{transform:translateY(0);}
   .d1{transition-delay:.07s;}.d2{transition-delay:.14s;}.d3{transition-delay:.21s;}.d4{transition-delay:.28s;}
 
-  /* HERO */
   .ct-hero{background:linear-gradient(155deg,#0A1628 0%,#0D2B45 60%,#091422 100%);padding:100px 28px 72px;text-align:center;position:relative;overflow:hidden;}
   .ct-hero-orb{position:absolute;border-radius:50%;pointer-events:none;}
   .ct-inner{max-width:1100px;margin:0 auto;}
@@ -22,11 +22,9 @@ const S = `
   .ct-h1{font-family:'Plus Jakarta Sans',-apple-system,sans-serif;font-weight:800;font-size:clamp(34px,5vw,60px);color:#fff;line-height:1.1;letter-spacing:-.03em;margin-bottom:16px;}
   .ct-sub{font-size:clamp(15px,1.5vw,18px);color:rgba(255,255,255,.5);line-height:1.75;max-width:520px;margin:0 auto;}
 
-  /* MAIN GRID */
   .ct-main{max-width:1100px;margin:0 auto;padding:72px 28px 96px;display:grid;grid-template-columns:1fr 1.35fr;gap:56px;align-items:start;}
   @media(max-width:860px){.ct-main{grid-template-columns:1fr;gap:44px;}}
 
-  /* LEFT — info */
   .ct-info-lbl{font-size:11px;font-weight:700;color:#7EC8E3;letter-spacing:.12em;text-transform:uppercase;margin-bottom:22px;}
   .ct-info-t{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(22px,2.5vw,30px);font-weight:800;color:#fff;line-height:1.2;margin-bottom:28px;}
 
@@ -45,7 +43,6 @@ const S = `
   .ct-badges{display:flex;flex-wrap:wrap;gap:9px;}
   .ct-badge{display:flex;align-items:center;gap:7px;padding:7px 13px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);}
 
-  /* RIGHT — form */
   .ct-form-wrap{background:rgba(255,255,255,.03);border:1px solid rgba(46,158,214,.14);border-radius:20px;padding:36px 32px;}
   @media(max-width:580px){.ct-form-wrap{padding:24px 18px;}}
   .ct-form-t{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:#fff;margin-bottom:4px;}
@@ -72,7 +69,6 @@ const S = `
   .ct-suc-t{font-family:'Plus Jakarta Sans',sans-serif;font-size:22px;font-weight:800;color:#22c55e;margin-bottom:10px;}
   .ct-suc-s{font-size:14px;color:rgba(255,255,255,.5);line-height:1.7;}
 
-  /* FAQ */
   .ct-faq{background:#060f1d;padding:72px 28px;}
   .ct-faq-inner{max-width:720px;margin:0 auto;}
   .ct-faq-hd{text-align:center;margin-bottom:40px;}
@@ -108,8 +104,16 @@ export default function Contact() {
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
   const [openFaq, setOpenFaq] = useState(null)
+  const formStarted = useRef(false)
 
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }))
+
+  const handleFocus = () => {
+    if (!formStarted.current) {
+      formStarted.current = true
+      track.formStart()
+    }
+  }
 
   const submit = async () => {
     if (!form.name || !form.email || !form.message) return
@@ -121,8 +125,12 @@ export default function Contact() {
         body: JSON.stringify(form),
       })
       const data = await res.json()
-      if (data.success) { setSent(true) }
-      else { alert('Failed to send. Please email info@csharptek.com directly.') }
+      if (data.success) {
+        setSent(true)
+        track.formSubmit(form.service || 'not selected')
+      } else {
+        alert('Failed to send. Please email info@csharptek.com directly.')
+      }
     } catch {
       alert('Network error. Please email info@csharptek.com directly.')
     }
@@ -156,7 +164,6 @@ export default function Contact() {
       </Head>
       <style dangerouslySetInnerHTML={{ __html: S }} />
 
-      {/* HERO */}
       <section className="ct-hero">
         <div style={{ position: 'absolute', top: '-10%', left: '-5%', width: 500, height: 500, borderRadius: '50%', background: 'radial-gradient(circle,rgba(21,101,168,.14) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ position: 'absolute', bottom: '-10%', right: '-5%', width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle,rgba(255,107,43,.07) 0%,transparent 70%)', pointerEvents: 'none' }} />
@@ -167,7 +174,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* MAIN */}
       <div style={{ background: '#0A1628' }}>
         <div className="ct-main">
 
@@ -178,7 +184,8 @@ export default function Contact() {
 
             <div className="ct-channels rv d1">
               {CHANNELS.map(c => (
-                <a key={c.t} href={c.href} className="ct-ch" target="_blank" rel="noopener noreferrer">
+                <a key={c.t} href={c.href} className="ct-ch" target="_blank" rel="noopener noreferrer"
+                  onClick={() => track.contactChannel(c.t)}>
                   <div className="ct-ch-ic" style={{ background: c.bg }}>{c.ic}</div>
                   <div>
                     <div className="ct-ch-t">{c.t}</div>
@@ -226,29 +233,34 @@ export default function Contact() {
                 <div className="ct-row">
                   <div className="ct-field">
                     <label className="ct-lbl">Name *</label>
-                    <input className="ct-inp" placeholder="Your full name" value={form.name} onChange={e => set('name', e.target.value)} />
+                    <input className="ct-inp" placeholder="Your full name" value={form.name}
+                      onChange={e => set('name', e.target.value)} onFocus={handleFocus} />
                   </div>
                   <div className="ct-field">
                     <label className="ct-lbl">Email *</label>
-                    <input className="ct-inp" type="email" placeholder="you@company.com" value={form.email} onChange={e => set('email', e.target.value)} />
+                    <input className="ct-inp" type="email" placeholder="you@company.com" value={form.email}
+                      onChange={e => set('email', e.target.value)} onFocus={handleFocus} />
                   </div>
                 </div>
 
                 <div className="ct-row">
                   <div className="ct-field">
                     <label className="ct-lbl">Company</label>
-                    <input className="ct-inp" placeholder="Company name" value={form.company} onChange={e => set('company', e.target.value)} />
+                    <input className="ct-inp" placeholder="Company name" value={form.company}
+                      onChange={e => set('company', e.target.value)} onFocus={handleFocus} />
                   </div>
                   <div className="ct-field">
                     <label className="ct-lbl">Phone</label>
-                    <input className="ct-inp" placeholder="+1 (555) 000-0000" value={form.phone} onChange={e => set('phone', e.target.value)} />
+                    <input className="ct-inp" placeholder="+1 (555) 000-0000" value={form.phone}
+                      onChange={e => set('phone', e.target.value)} onFocus={handleFocus} />
                   </div>
                 </div>
 
                 <div className="ct-row">
                   <div className="ct-field">
                     <label className="ct-lbl">Reason for Contact</label>
-                    <select className="ct-inp ct-sel" value={form.service} onChange={e => set('service', e.target.value)}>
+                    <select className="ct-inp ct-sel" value={form.service}
+                      onChange={e => set('service', e.target.value)} onFocus={handleFocus}>
                       <option value="">Select a reason</option>
                       <option value="General Enquiry">General Enquiry</option>
                       <option value="Project Consultation">Project Consultation (Free)</option>
@@ -262,7 +274,8 @@ export default function Contact() {
 
                 <div className="ct-field">
                   <label className="ct-lbl">Tell Us About Your Project *</label>
-                  <textarea className="ct-inp ct-ta" placeholder="Describe your project, goals, timeline and any specific requirements…" value={form.message} onChange={e => set('message', e.target.value)} />
+                  <textarea className="ct-inp ct-ta" placeholder="Describe your project, goals, timeline and any specific requirements…"
+                    value={form.message} onChange={e => set('message', e.target.value)} onFocus={handleFocus} />
                 </div>
 
                 <button className="ct-submit" disabled={sending || !form.name || !form.email || !form.message} onClick={submit}>
@@ -275,7 +288,6 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* FAQ */}
       <section className="ct-faq">
         <div className="ct-faq-inner">
           <div className="ct-faq-hd rv">

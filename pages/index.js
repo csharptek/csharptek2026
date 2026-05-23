@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import NavComponent from '../components/Nav'
 import dynamic from 'next/dynamic'
+import { track } from '../lib/analytics'
 const ScrollToTop = dynamic(() => import('../components/ScrollToTop'), { ssr: false })
 const HealthcareCard = dynamic(() => import('../components/industry-cards/HealthcareCard'), { ssr: false })
 const WellnessCard = dynamic(() => import('../components/industry-cards/WellnessCard'), { ssr: false })
@@ -719,10 +720,10 @@ function Hero(){
           </motion.p>
           <motion.div className="h-ctas" variants={fadeUp}>
             <motion.div whileHover={{scale:1.04}} whileTap={{scale:.97}}>
-              <a href="/contact" className="h-btn-p">Start a Project →</a>
+              <a href="/contact" className="h-btn-p" onClick={() => track.ctaClick('Start a Project', 'homepage_hero')}>Start a Project →</a>
             </motion.div>
             <motion.div whileHover={{scale:1.04}} whileTap={{scale:.97}}>
-              <a href="/portfolio" className="h-btn-s">View Our Work</a>
+              <a href="/portfolio" className="h-btn-s" onClick={() => track.ctaClick('View Our Work', 'homepage_hero')}>View Our Work</a>
             </motion.div>
           </motion.div>
           <motion.div className="h-pills" variants={fadeUp}>
@@ -809,7 +810,7 @@ function Services(){
         </div>
         <div className="srv-grid">
           {SERVICES.map((s,i)=>(
-            <a key={s.t} href={s.href} className={`scard rv d${(i%6)+1}`} style={{textDecoration:'none',display:'block'}}>
+            <a key={s.t} href={s.href} className={`scard rv d${(i%6)+1}`} style={{textDecoration:'none',display:'block'}} onClick={() => track.serviceCardClick(s.t)}>
               <div className="sc-ico">{s.i}</div>
               <h3 className="sc-ttl">{s.t}</h3>
               <p className="sc-dsc">{s.d}</p>
@@ -818,7 +819,7 @@ function Services(){
             </a>
           ))}
         </div>
-        <div style={{textAlign:'center',marginTop:48}} className="rv"><a href="/services" className="btn-ol">View All 9 Services →</a></div>
+        <div style={{textAlign:'center',marginTop:48}} className="rv"><a href="/services" className="btn-ol" onClick={() => track.ctaClick('View All 9 Services', 'homepage_services')}>View All 9 Services →</a></div>
       </div>
     </section>
   )
@@ -835,7 +836,7 @@ function Industries(){
         </div>
         <div className="ind-g1">
           {INDUSTRIES.slice(0,4).map((ind,i)=>(
-            <div key={ind.n} className={`icard rv d${i+1}`}>
+            <div key={ind.n} className={`icard rv d${i+1}`} onClick={() => track.industryCardClick(ind.n)}>
               <div className="ibg" style={{background:ind.bg}}>{ind.Card && <ind.Card/>}</div><div className="igrd"/>
               <div className="icnt"><div className="i-ico">{ind.i}</div><div className="i-nm">{ind.n}</div><div className="i-ds">{ind.d}</div></div>
             </div>
@@ -843,13 +844,13 @@ function Industries(){
         </div>
         <div className="ind-g2">
           {INDUSTRIES.slice(4).map((ind,i)=>(
-            <div key={ind.n} className={`icard rv d${i+3}`}>
+            <div key={ind.n} className={`icard rv d${i+3}`} onClick={() => track.industryCardClick(ind.n)}>
               <div className="ibg" style={{background:ind.bg}}>{ind.Card && <ind.Card/>}</div><div className="igrd"/>
               <div className="icnt"><div className="i-ico">{ind.i}</div><div className="i-nm">{ind.n}</div><div className="i-ds">{ind.d}</div></div>
             </div>
           ))}
         </div>
-        <div style={{textAlign:'center',marginTop:44}} className="rv"><a href="/industries" className="btn-gh">Explore All Industries →</a></div>
+        <div style={{textAlign:'center',marginTop:44}} className="rv"><a href="/industries" className="btn-gh" onClick={() => track.ctaClick('Explore All Industries', 'homepage_industries')}>Explore All Industries →</a></div>
       </div>
     </section>
   )
@@ -920,7 +921,7 @@ function Portfolio(){
         </div>
         <div className="pfilts rv">
           {[['all','All Projects'],['healthcare','Healthcare'],['education','Education'],['automation','Automation'],['wellness','Wellness'],['other','Other']].map(([v,l])=>(
-            <button key={v} className={`pfb${f===v?' act':''}`} onClick={()=>setF(v)}>{l}</button>
+            <button key={v} className={`pfb${f===v?' act':''}`} onClick={()=>{setF(v);track.portfolioFilter(v)}}>{l}</button>
           ))}
         </div>
         <div className="port-grid">
@@ -1019,7 +1020,7 @@ function Blog(){
 
 function Quiz(){
   const [step,setStep]=useState(0);const [sel,setSel]=useState(null);const [scores,setScores]=useState([]);const [result,setResult]=useState(null)
-  const next=()=>{if(sel===null)return;const ns=[...scores,sel];if(step<QSTEPS.length-1){setScores(ns);setStep(s=>s+1);setSel(null)}else{const tot=ns.reduce((a,b)=>a+b,0);const pct=Math.round((tot/125)*100);setResult(pct>=70?{tier:'AI-Ready',pct,icon:'🚀',color:'#22c55e',msg:'Your business is primed for AI transformation. Letʼs build something exceptional together.'}:pct>=40?{tier:'AI-Curious',pct,icon:'🔍',color:'#FF6B2B',msg:'Youʼre on the right track. A focused AI integration could unlock major gains.'}:{tier:'AI-Starter',pct,icon:'💡',color:'#2E9ED6',msg:'Great time to start. Weʼll guide you from zero to AI-powered step by step.'})}}
+  const next=()=>{if(sel===null)return;const ns=[...scores,sel];if(step<QSTEPS.length-1){setScores(ns);setStep(s=>s+1);setSel(null)}else{const tot=ns.reduce((a,b)=>a+b,0);const pct=Math.round((tot/125)*100);const r=pct>=70?{tier:'AI-Ready',pct,icon:'🚀',color:'#22c55e',msg:'Your business is primed for AI transformation. Letʼs build something exceptional together.'}:pct>=40?{tier:'AI-Curious',pct,icon:'🔍',color:'#FF6B2B',msg:'Youʼre on the right track. A focused AI integration could unlock major gains.'}:{tier:'AI-Starter',pct,icon:'💡',color:'#2E9ED6',msg:'Great time to start. Weʼll guide you from zero to AI-powered step by step.'};setResult(r);track.quizComplete(r.tier,pct)}}
   const back=()=>{if(step>0){setStep(s=>s-1);setSel(scores[step-1]);setScores(s=>s.slice(0,-1))}}
   const restart=()=>{setStep(0);setSel(null);setScores([]);setResult(null)}
   return(
@@ -1048,7 +1049,7 @@ function Quiz(){
               <div className="qrt" style={{color:result.color}}>{result.tier} — {result.pct}% Score</div>
               <div className="qrsb"><div className="qrsf" style={{background:`linear-gradient(90deg,${result.color},${result.color}88)`,width:`${result.pct}%`}}/></div>
               <p className="qrm">{result.msg}</p>
-              <button className="qrcta">Book a Free Strategy Call →</button>
+              <button className="qrcta" onClick={() => track.ctaClick('Book a Free Strategy Call', 'homepage_quiz')}>Book a Free Strategy Call →</button>
               <button className="qrst" onClick={restart}>Retake the assessment</button>
             </div>
           )}
@@ -1067,8 +1068,8 @@ function CTABanner(){
         <h2 className="ctab-t">Ready to Transform Your Business<br/>with <span className="ctab-ts">AI?</span></h2>
         <p className="ctab-s">From a quick MVP to a full enterprise AI rollout — we&apos;ll scope it, build it and support it. Your first consultation is completely free.</p>
         <div className="ctab-acts">
-          <a href="mailto:info@csharptek.com" className="btn-or">Book a Free Consultation →</a>
-          <a href="#portfolio" className="btn-gh">View Our Work</a>
+          <a href="mailto:info@csharptek.com" className="btn-or" onClick={() => track.ctaClick('Book a Free Consultation', 'homepage_cta_banner')}>Book a Free Consultation →</a>
+          <a href="#portfolio" className="btn-gh" onClick={() => track.ctaClick('View Our Work', 'homepage_cta_banner')}>View Our Work</a>
         </div>
         <div className="ctab-chk">
           {['✓No obligation','✓Reply within 24 hours','✓HIPAA-ready','✓24/7 support'].map(c=><span key={c}>{c}</span>)}
@@ -1113,7 +1114,7 @@ function Footer(){
               {subbed?<div style={{fontSize:12,color:'#4ade80',fontWeight:600}}>✅ Subscribed! Welcome to The AI Edge.</div>:(
                 <div className="ft-nf">
                   <input className="ft-ni" type="email" value={email} onChange={e=>setEmail(e.target.value)} placeholder="your@email.com"/>
-                  <button className="ft-nb" onClick={()=>{if(email.includes('@')){setSubbed(true);setEmail('')}}}>Subscribe</button>
+                  <button className="ft-nb" onClick={()=>{if(email.includes('@')){setSubbed(true);setEmail('');track.newsletterSub()}}}>Subscribe</button>
                 </div>
               )}
             </div>
@@ -1180,7 +1181,7 @@ function Chatbot(){
           </div>
         </div>
       )}
-      <button className="chtog" onClick={()=>setOpen(!open)}>{open?'✕':'💬'}{!open&&<span className="ch-dot"/>}</button>
+      <button className="chtog" onClick={()=>{setOpen(!open);if(!open)track.chatbotOpen()}}>{open?'✕':'💬'}{!open&&<span className="ch-dot"/>}</button>
     </div>
   )
 }

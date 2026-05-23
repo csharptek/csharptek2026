@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import Layout from '../../components/Layout'
+import { track } from '../../lib/analytics'
 const ScrollToTop = dynamic(() => import('../../components/ScrollToTop'), { ssr: false })
 
 const CASE_STUDIES = [
@@ -210,6 +211,11 @@ const STYLES = `
 export default function Portfolio() {
   const [filter, setFilter] = useState('all')
 
+  const handleFilter = (v) => {
+    setFilter(v)
+    track.portfolioFilter(v)
+  }
+
   useEffect(() => {
     const els = document.querySelectorAll('.rv')
     const obs = new IntersectionObserver(es => {
@@ -266,7 +272,7 @@ export default function Portfolio() {
       <div className="port-filts">
         <div className="port-filts-in">
           {FILTERS.map(([v, l]) => (
-            <button key={v} className={`pfb${filter === v ? ' act' : ''}`} onClick={() => setFilter(v)}>{l}</button>
+            <button key={v} className={`pfb${filter === v ? ' act' : ''}`} onClick={() => handleFilter(v)}>{l}</button>
           ))}
         </div>
       </div>
@@ -281,7 +287,7 @@ export default function Portfolio() {
               {featured.length > 0 && (
                 <div className="feat-grid">
                   {featured.map((c, i) => (
-                    <div key={c.id} className={`feat-card rv d${i + 1}`}>
+                    <div key={c.id} className={`feat-card rv d${i + 1}`} onClick={() => track.caseStudyOpen(c.t, c.cat)}>
                       <div className="feat-cover" style={{ background: c.bg }}>
                         <span className="feat-emoji">{c.emoji}</span>
                         <span className="feat-badge" style={{ color: c.labelColor, background: c.labelBg }}>{c.label}</span>
@@ -307,7 +313,7 @@ export default function Portfolio() {
               {standard.length > 0 && (
                 <div className="std-grid">
                   {standard.map((c, i) => (
-                    <div key={c.id} className={`std-card rv d${i + 1}`}>
+                    <div key={c.id} className={`std-card rv d${i + 1}`} onClick={() => track.caseStudyOpen(c.t, c.cat)}>
                       <div className="std-cover" style={{ background: c.bg }}>
                         <span className="std-emoji">{c.emoji}</span>
                         <span className="std-badge" style={{ color: c.labelColor, background: c.labelBg }}>{c.label}</span>

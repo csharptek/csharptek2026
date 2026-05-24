@@ -1,0 +1,23 @@
+{
+  "name": "csharptek-admin",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start -p ${PORT:-3001}",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@azure/storage-blob": "^12.17.0",
+    "jsonwebtoken": "^9.0.2",
+    "next": "^14.2.3",
+    "pg": "^8.11.5",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "^14.2.3"
+  }
+}

@@ -71,7 +71,7 @@ export default function Layout({ children }) {
             <div>
               <h4 style={{fontFamily:"'Plus Jakarta Sans',sans-serif",fontSize:11,fontWeight:700,color:'rgba(255,255,255,.85)',letterSpacing:'.05em',textTransform:'uppercase',marginBottom:16}}>Company</h4>
               <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:9}}>
-                {[['About Us','/about'],['Portfolio','/portfolio'],['Careers','/careers'],['Partners','/about#partners'],['Contact','/contact']].map(([label,href])=>(
+                {[['About Us','/about'],['Portfolio','/portfolio'],['Blog','/blog'],['Careers','/careers'],['Partners','/about#partners'],['Contact','/contact']].map(([label,href])=>(
                   <li key={label}><Link href={href} style={{fontSize:12,color:'rgba(255,255,255,.36)',textDecoration:'none',fontWeight:500}}>{label}</Link></li>
                 ))}
               </ul>

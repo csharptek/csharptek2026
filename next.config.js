@@ -25,22 +25,31 @@ const nextConfig = {
       // ── Careers old URLs ──
       { source: '/we-are-hiring',                               destination: '/careers',                           permanent: true },
       { source: '/software-trainee',                            destination: '/careers',                           permanent: true },
+      { source: '/project-manager',                             destination: '/careers',                           permanent: true },
+      { source: '/it-staffing',                                 destination: '/careers',                           permanent: true },
 
       // ── Blog old URLs (/blogs/ → /blog) ──
       { source: '/blogs/:slug*',                                destination: '/blog',                              permanent: true },
+      { source: '/blog/:slug*',                                 destination: '/blog',                              permanent: true },
 
       // ── Home old URLs ──
       { source: '/Home/Index2',                                 destination: '/',                                  permanent: true },
       { source: '/Home/:slug*',                                 destination: '/',                                  permanent: true },
+      { source: '/about-us',                                    destination: '/about',                             permanent: true },
 
       // ── Old Azure/services pages ──
       { source: '/services/azure-mobile-applications',          destination: '/services/web-mobile',               permanent: true },
       { source: '/azure-integration-developer',                 destination: '/services/ai-integration',           permanent: true },
       { source: '/cloud-migration-assesment-and-planning-services', destination: '/services/cloud-devops',         permanent: true },
+      { source: '/azure-ai-service',                            destination: '/services/ai-integration',           permanent: true },
+      { source: '/advance-technological-solutions',             destination: '/services',                          permanent: true },
+      { source: '/create-connected-manufacturing-experiences',  destination: '/services',                          permanent: true },
+      { source: '/chat-gpt',                                    destination: '/services/ai-integration',           permanent: true },
 
       // ── Old case study slugs at root ──
       { source: '/matchmaking-site-azure-devops-case-study',    destination: '/portfolio',                         permanent: true },
       { source: '/patient-care-azure-ai-case-study',            destination: '/portfolio',                         permanent: true },
+      { source: '/bytehealthy-home-made-food-delivery-app',     destination: '/portfolio',                         permanent: true },
 
       // ── Old news/blog at root ──
       { source: '/News/:slug*',                                 destination: '/',                                  permanent: true },

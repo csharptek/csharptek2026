@@ -30,7 +30,6 @@ const nextConfig = {
 
       // ── Blog old URLs (/blogs/ → /blog) ──
       { source: '/blogs/:slug*',                                destination: '/blog',                              permanent: true },
-      { source: '/blog/:slug*',                                 destination: '/blog',                              permanent: true },
 
       // ── Home old URLs ──
       { source: '/Home/Index2',                                 destination: '/',                                  permanent: true },
@@ -60,6 +59,20 @@ const nextConfig = {
 
       // ── Privacy policy trailing slash ──
       { source: '/privacy-policy/',                             destination: '/privacy-policy',                    permanent: true },
+
+      // ── Industry slug fixes ──
+      { source: '/industries/pet-care',                         destination: '/industries/petcare',                permanent: true },
+      { source: '/industries/marketing',                        destination: '/industries',                        permanent: true },
+
+      // ── Old job/recruit pages ──
+      { source: '/react-developer',                             destination: '/careers',                           permanent: true },
+      { source: '/senior-java-developer',                       destination: '/careers',                           permanent: true },
+      { source: '/job-details/:id*',                            destination: '/careers',                           permanent: true },
+
+      // ── Old service pages ──
+      { source: '/service-chat-gpt',                            destination: '/services/ai-integration',           permanent: true },
+      { source: '/testing-and-qa-services',                     destination: '/services',                          permanent: true },
+      { source: '/smarter-financial-solutions',                 destination: '/services',                          permanent: true },
     ]
   },
 }

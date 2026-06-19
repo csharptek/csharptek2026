@@ -19,45 +19,50 @@ export default async function handler(req, res) {
     const tokenMatch = bodyStr.match(/name="recaptchaToken"\r\n\r\n([^\r\n]+)/)
     const recaptchaToken = tokenMatch ? tokenMatch[1].trim() : null
 
-    if (!recaptchaToken) {
-      return res.status(400).json({ success: false, message: 'reCAPTCHA token missing.' })
+    // Verify reCAPTCHA (only if secret key is configured)
+    if (process.env.RECAPTCHA_SECRET_KEY) {
+      if (!recaptchaToken) {
+        return res.status(400).json({ success: false, message: 'reCAPTCHA token missing.' })
+      }
+
+      const captchaRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
+      })
+      const captchaData = await captchaRes.json()
+      if (!captchaData.success || captchaData.score < 0.5) {
+        return res.status(400).json({ success: false, message: 'reCAPTCHA failed. Please try again.' })
+      }
     }
 
-    // Verify reCAPTCHA
-    const captchaRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
-    })
-    const captchaData = await captchaRes.json()
-    if (!captchaData.success || captchaData.score < 0.5) {
-      return res.status(400).json({ success: false, message: 'reCAPTCHA failed. Please try again.' })
-    }
-
-    // Proxy to old .NET backend
-    const dotnetRes = await fetch('https://www.csharptek.com/Recruitment/Contact', {
+    // Proxy to new Azure backend
+    const dotnetRes = await fetch('https://interviewschedulerprodapi.azurewebsites.net/api/Career/apply', {
       method: 'POST',
       headers: {
         'Content-Type': req.headers['content-type'],
         'User-Agent': 'CSharpTek-NewSite/1.0',
       },
       body: rawBody,
-      redirect: 'manual',
     })
 
-    const location = dotnetRes.headers.get('location') || ''
-
-    if (dotnetRes.status === 302 || dotnetRes.ok) {
-      if (location.includes('already applied')) {
-        return res.status(409).json({ success: false, message: 'You have already applied for this job within the last 6 months.' })
+    if (dotnetRes.ok) {
+      const data = await dotnetRes.json()
+      if (data.success) {
+        return res.status(200).json({ success: true })
+      } else {
+        return res.status(400).json({ success: false, message: data.message || 'Submission failed.' })
       }
-      if (location.includes('Mail not send') || location.includes('problem')) {
-        return res.status(500).json({ success: false, message: 'Something went wrong. Please email hr@csharptek.com directly.' })
+    } else {
+      let errMsg = 'Submission failed. Please try again.'
+      try {
+        const data = await dotnetRes.json()
+        if (data.message) errMsg = data.message
+      } catch (e) {
+        // response may not be JSON
       }
-      return res.status(200).json({ success: true })
+      return res.status(dotnetRes.status || 500).json({ success: false, message: errMsg })
     }
-
-    return res.status(500).json({ success: false, message: 'Submission failed. Please try again.' })
   } catch (err) {
     console.error('Apply error:', err.message)
     return res.status(500).json({ success: false, message: 'Network error. Please email hr@csharptek.com directly.' })

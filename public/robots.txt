@@ -1,4 +1,9 @@
+# *
 User-agent: *
 Allow: /
 
+# Host
+Host: https://www.csharptek.com
+
+# Sitemaps
 Sitemap: https://www.csharptek.com/sitemap.xml

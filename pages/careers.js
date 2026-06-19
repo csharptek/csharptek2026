@@ -249,6 +249,9 @@ export default function CareersPage() {
         ? await window.grecaptcha.execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY, { action: 'apply' })
         : 'no-recaptcha'
 
+      const totalExp = Number(form.ExperienceYears || 0) + (Number(form.ExperienceMonths || 0) / 12)
+      const totalExpStr = parseFloat(totalExp.toFixed(2)).toString()
+
       const fd = new FormData()
       Object.entries({
         Firstname: form.Firstname, Lastname: form.Lastname,
@@ -258,15 +261,15 @@ export default function CareersPage() {
         JobId: form.JobId, AppliedFor: form.AppliedFor,
         ExperienceYears: form.ExperienceYears || '0',
         ExperienceMonths: form.ExperienceMonths || '0',
+        TotalExperienceYears: totalExpStr,
         CurrentCtc: form.CurrentCtc || '0',
         ExpectedCtc: form.ExpectedCtc || '0',
         NoticePeriod: form.NoticePeriod || '',
         StatusOfWorking: form.StatusOfWorking || '',
         HighestQualification: form.HighestQualification || '',
         WillingToWorkInRanchi: form.WillingToWorkInRanchi ? 'true' : 'false',
-        message: form.message || '',
-        DateofBirth: '2000-01-01',
-        AdharNumber: '', PanNumber: '',
+        CoverNote: form.message || '',
+        LinkedInUrl: form.LinkedInUrl || '',
         recaptchaToken: token,
       }).forEach(([k,v]) => fd.append(k, v))
       fd.append('FormFile', fileRef.current.files[0])

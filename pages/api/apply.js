@@ -37,7 +37,7 @@ export default async function handler(req, res) {
     }
 
     // Proxy to new Azure backend
-    const dotnetRes = await fetch('https://interviewschedulerprodapi.azurewebsites.net/api/Career/apply', {
+    const dotnetRes = await fetch('https://pleasing-balance-production-708f.up.railway.app/api/Career/apply', {
       method: 'POST',
       headers: {
         'Content-Type': req.headers['content-type'],

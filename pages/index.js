@@ -5,6 +5,7 @@ import NavComponent from '../components/Nav'
 import dynamic from 'next/dynamic'
 import { track } from '../lib/analytics'
 const ScrollToTop = dynamic(() => import('../components/ScrollToTop'), { ssr: false })
+const Chatbot = dynamic(() => import('../components/Chatbot'), { ssr: false })
 const HealthcareCard = dynamic(() => import('../components/industry-cards/HealthcareCard'), { ssr: false })
 const WellnessCard = dynamic(() => import('../components/industry-cards/WellnessCard'), { ssr: false })
 const EducationCard = dynamic(() => import('../components/industry-cards/EducationCard'), { ssr: false })
@@ -303,28 +304,7 @@ const GLOBAL_STYLES = `
   .ft-lks a:hover{color:#7EC8E3;}
   .ft-bdg{font-size:11px;color:rgba(255,255,255,.2);}
 
-  /* ── CHATBOT ── */
-  .chatbub{position:fixed;bottom:24px;right:24px;z-index:999;}
-  .chtog{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#1565A8,#2E9ED6);border:none;color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(21,101,168,.45);animation:chatPulse 3s ease-in-out infinite;position:relative;}
-  .ch-dot{position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:#FF6B2B;border:2px solid #0A1628;}
-  .chwin{position:absolute;bottom:68px;right:0;width:320px;background:#0D2B45;border:1px solid rgba(46,158,214,.2);border-radius:18px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5);}
-  .chh{display:flex;align-items:center;gap:11px;padding:16px 18px;background:linear-gradient(135deg,#1565A8,#2E9ED6);}
-  .chav{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:18px;}
-  .ch-inf h4{font-size:13px;font-weight:700;color:#fff;}
-  .ch-inf p{font-size:11px;color:rgba(255,255,255,.7);}
-  .ch-on{width:8px;height:8px;border-radius:50%;background:#4ade80;margin-left:auto;}
-  .chmsgs{height:200px;overflow-y:auto;padding:14px 14px 8px;display:flex;flex-direction:column;gap:8px;}
-  .cmsg{display:flex;}
-  .cmsg.usr{justify-content:flex-end;}
-  .cmbub{max-width:80%;padding:9px 13px;border-radius:12px;font-size:12.5px;line-height:1.55;}
-  .cmsg.bot .cmbub{background:rgba(255,255,255,.07);color:rgba(255,255,255,.85);}
-  .cmsg.usr .cmbub{background:#FF6B2B;color:#fff;}
-  .chqk{display:flex;flex-wrap:wrap;gap:6px;padding:8px 14px;}
-  .chqb{padding:5px 12px;border-radius:100px;border:1px solid rgba(46,158,214,.25);background:rgba(46,158,214,.07);font-size:11px;font-weight:600;color:#7EC8E3;cursor:pointer;transition:all .2s;}
-  .chqb:hover{background:rgba(46,158,214,.18);}
-  .chinr{display:flex;gap:8px;padding:10px 14px;border-top:1px solid rgba(255,255,255,.05);}
-  .chin{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(46,158,214,.18);border-radius:8px;padding:9px 12px;font-size:13px;color:#fff;outline:none;}
-  .chsnd{background:#FF6B2B;color:#fff;border:none;border-radius:8px;padding:9px 13px;font-size:14px;cursor:pointer;}
+  /* Chatbot has been moved to a separate modular CSS file */
 
   /* ── SHARED BUTTONS ── */
   .btn-ol{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:10px;border:2px solid #1565A8;color:#1565A8;font-weight:700;font-size:15px;transition:all .2s;}
@@ -411,23 +391,7 @@ const QSTEPS = [
   {q:'4. Company size?',opts:[{l:'👤 1–10 (Startup)',v:8},{l:'👥 11–50 (Growing)',v:15},{l:'🏢 51–200 (Mid-market)',v:20},{l:'🏗️ 200+ (Enterprise)',v:25}]},
   {q:'5. Timeline to act?',opts:[{l:'🔥 ASAP',v:25},{l:'📅 3–6 months',v:18},{l:'🗓️ 6–12 months',v:10},{l:'🤔 Just exploring',v:5}]},
 ]
-const BOT_REPLIES = {
-  services:'We offer AI Integration, AI Voice Agents, Web & Mobile Dev, Cloud & DevOps, MVP & Vibe Coding, Marketplace Publishing and 24/7 Support. Which interests you?',
-  project:'Awesome! What industry and what are you looking to build? 🚀',
-  industries:'We serve Healthcare (HIPAA/EHR), Wellness & Fertility, Education & EdTech, Marketing & Automation, Service Marketplaces, Pet Care and CRM & Productivity.',
-  mvp:'With Vibe Coding using Cursor, Lovable and Base44, we ship MVPs in 4–8 weeks. Our Spark package is built for this. 🚀',
-  default:'Great question! Would you like to explore our services or connect with our team for a free consultation? 😊',
-}
-
 /* ─── HELPERS ─────────────────────────────────── */
-function getBotReply(t){
-  const l=t.toLowerCase()
-  if(l.includes('service'))return BOT_REPLIES.services
-  if(l.includes('project')||l.includes('start')||l.includes('build'))return BOT_REPLIES.project
-  if(l.includes('industry')||l.includes('industr'))return BOT_REPLIES.industries
-  if(l.includes('mvp')||l.includes('fast')||l.includes('speed'))return BOT_REPLIES.mvp
-  return BOT_REPLIES.default
-}
 function useCountUp(target,duration=1600,start=false){
   const [count,setCount]=useState(0)
   useEffect(()=>{
@@ -1156,35 +1120,6 @@ function Footer(){
   )
 }
 
-function Chatbot(){
-  const [open,setOpen]=useState(false)
-  const [msgs,setMsgs]=useState([{bot:true,text:"👋 Hi! I'm Tek, CSharpTek's AI assistant. I can answer questions or help kick off a project. What brings you here today?"}])
-  const [input,setInput]=useState('')
-  const add=(text,bot)=>setMsgs(m=>[...m,{bot,text}])
-  const send=(text)=>{if(!text.trim())return;add(text,false);setInput('');setTimeout(()=>add(getBotReply(text),true),800)}
-  return(
-    <div className="chatbub">
-      {open&&(
-        <div className="chwin">
-          <div className="chh">
-            <div className="chav">⚡</div>
-            <div className="ch-inf"><h4>Tek — CSharpTek AI</h4><p>Ask me anything</p></div>
-            <div className="ch-on"/>
-          </div>
-          <div className="chmsgs">{msgs.map((m,i)=><div key={i} className={`cmsg ${m.bot?'bot':'usr'}`}><div className="cmbub">{m.text}</div></div>)}</div>
-          <div className="chqk">
-            {[['Our Services','Tell me about your services'],['Start Project','I want to start a project'],['Industries','What industries do you work with?'],['MVP Speed','How fast can you build an MVP?']].map(([l,m])=>(<button key={l} className="chqb" onClick={()=>send(m)}>{l}</button>))}
-          </div>
-          <div className="chinr">
-            <input className="chin" value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key==='Enter'&&send(input)} placeholder="Type a message..."/>
-            <button className="chsnd" onClick={()=>send(input)}>➤</button>
-          </div>
-        </div>
-      )}
-      <button className="chtog" onClick={()=>{setOpen(!open);if(!open)track.chatbotOpen()}}>{open?'✕':'💬'}{!open&&<span className="ch-dot"/>}</button>
-    </div>
-  )
-}
 
 /* ─── PAGE ───────────────────────────────────── */
 export default function Home(){

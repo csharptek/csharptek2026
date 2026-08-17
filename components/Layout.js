@@ -2,6 +2,7 @@ import Nav from './Nav'
 import AnnouncementBar from './AnnouncementBar'
 import dynamic from 'next/dynamic'
 const ScrollToTop = dynamic(() => import('./ScrollToTop'), { ssr: false })
+const Chatbot = dynamic(() => import('./Chatbot'), { ssr: false })
 import Link from 'next/link'
 
 export default function Layout({ children }) {
@@ -104,6 +105,7 @@ export default function Layout({ children }) {
           </div>
         </div>
       </footer>
+      <Chatbot />
       <ScrollToTop />
     </>
   )

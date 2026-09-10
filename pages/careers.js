@@ -104,7 +104,9 @@ const S = `
   .fi,.fs,.ft{width:100%;padding:12px 16px;border:1.5px solid rgba(21,101,168,.15);border-radius:10px;font-size:14px;font-family:'Mulish',sans-serif;color:#0A1628;background:#fff;transition:border-color .2s;outline:none;}
   .fi:focus,.fs:focus,.ft:focus{border-color:#1565A8;box-shadow:0 0 0 3px rgba(21,101,168,.08);}
   .ft{resize:vertical;min-height:110px;}
-  .fs{cursor:pointer;}
+  .fs{cursor:pointer;-webkit-appearance:none;appearance:none;padding-right:42px;background-image:linear-gradient(45deg, transparent 50%, #1565A8 50%),linear-gradient(135deg, #1565A8 50%, transparent 50%);background-position:calc(100% - 18px) calc(50% - 2px),calc(100% - 12px) calc(50% - 2px);background-size:6px 6px,6px 6px;background-repeat:no-repeat;}
+  .fs option{background:#fff;color:#0A1628;padding:10px 12px;}
+  .fs option:checked{background:linear-gradient(#EAF4FF,#EAF4FF);color:#0A1628;}
   .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
   .file-wrap{position:relative;}
   .file-inp{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
